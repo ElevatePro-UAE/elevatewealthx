@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevate WealthX - Exponential Wealth Growth</title>
+  <meta name="description" content="Achieve Financial Freedom with Stable Monthly Returns, Smart Capital Deployment, and Total Control over Your Wealth. Professional wealth consulting platform." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <style>
+    /* CSS Custom Properties */
+    :root {
+      --gold: #d4af37;
+      --gold-light: #e6c866;
+      --gold-dark: #b8941f;
+      --black: #000;
+      --dark-gray: #111;
+      --medium-gray: #333;
+      --light-gray: #ccc;
+      --white: #fff;
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-fast: all 0.3s ease;
+      --shadow-gold: 0 4px 15px rgba(212, 175, 55, 0.3);
+      --shadow-gold-hover: 0 8px 25px rgba(212, 175, 55, 0.4);
+      --border-radius-sm: 0.5rem;
+      --border-radius-md: 1rem;
+      --border-radius-lg: 2rem;
+      --border-radius-full: 50px;
+    }
+
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding-top: 80px;
+    }
+
+    /* Typography */
+    .text-gold { color: var(--gold); }
+    .text-gradient {
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Layout Utilities */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .bg-gradient {
+      background: linear-gradient(135deg, var(--dark-gray), #0a0a0a);
+    }
+
+    .section {
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title {
+      color: var(--gold);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 1.5rem;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--light-gray);
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    /* Navigation Styles */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gold);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      transition: var(--transition-smooth);
+    }
+
+    .navbar.shrink {
+      padding: 0.5rem 2rem;
+      background-color: rgba(0, 0, 0, 0.98);
+    }
+
+    .navbar h1 {
+      color: var(--gold);
+      font-size: 1.8rem;
+      font-weight: bold;
+      transition: var(--transition-fast);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--light-gray);
+      text-decoration: none;
+      font-size: 1.1rem;
+      position: relative;
+      transition: var(--transition-fast);
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Mobile Navigation */
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: var(--gold);
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.98);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gold);
+      z-index: 999;
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      color: var(--light-gray);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+      transition: var(--transition-fast);
+    }
+
+    .mobile-nav-link:hover {
+      background-color: rgba(212, 175, 55, 0.1);
+      color: var(--gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 1200px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero-title {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-size: clamp(2rem, 8vw, 4.5rem);
+      font-weight: bold;
+      line-height: 1.2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+      color: var(--light-gray);
+      margin-bottom: 2.5rem;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* CTA Button */
+    .cta-button {
+      display: inline-block;
+      padding: 1.2rem 2.5rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--black);
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: var(--border-radius-full);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-gold-hover);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    }
+
+    .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .cta-button:active {
+      transform: translateY(-1px);
+    }
+
+    /* Stats Strip */
+    .stats-strip {
+      background: linear-gradient(135deg, var(--dark-gray), #0a0a0a);
+      padding: 3rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      border-top: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      color: var(--gold);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      color: var(--light-gray);
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+
+    /* Card Components - FIXED LAYOUT */
+    .card-grid {
+      display: grid;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Specific grid layouts for different card counts */
+    .card-grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .card-grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card-grid-6 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* Responsive adjustments for 4-card layout */
+    @media (max-width: 1200px) {
+      .card-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card-grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: var(--border-radius-md);
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    }
+
+    .card:hover::before {
+      left: 100%;
+    }
+
+    .card-icon {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .card-title {
+      color: var(--gold);
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+
+    .card-text {
+      color: var(--light-gray);
+      line-height: 1.6;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+    }
+
+    /* Chart Container */
+    .chart-container {
+      background: linear-gradient(135deg, var(--dark-gray), #0a0a0a);
+      padding: 2rem 1rem;
+      border-radius: var(--border-radius-lg);
+      margin: 2rem auto;
+      max-width: 1200px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .chart-wrapper {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .chart-canvas {
+      background: var(--dark-gray);
+      border-radius: var(--border-radius-md);
+      width: 100% !important;
+      height: 100% !important;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Slider Component */
+    .slider-container {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius-md);
+      backdrop-filter: blur(10px);
+    }
+
+    .slider-label {
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      margin-bottom: 1rem;
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    .capital-value {
+      color: var(--gold);
+      font-weight: bold;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+    }
+
+    .slider-input {
+      width: 100%;
+      max-width: 400px;
+      height: 8px;
+      background: var(--medium-gray);
+      border-radius: 5px;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+
+    .slider-input::-webkit-slider-thumb {
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+      transition: var(--transition-fast);
+    }
+
+    .slider-input::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+    }
+
+    .slider-input::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+    }
+
+    .double-capital-indicator {
+      margin-top: 1rem;
+      color: var(--gold);
+      font-weight: bold;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      line-height: 1.5;
+    }
+
+    /* Testimonial Cards */
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: var(--border-radius-md);
+      padding: 2.5rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-quote {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--light-gray);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: var(--black);
+    }
+
+    .testimonial-info h4 {
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-info p {
+      color: var(--light-gray);
+      font-size: 0.9rem;
+    }
+
+    /* FAQ Styles */
+    .faq-item {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: var(--border-radius-md);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition-fast);
+    }
+
+    .faq-question:hover {
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .faq-question h3 {
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .faq-toggle {
+      color: var(--gold);
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      max-height: 200px;
+    }
+
+    .faq-answer p {
+      color: var(--light-gray);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark-gray);
+      padding: 3rem 2rem 1rem;
+      border-top: 1px solid var(--gold);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      color: var(--light-gray);
+      text-decoration: none;
+      line-height: 1.6;
+    }
+
+    .footer-section a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+      color: var(--light-gray);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-in { animation: fadeIn 0.8s ease-out; }
+    .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+
+    .scroll-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scroll-animate.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body { padding-top: 70px; }
+      .navbar { padding: 1rem; }
+      .navbar h1 { font-size: 1.5rem; }
+      .nav-links { display: none; }
+      .mobile-menu-toggle { display: flex; }
+      .hero { height: 80vh; }
+      .section { padding: 3rem 1rem; }
+      .stats-strip {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+      }
+      .card { padding: 1.5rem; }
+      .chart-container { padding: 1.5rem 1rem; margin: 1rem; border-radius: var(--border-radius-md); }
+      .chart-wrapper { height: 300px; }
+      .slider-container { padding: 1.5rem 1rem; }
+      .double-capital-indicator { font-size: 0.9rem; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-strip { grid-template-columns: 1fr; gap: 1rem; }
+      .cta-button { padding: 1rem 2rem; }
+      .chart-wrapper { height: 250px; }
+    }
+
+    /* List Styles */
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .feature-list li {
+      margin-bottom: 0.8rem;
+      color: var(--light-gray);
+    }
+
+    .feature-list.centered {
+      text-align: center;
+    }
+
+    .italic-note {
+      font-style: italic;
+      margin-top: 1rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Enhanced Navigation -->
+  <header id="navbar" class="navbar">
+    <h1>Elevate WealthX</h1>
+    <nav class="nav-links">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#strategies" class="nav-link">Strategies</a>
+      <a href="#testimonials" class="nav-link">Testimonials</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#strategies" class="mobile-nav-link">Strategies</a>
+    <a href="#testimonials" class="mobile-nav-link">Testimonials</a>
+    <a href="#faq" class="mobile-nav-link">FAQ</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="https://cdn.pixabay.com/video/2020/08/02/46196-447422805_large.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Grow Your Wealth <span class="text-gradient">Exponentially</span><br>
+        With <span class="text-gradient">Elevate WealthX</span>
+      </h1>
+      <p class="hero-subtitle">Achieve Financial Freedom with Stable Monthly Returns, Smart Capital Deployment, and Total Control over Your Wealth.</p>
+      <a href="#contact" class="cta-button">Start Your Wealth Journey</a>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="stats-strip scroll-animate">
+    <div class="stat-item">
+      <div class="stat-number">$1M+</div>
+      <div class="stat-label">Capital Optimized</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">5%+</div>
+      <div class="stat-label">Monthly Returns on Options Trading</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">2%+</div>
+      <div class="stat-label">Trade Finance Referral Returns</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">30%+</div>
+      <div class="stat-label">Average Portfolio Growth CAGR</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">$10K</div>
+      <div class="stat-label">Minimum Investment</div>
+    </div>
+  </section>
+
+  <!-- Chart Section -->
+  <section class="section bg-gradient scroll-animate">
+    <h2 class="section-title">📈 The Power of Compounding</h2>
+    <p class="section-subtitle">
+      See how consistent monthly returns between <span class="text-gold">1% to 5%</span> can transform $100,000 into exponential wealth over time.
+    </p>
+
+    <div class="chart-container">
+      <div class="chart-wrapper">
+        <canvas id="growthChart" class="chart-canvas"></canvas>
+      </div>
+      
+      <div class="slider-container">
+        <label class="slider-label">Initial Capital: $<span id="capitalValue" class="capital-value">100,000</span></label>
+        <input type="range" id="capitalSlider" class="slider-input" min="10000" max="1000000" step="10000" value="100000" />
+        <div id="doubleCapitalIndicator" class="double-capital-indicator"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section scroll-animate">
+    <h2 class="section-title">🔍 Tailored Wealth Systems — Built Just for You</h2>
+    <p class="section-subtitle">
+      At <strong>Elevate WealthX</strong>, we don't sell dreams — we design <strong>personalized, actionable systems</strong> tailored to your unique financial journey.
+      We believe true financial freedom isn't about jackpots or high-risk speculation — it's about building consistent, intelligent strategies where your money
+      works for you, month after month.
+    </p>
+    <p class="section-subtitle">
+      Every plan we craft is rooted in <span class="text-gold">clarity</span>, <span class="text-gold">structure</span>, and <span class="text-gold">control</span>, with one goal in mind: helping you <strong>grow and protect wealth</strong> in a way that's <strong>reliable, sustainable, and truly built around you</strong>.
+    </p>
+
+    <!-- FIXED: 3-card layout -->
+    <div class="card-grid card-grid-3">
+      <div class="card scroll-animate">
+        <div class="card-icon">📌</div>
+        <h3 class="card-title">The Problem</h3>
+        <p class="card-text"><strong>What Holds Most People Back</strong></p>
+        <ul class="feature-list">
+          <li>• Living paycheck to paycheck</li>
+          <li>• Leaving money idle in low-yield instruments</li>
+          <li>• Missing out on structured strategies</li>
+          <li>• Not optimizing EMIs or loans</li>
+        </ul>
+        <p class="italic-note">The result? Slow or zero financial growth despite good income.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🌱</div>
+        <h3 class="card-title">Our Belief</h3>
+        <p class="card-text"><strong>Stability Over Speculation</strong></p>
+        <ul class="feature-list">
+          <li>• Financial freedom is built on consistency</li>
+          <li>• Passive income beats market noise</li>
+          <li>• Logic > emotions in capital deployment</li>
+          <li>• Simplicity wins: automate what works</li>
+        </ul>
+        <p class="italic-note">True wealth is built on calm decisions, not chaotic markets.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">Our Mission</h3>
+        <p class="card-text"><strong>Wealth That Compounds and Grows</strong></p>
+        <ul class="feature-list">
+          <li>• Monthly income via options trading</li>
+          <li>• Regular cash flows from trade finance</li>
+          <li>• Expense audits & surplus recovery</li>
+          <li>• Dashboards for visibility & control</li>
+        </ul>
+        <p class="italic-note">We help you build peace of mind, freedom, and financial clarity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Elevate WealthX -->
+  <section id="about" class="section bg-gradient scroll-animate">
+    <h2 class="section-title">About Elevate WealthX</h2>
+    <p class="section-subtitle">
+      Elevate WealthX helps you multiply wealth with the <span class="text-gold">X Factor</span> — a structured approach that blends smart capital deployment, stable monthly returns, and complete financial clarity.
+      We're not about speculation; we're about systems that work.
+    </p>
+    <p class="section-subtitle">
+      From conservative options strategies to fixed-income trade finance referrals and personalized dashboards, we turn idle capital into compounding growth. Whether you're a salaried professional, business owner, or NRI, we help you scale wealth with precision — consistently, confidently, and sustainably.
+    </p>
+  </section>
+
+  <!-- How We Help Section - FIXED: 4-card layout -->
+  <section class="section scroll-animate">
+    <h2 class="section-title">🔍 How Elevate Helps You Win — Our X-Factor Advantage</h2>
+    
+    <div class="card-grid card-grid-4">
+      <div class="card scroll-animate">
+        <div class="card-icon">🧠</div>
+        <h3 class="card-title">Cut Waste → Recover Surplus</h3>
+        <p class="card-text">Audit EMIs, idle funds & spending to unlock capital hidden in plain sight.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">💼</div>
+        <h3 class="card-title">Deploy Capital Smartly</h3>
+        <p class="card-text">We direct capital into options & trade finance with low risk, high efficiency.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📊</div>
+        <h3 class="card-title">Monitor Performance</h3>
+        <p class="card-text">Our dashboards give you total clarity on how your capital performs monthly.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📈</div>
+        <h3 class="card-title">Reinvest & Compound</h3>
+        <p class="card-text">Returns are reinvested with discipline to unlock exponential wealth growth.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+      <h3 class="section-title" style="font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom: 2rem;">💡 Why It Works Better With Us</h3>
+      <div class="card scroll-animate" style="max-width: 800px; margin: 0 auto;">
+        <ul class="feature-list centered">
+          <li>✔️ No Pooled Capital – you retain full control</li>
+          <li>✔️ No Trading Noise – we avoid market chaos</li>
+          <li>✔️ Performance-First, Not Fee-First</li>
+          <li>✔️ Human + Tech = Smarter, Faster Decisions</li>
+          <li>✔️ Real Returns. Real People. Real Simplicity.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section - FIXED: 6-card layout -->
+  <section id="services" class="section bg-gradient scroll-animate">
+    <h2 class="section-title">🌟 Our Services</h2>
+
+    <div class="card-grid card-grid-6">
+      <div class="card scroll-animate">
+        <div class="card-icon">💰</div>
+        <h3 class="card-title">Wealth Optimization</h3>
+        <p class="card-text">Audit expenses, restructure loans, and boost your savings rate through smart financial strategies.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📊</div>
+        <h3 class="card-title">Options Strategy Execution</h3>
+        <p class="card-text">Implement structured, conservative options trades directly in your Demat or brokerage account.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🏦</div>
+        <h3 class="card-title">Trade Finance Access</h3>
+        <p class="card-text">Unlock fixed-income import-export financing deals with up to 2% monthly return potential.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📈</div>
+        <h3 class="card-title">Wealth Dashboards</h3>
+        <p class="card-text">Track net worth, income, EMIs, and investments in a unified, visual performance dashboard.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🤝</div>
+        <h3 class="card-title">Performance-Based Consulting</h3>
+        <p class="card-text">No fixed fees — we win only when your portfolio grows. Results-driven financial partnership.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📋</div>
+        <h3 class="card-title">Investment Policy Blueprint</h3>
+        <p class="card-text">Define your personalized investment strategy with a clear, tailored policy statement based on your risk profile and financial goals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investment Strategies Section -->
+  <section id="strategies" class="section scroll-animate">
+    <h2 class="section-title">🎯 Our Investment Strategies</h2>
+    <p class="section-subtitle">
+      Discover the proven strategies we use to generate consistent returns while protecting your capital.
+    </p>
+
+    <!-- FIXED: 4-card layout -->
+    <div class="card-grid card-grid-4">
+      <div class="card scroll-animate">
+        <div class="card-icon">🛡️</div>
+        <h3 class="card-title">Conservative Options Trading</h3>
+        <p class="card-text">Generate monthly income through covered calls, cash-secured puts, and credit spreads with defined risk parameters.</p>
+        <ul class="feature-list">
+          <li>• Target: 3-5% monthly returns</li>
+          <li>• Risk: Limited and defined</li>
+          <li>• Strategy: Income generation</li>
+        </ul>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🌐</div>
+        <h3 class="card-title">Trade Finance Opportunities</h3>
+        <p class="card-text">Access exclusive import-export financing deals with established businesses and guaranteed returns.</p>
+        <ul class="feature-list">
+          <li>• Target: 2-3% monthly returns</li>
+          <li>• Risk: Secured by trade documents</li>
+          <li>• Strategy: Fixed income</li>
+        </ul>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">⚖️</div>
+        <h3 class="card-title">Portfolio Diversification</h3>
+        <p class="card-text">Spread risk across multiple asset classes and strategies to ensure stable, consistent performance.</p>
+        <ul class="feature-list">
+          <li>• Target: Balanced risk-return</li>
+          <li>• Risk: Diversified exposure</li>
+          <li>• Strategy: Risk management</li>
+        </ul>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🔄</div>
+        <h3 class="card-title">Systematic Reinvestment</h3>
+        <p class="card-text">Automatically compound returns through disciplined reinvestment strategies that maximize long-term growth.</p>
+        <ul class="feature-list">
+          <li>• Target: Exponential growth</li>
+          <li>• Risk: Compounding benefits</li>
+          <li>• Strategy: Long-term wealth</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section class="section bg-gradient scroll-animate">
+    <h2 class="section-title">📊 Success Stories & Case Studies</h2>
+    <p class="section-subtitle">
+      Real results from real clients who transformed their financial futures with Elevate WealthX.
+    </p>
+
+    <div class="card-grid card-grid-3">
+      <div class="card scroll-animate">
+        <div class="card-icon">👨‍💼</div>
+        <h3 class="card-title">IT Professional - Mumbai</h3>
+        <p class="card-text"><strong>Challenge:</strong> ₹50L sitting idle in savings account</p>
+        <p class="card-text"><strong>Solution:</strong> Options trading + Trade finance portfolio</p>
+        <p class="card-text"><strong>Result:</strong> ₹2.5L monthly income (5% returns)</p>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(212, 175, 55, 0.1); border-radius: 0.5rem;">
+          <p class="text-gold"><strong>"In 12 months, I've generated more passive income than my annual bonus. The systematic approach gave me confidence to scale up."</strong></p>
+        </div>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">👩‍💼</div>
+        <h3 class="card-title">Business Owner - Delhi</h3>
+        <p class="card-text"><strong>Challenge:</strong> Irregular business cash flows</p>
+        <p class="card-text"><strong>Solution:</strong> Diversified portfolio with trade finance focus</p>
+        <p class="card-text"><strong>Result:</strong> Stable ₹1.2L monthly income</p>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(212, 175, 55, 0.1); border-radius: 0.5rem;">
+          <p class="text-gold"><strong>"The predictable returns helped stabilize my business operations and personal finances."</strong></p>
+        </div>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🌍</div>
+        <h3 class="card-title">NRI - Singapore</h3>
+        <p class="card-text"><strong>Challenge:</strong> Managing Indian investments remotely</p>
+        <p class="card-text"><strong>Solution:</strong> Automated options strategies + Dashboard monitoring</p>
+        <p class="card-text"><strong>Result:</strong> 35% CAGR with minimal time investment</p>
+        <div style="margin-top: 1rem; padding: 1rem; background: rgba(212, 175, 55, 0.1); border-radius: 0.5rem;">
+          <p class="text-gold"><strong>"Finally, a hands-off approach that works. I can focus on my career while my money grows."</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section scroll-animate">
+    <h2 class="section-title">💬 What Our Clients Say</h2>
+    <p class="section-subtitle">
+      Hear from successful investors who've transformed their wealth with our proven strategies.
+    </p>
+
+    <div class="card-grid card-grid-3">
+      <div class="testimonial-card scroll-animate">
+        <p class="testimonial-quote">
+          "Elevate WealthX completely changed my approach to investing. Instead of chasing market trends, I now have a systematic strategy that generates consistent monthly income. The transparency and control I have over my investments is unmatched."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">RK</div>
+          <div class="testimonial-info">
+            <h4>Rajesh Kumar</h4>
+            <p>Senior Software Engineer, Bangalore</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-animate">
+        <p class="testimonial-quote">
+          "The trade finance opportunities introduced by Elevate WealthX have been a game-changer. Steady 2-3% monthly returns with minimal risk have allowed me to plan my retirement with confidence. The team's expertise is evident in every recommendation."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PS</div>
+          <div class="testimonial-info">
+            <h4>Priya Sharma</h4>
+            <p>Marketing Director, Mumbai</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card scroll-animate">
+        <p class="testimonial-quote">
+          "As an NRI, managing investments in India was always challenging. Elevate WealthX's dashboard and automated strategies have made it effortless. I'm seeing better returns than ever before while spending minimal time on portfolio management."
+        </p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AM</div>
+          <div class="testimonial-info">
+            <h4>Arjun Mehta</h4>
+            <p>Data Scientist, London</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Insights Section -->
+  <section class="section bg-gradient scroll-animate">
+    <h2 class="section-title">📈 Market Insights & Analysis</h2>
+    <p class="section-subtitle">
+      Stay informed with our latest market analysis and investment insights.
+    </p>
+
+    <div class="card-grid card-grid-3">
+      <div class="card scroll-animate">
+        <div class="card-icon">📊</div>
+        <h3 class="card-title">Current Market Outlook</h3>
+        <p class="card-text">
+          <strong>Q1 2025 Analysis:</strong> With market volatility expected to continue, our conservative options strategies are positioned to benefit from increased premiums while maintaining capital protection.
+        </p>
+        <ul class="feature-list">
+          <li>• Nifty volatility: 15-20% expected</li>
+          <li>• Options premiums: Elevated levels</li>
+          <li>• Trade finance: Stable demand</li>
+        </ul>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">Strategy Performance</h3>
+        <p class="card-text">
+          <strong>2024 Results:</strong> Our systematic approach delivered consistent results across different market conditions, proving the effectiveness of our risk-managed strategies.
+        </p>
+        <ul class="feature-list">
+          <li>• Options strategies: 4.2% avg monthly</li>
+          <li>• Trade finance: 2.8% avg monthly</li>
+          <li>• Portfolio CAGR: 32.5%</li>
+        </ul>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🔮</div>
+        <h3 class="card-title">2025 Opportunities</h3>
+        <p class="card-text">
+          <strong>Emerging Trends:</strong> New trade finance corridors and enhanced options strategies present exciting opportunities for wealth multiplication in the coming year.
+        </p>
+        <ul class="feature-list">
+          <li>• Digital trade finance platforms</li>
+          <li>• Enhanced options algorithms</li>
+          <li>• Global diversification options</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="section scroll-animate">
+    <h2 class="section-title">❓ Frequently Asked Questions</h2>
+    <p class="section-subtitle">
+      Get answers to the most common questions about our investment strategies and services.
+    </p>
+
+    <div style="max-width: 800px; margin: 0 auto;">
+      <div class="faq-item scroll-animate">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>What is the minimum investment required?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Our minimum investment is ₹10 lakhs ($10,000). This threshold ensures we can implement diversified strategies effectively while maintaining the personalized attention each client deserves.</p>
+        </div>
+      </div>
+
+      <div class="faq-item scroll-animate">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>How do you ensure capital protection?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We use conservative strategies with defined risk parameters. Our options strategies have limited downside, and trade finance deals are secured by trade documents and established business relationships.</p>
+        </div>
+      </div>
+
+      <div class="faq-item scroll-animate">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>What makes your approach different?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Unlike traditional wealth managers, we focus on systematic income generation rather than capital appreciation speculation. You retain full control of your capital while we provide strategies and execution support.</p>
+        </div>
+      </div>
+
+      <div class="faq-item scroll-animate">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>How are fees structured?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>We operate on a performance-based model. We only earn when your portfolio grows, aligning our interests with yours. No upfront fees or hidden charges.</p>
+        </div>
+      </div>
+
+      <div class="faq-item scroll-animate">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>Can NRIs invest through your platform?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Yes, we have specialized solutions for NRIs including automated execution and comprehensive reporting. Our dashboard provides real-time visibility into your Indian investments from anywhere in the world.</p>
+        </div>
+      </div>
+
+      <div class="faq-item scroll-animate">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <h3>How quickly can I see returns?</h3>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Our strategies are designed for monthly income generation. You can typically see returns within the first month, though we recommend a minimum 12-month commitment for optimal compounding benefits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section - FIXED: 4-card layout -->
+  <section class="section bg-gradient scroll-animate">
+    <h2 class="section-title">🔄 How It Works</h2>
+    
+    <div class="card-grid card-grid-4">
+      <div class="card scroll-animate">
+        <div class="card-icon">🔍</div>
+        <h3 class="card-title">1. Discovery</h3>
+        <p class="card-text">We begin with a comprehensive consultation to understand your financial landscape, risk tolerance, and investment objectives.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">2. Custom Strategy</h3>
+        <p class="card-text">Our experts craft a tailored blueprint including wealth optimization, options trading, and trade finance opportunities.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">⚡</div>
+        <h3 class="card-title">3. Execution Support</h3>
+        <p class="card-text">You retain full control while our team assists in secure and compliant implementation of your investment strategy.</p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📊</div>
+        <h3 class="card-title">4. Monitor & Optimize</h3>
+        <p class="card-text">Track performance through our dashboard and participate in regular review calls to refine and optimize your strategy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA Section -->
+  <section id="contact" class="section scroll-animate">
+    <h2 class="section-title">🚀 Ready to Elevate Your Wealth?</h2>
+    <p class="section-subtitle">
+      Take the first step toward financial freedom. Book your free consultation and discover how our proven strategies can transform your wealth.
+    </p>
+    
+    <div style="margin: 3rem 0;">
+      <a href="#" class="cta-button">Book a Free Consultation</a>
+    </div>
+
+    <div class="card-grid card-grid-3" style="margin-top: 3rem;">
+      <div class="card scroll-animate">
+        <div class="card-icon">📞</div>
+        <h3 class="card-title">Phone Consultation</h3>
+        <p class="card-text">Schedule a 30-minute call to discuss your financial goals and explore how we can help.</p>
+        <p class="text-gold"><strong>+91 98765 43210</strong></p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">📧</div>
+        <h3 class="card-title">Email Inquiry</h3>
+        <p class="card-text">Send us your questions and we'll respond within 24 hours with detailed information.</p>
+        <p class="text-gold"><strong>hello@elevatewealthx.com</strong></p>
+      </div>
+
+      <div class="card scroll-animate">
+        <div class="card-icon">🏢</div>
+        <h3 class="card-title">Office Visit</h3>
+        <p class="card-text">Visit our Mumbai office for an in-person consultation and portfolio review.</p>
+        <p class="text-gold"><strong>BKC, Mumbai</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Elevate WealthX</h3>
+        <p>Transforming wealth through systematic, intelligent investment strategies. Your financial freedom is our mission.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <p><a href="#about">About Us</a></p>
+        <p><a href="#services">Services</a></p>
+        <p><a href="#strategies">Investment Strategies</a></p>
+        <p><a href="#testimonials">Testimonials</a></p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <p>Email: hello@elevatewealthx.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Address: BKC, Mumbai, India</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <p><a href="#">Privacy Policy</a></p>
+        <p><a href="#">Terms of Service</a></p>
+        <p><a href="#">Risk Disclosure</a></p>
+        <p><a href="#">Compliance</a></p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Elevate WealthX. All rights reserved. | SEBI Registered Investment Advisor</p>
+    </div>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    // Application State
+    const AppState = {
+      capital: 100000,
+      chart: null,
+      isMobile: window.innerWidth < 768
+    };
+
+    // DOM Elements
+    const Elements = {
+      navbar: document.getElementById('navbar'),
+      mobileMenuToggle: document.getElementById('mobileMenuToggle'),
+      mobileNav: document.getElementById('mobileNav'),
+      capitalSlider: document.getElementById('capitalSlider'),
+      capitalValue: document.getElementById('capitalValue'),
+      doubleCapitalIndicator: document.getElementById('doubleCapitalIndicator'),
+      chartCanvas: document.getElementById('growthChart')
+    };
+
+    // Mobile Menu Controller
+    class MobileMenuController {
+      constructor() {
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        Elements.mobileMenuToggle.addEventListener('click', () => this.toggleMenu());
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => this.closeMenu());
+        });
+      }
+
+      toggleMenu() {
+        Elements.mobileMenuToggle.classList.toggle('active');
+        Elements.mobileNav.classList.toggle('active');
+      }
+
+      closeMenu() {
+        Elements.mobileMenuToggle.classList.remove('active');
+        Elements.mobileNav.classList.remove('active');
+      }
+    }
+
+    // Navbar Controller
+    class NavbarController {
+      constructor() {
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        window.addEventListener('scroll', () => this.handleScroll());
+      }
+
+      handleScroll() {
+        if (window.scrollY > 50) {
+          Elements.navbar.classList.add('shrink');
+        } else {
+          Elements.navbar.classList.remove('shrink');
+        }
+      }
+    }
+
+    // Scroll Animation Controller
+    class ScrollAnimationController {
+      constructor() {
+        this.setupObserver();
+      }
+
+      setupObserver() {
+        const options = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+            }
+          });
+        }, options);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+          observer.observe(el);
+        });
+      }
+    }
+
+    // Chart Controller
+    class ChartController {
+      constructor() {
+        this.initChart();
+        this.bindEvents();
+      }
+
+      generateData(capital) {
+        const months = Array.from({ length: 37 }, (_, i) => i);
+        const compound = (rate) => months.map(m => capital * Math.pow(1 + rate, m));
+
+        return {
+          labels: months,
+          datasets: [
+            {
+              label: '1% Monthly',
+              data: compound(0.01),
+              borderColor: '#28a745',
+              backgroundColor: 'rgba(40, 167, 69, 0.1)',
+              fill: false,
+              tension: 0.4,
+              borderWidth: 3
+            },
+            {
+              label: '2% Monthly',
+              data: compound(0.02),
+              borderColor: '#17a2b8',
+              backgroundColor: 'rgba(23, 162, 184, 0.1)',
+              fill: false,
+              tension: 0.4,
+              borderWidth: 3
+            },
+            {
+              label: '3% Monthly',
+              data: compound(0.03),
+              borderColor: '#ffc107',
+              backgroundColor: 'rgba(255, 193, 7, 0.1)',
+              fill: false,
+              tension: 0.4,
+              borderWidth: 3
+            },
+            {
+              label: '4% Monthly',
+              data: compound(0.04),
+              borderColor: '#fd7e14',
+              backgroundColor: 'rgba(253, 126, 20, 0.1)',
+              fill: false,
+              tension: 0.4,
+              borderWidth: 3
+            },
+            {
+              label: '5% Monthly',
+              data: compound(0.05),
+              borderColor: '#dc3545',
+              backgroundColor: 'rgba(220, 53, 69, 0.1)',
+              fill: false,
+              tension: 0.4,
+              borderWidth: 3
+            }
+          ]
+        };
+      }
+
+      initChart() {
+        const ctx = Elements.chartCanvas.getContext('2d');
+        
+        AppState.chart = new Chart(ctx, {
+          type: 'line',
+          data: this.generateData(AppState.capital),
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+              mode: 'index',
+              intersect: false
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.dataset.label || '';
+                    const value = Math.round(context.raw).toLocaleString("en-US");
+                    return `${label}: $${value}`;
+                  }
+                },
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleColor: '#d4af37',
+                bodyColor: '#fff',
+                borderColor: '#d4af37',
+                borderWidth: 1,
+                cornerRadius: 8,
+                displayColors: true
+              },
+              legend: {
+                labels: {
+                  color: '#fff',
+                  usePointStyle: true,
+                  padding: 15,
+                  font: {
+                    size: AppState.isMobile ? 10 : 12
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Months',
+                  color: '#fff',
+                  font: {
+                    size: AppState.isMobile ? 12 : 14,
+                    weight: 'bold'
+                  }
+                },
+                ticks: {
+                  color: '#ccc',
+                  font: {
+                    size: AppState.isMobile ? 10 : 12
+                  }
+                },
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)'
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Wealth ($)',
+                  color: '#fff',
+                  font: {
+                    size: AppState.isMobile ? 12 : 14,
+                    weight: 'bold'
+                  }
+                },
+                ticks: {
+                  color: '#ccc',
+                  font: {
+                    size: AppState.isMobile ? 10 : 12
+                  },
+                  callback: function(value) {
+                    if (AppState.isMobile) {
+                      return '$' + (value / 1000).toFixed(0) + 'K';
+                    }
+                    return '$' + value.toLocaleString("en-US");
+                  }
+                },
+                grid: {
+                  color: 'rgba(255, 255, 255, 0.1)'
+                }
+              }
+            }
+          }
+        });
+      }
+
+      bindEvents() {
+        Elements.capitalSlider.addEventListener('input', (e) => this.updateCapital(e));
+        window.addEventListener('resize', () => this.handleResize());
+      }
+
+      updateCapital(e) {
+        AppState.capital = parseInt(e.target.value);
+        Elements.capitalValue.textContent = AppState.capital.toLocaleString("en-US");
+        AppState.chart.data = this.generateData(AppState.capital);
+        AppState.chart.update('none');
+        this.updateDoubleCapitalIndicator();
+      }
+
+      updateDoubleCapitalIndicator() {
+        const rates = [0.01, 0.02, 0.03, 0.04, 0.05];
+        const results = rates.map(rate => {
+          const months = Math.log(2) / Math.log(1 + rate);
+          return {
+            rate: (rate * 100).toFixed(0) + '%',
+            months: Math.ceil(months)
+          };
+        });
+
+        const content = AppState.isMobile 
+          ? `<strong>Time to Double Your Capital:</strong><br>${results.map(r => `${r.rate}: ${r.months}mo`).join(' | ')}`
+          : `<strong>Time to Double Your Capital:</strong><br>${results.map(r => `${r.rate} monthly: ${r.months} months`).join(' | ')}`;
+
+        Elements.doubleCapitalIndicator.innerHTML = content;
+      }
+
+      handleResize() {
+        AppState.isMobile = window.innerWidth < 768;
+        this.updateDoubleCapitalIndicator();
+        
+        // Update chart font sizes
+        AppState.chart.options.plugins.legend.labels.font.size = AppState.isMobile ? 10 : 12;
+        AppState.chart.options.scales.x.title.font.size = AppState.isMobile ? 12 : 14;
+        AppState.chart.options.scales.y.title.font.size = AppState.isMobile ? 12 : 14;
+        AppState.chart.options.scales.x.ticks.font.size = AppState.isMobile ? 10 : 12;
+        AppState.chart.options.scales.y.ticks.font.size = AppState.isMobile ? 10 : 12;
+        AppState.chart.update('none');
+      }
+    }
+
+    // Smooth Scroll Controller
+    class SmoothScrollController {
+      constructor() {
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', (e) => this.handleClick(e));
+        });
+      }
+
+      handleClick(e) {
+        e.preventDefault();
+        const target = document.querySelector(e.target.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    }
+
+    // Touch Support Controller
+    class TouchSupportController {
+      constructor() {
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        let isDragging = false;
+
+        Elements.capitalSlider.addEventListener('touchstart', () => {
+          isDragging = true;
+        });
+
+        Elements.capitalSlider.addEventListener('touchend', () => {
+          isDragging = false;
+        });
+
+        Elements.capitalSlider.addEventListener('touchmove', (e) => {
+          if (isDragging) {
+            e.preventDefault();
+          }
+        });
+      }
+    }
+
+    // FAQ Controller
+    function toggleFAQ(element) {
+      const faqItem = element.parentElement;
+      const isActive = faqItem.classList.contains('active');
+      
+      // Close all FAQ items
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      // Open clicked item if it wasn't active
+      if (!isActive) {
+        faqItem.classList.add('active');
+      }
+    }
+
+    // Application Initialization
+    class App {
+      constructor() {
+        this.init();
+      }
+
+      init() {
+        // Initialize all controllers
+        new MobileMenuController();
+        new NavbarController();
+        new ScrollAnimationController();
+        new ChartController();
+        new SmoothScrollController();
+        new TouchSupportController();
+
+        // Initialize double capital indicator
+        this.initializeDoubleCapitalIndicator();
+
+        // Add loading animation for chart
+        window.addEventListener('load', () => {
+          setTimeout(() => {
+            if (AppState.chart) {
+              AppState.chart.update('active');
+            }
+          }, 500);
+        });
+      }
+
+      initializeDoubleCapitalIndicator() {
+        const chartController = new ChartController();
+        chartController.updateDoubleCapitalIndicator();
+      }
+    }
+
+    // Start the application
+    document.addEventListener('DOMContentLoaded', () => {
+      new App();
+    });
+  </script>
+</body>
+</html>
+

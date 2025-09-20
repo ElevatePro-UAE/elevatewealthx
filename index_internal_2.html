@@ -129,7 +129,17 @@
     justify-content: flex-start; 
     min-height: 80px;          /* optional: minimum height for bigger logo */
     padding: 0 20px;           /* horizontal padding */
+   
   }
+
+  .w3-top {
+  position: fixed;    /* ensure fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;     /* higher than slide-content (2) */
+}
+
 
   /* Navbar items: equal spacing, vertically centered */
   #myNavbar .w3-bar-item {

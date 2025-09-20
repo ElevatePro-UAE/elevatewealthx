@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+
+  <title>Fade Image Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 5%;
+      color: white;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .slide h1 {
+      font-size: 3rem;
+      max-width: 600px;
+      line-height: 1.2;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    /* Progress bar
+    .progress-bar {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      background: red;
+      transition: width 5s linear;
+    } */
+
+        /* Services Navigation */
+        .services-nav {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 60px;           /* increase space between services */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  width: 90%;           /* increase width to fit all services */
+  justify-content: center;  /* center the services inside the wider container */
+  flex-wrap: nowrap;     /* prevent wrapping to second line */
+}
+
+
+    .services-nav div {
+      position: relative;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .services-nav div.active {
+      opacity: 1;
+      font-weight: bold;
+    }
+
+    /* Red progress underline */
+    .progress {
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: red;
+      transition: width linear;
+    }
+
+    .slide .slide-progress {
+  position: absolute;
+  bottom: 20px;
+  left: 5%;
+  right: 5%;        /* add right margin */
+  height: 4px;
+  background: red;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform linear;
+}
+
+  /* Make navbar items vertically centered with dynamic height */
+  #myNavbar {
+    display: flex;
+    align-items: center;       /* vertically center items */
+    justify-content: flex-start; 
+    min-height: 80px;          /* optional: minimum height for bigger logo */
+    padding: 0 20px;           /* horizontal padding */
+  }
+
+  /* Navbar items: equal spacing, vertically centered */
+  #myNavbar .w3-bar-item {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: normal;
+    color:white;
+    text-decoration: none
+  }
+
+  /* Logo bigger and vertically centered */
+  #myNavbar .w3-bar-item img {
+    height: 70px;             /* increase logo size */
+    max-height: 100%;         /* do not overflow navbar */
+    vertical-align: middle;
+  }
+
+  /* Adjust navbar on scroll (if using previous w3-card animation) */
+  #myNavbar.w3-card {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #logo{
+    height: 10vw;
+    width: 18vw;
+  }
+    
+
+/* Smooth zoom animation for active slide */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5%;
+  color: white;
+  overflow: hidden; /* keep zoom contained */
+}
+
+.slide .bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  transform: scale(1);
+  transition: transform 8s ease-in-out;
+}
+
+.slide.active .bg {
+  transform: scale(1.1);
+}
+
+.services-nav div.active {
+  opacity: 1;
+  font-weight: bold;
+  font-size: 1.3rem;      /* larger font when active */
+  transition: font-size 0.3s ease, opacity 0.3s ease;
+  color: yellow;
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 600px;
+  position: relative;
+  z-index: 2;       /* above bg */
+}
+
+.explore-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 25px;
+  background-color: white;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background-color: yellow !important;
+  color: black !important;
+  transform: translateY(-2px);
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="#home" class="w3-bar-item">HOME</a>
+    <a href="#about" class="w3-bar-item w3-hide-small"><i class="fa fa-user"></i> OUR SERVICES</a>
+    <a href="#portfolio" class="w3-bar-item w3-hide-small"><i class="fa fa-th"></i> OUR CLIENTS</a>
+    <a href="#contact" class="w3-bar-item w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+    <a href="#" class="w3-bar-item w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>
+    <a href="#home" class="w3-bar-item" style="position: absolute; left: 50%; transform: translateX(-50%);">
+      <img id="logo" src="images/logo-nobg.png" alt="Logo" style="height:50px;">
+    </a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">OUR SERVICES</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">TOP CLIENTS</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT US</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT US</a>
+    <a href="#" class="w3-bar-item w3-button">SEARCH</a>
+  </div>
+</div>
+
+
+
+<div class="slider">
+  <div class="slide active">
+    <div class="bg" style="background-image: url('images/creative.png');"></div>
+    <div class="slide-content">
+    <h1>Transforming ideas into stunning visuals with AI photoshoot and videography</h1>
+    <a href="#services" class="explore-btn">Explore Service</a> 
+    </div>
+    <div class="slide-progress"></div>
+
+  </div>
+
+  <div class="slide">
+    <div class="bg" style="background-image: url('images/ecommerce-3.png');"></div>
+    <div class="slide-content">
+    <h1>Crafting stunning websites, apps, and Shopify stores</h1>
+    <a href="#services" class="explore-btn">Explore Service</a>  
+    </div>
+    <div class="slide-progress"></div>
+  </div>
+
+  <div class="slide">
+    <div class="bg" style="background-image: url('images/marketing.png');"></div>
+    <div class="slide-content">
+    <h1>We carry your stories across the globe to elevate your growth</h1>
+    <a href="#services" class="explore-btn">Explore Service</a>  
+    </div>
+    <div class="slide-progress"></div>
+  </div>
+
+  <div class="slide">
+    <div class="bg" style="background-image: url('images/marketplace.png');"></div>
+    <div class="slide-content">
+    <h1>Marketplace setup, operations support — scaling made effortless and unstoppable!</h1>
+    <a href="#services" class="explore-btn">Explore Service</a>  
+    </div>
+    <div class="slide-progress"></div>
+  </div>
+
+  <div class="slide">
+    <div class="bg" style="background-image: url('images/financial-advisory.png');"></div>
+    <div class="slide-content">
+    <h1>Elevate your wealth exponentially with passive income strategies</h1>
+    <a href="#services" class="explore-btn">Explore Service</a>  
+    </div>
+    <div class="slide-progress"></div>
+  </div>
+</div>
+
+    
+
+    <!-- <div class="progress-bar">
+      <div class="progress"></div>
+    </div> -->
+
+    <!-- Service Navigation -->
+    <div class="services-nav">
+      <div data-index="0" class="active">Creative & Content <div class="progress"></div></div>
+      <div data-index="1">eCommerce & Web <div class="progress"></div></div>
+      <div data-index="2">Marketing & Growth <div class="progress"></div></div>
+      <div data-index="3">Marketplace & Operations <div class="progress"></div></div>
+      <div data-index="4">Financial Advisory <div class="progress"></div></div>
+    </div>
+  </div>
+
+
+  <div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+<div>Hello</div>
+  <script>
+    // const slides = document.querySelectorAll('.slide');
+    // const progress = document.querySelector('.progress');
+    // let index = 0;
+    // const duration = 5000; // 5s per slide
+
+    // function showSlide(i) {
+    //   slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+
+    //   // restart progress bar
+    //   progress.style.transition = 'none';
+    //   progress.style.width = '0%';
+    //   setTimeout(() => {
+    //     progress.style.transition = `width ${duration}ms linear`;
+    //     progress.style.width = '100%';
+    //   }, 50);
+    // }
+
+    // function nextSlide() {
+    //   index = (index + 1) % slides.length;
+    //   showSlide(index);
+    // }
+
+    // // autoplay
+    // showSlide(index);
+    // setInterval(nextSlide, duration);
+    const slides = document.querySelectorAll('.slide');
+// Only select direct children, ignore nested divs
+const services = document.querySelectorAll('.services-nav > div');
+
+const duration = 5000; // 5s per slide
+let index = 0;
+let timer;
+
+function resetSlideProgress() {
+  slides.forEach(slide => {
+    const progress = slide.querySelector('.slide-progress');
+    progress.style.transition = 'none';
+    progress.style.transform = 'scaleX(0)';
+  });
+}
+
+function animateSlideProgress(i) {
+  const progress = slides[i].querySelector('.slide-progress');
+  setTimeout(() => {
+    progress.style.transition = `transform ${duration}ms linear`;
+    progress.style.transform = 'scaleX(1)';
+  }, 50);
+}
+
+
+function showSlide(i) {
+  if (i < 0 || i >= slides.length) return;
+
+  // slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+  slides.forEach((s, idx) => {
+  const bg = s.querySelector('.bg');
+  if (idx === i) {
+    s.classList.add('active');
+    if (bg) {
+      // reset zoom
+      bg.style.transition = 'none';
+      bg.style.transform = 'scale(1)';
+      void bg.offsetWidth; // force reflow
+      bg.style.transition = 'transform 12s ease-in-out'; // use your slower duration
+      bg.style.transform = 'scale(1.1)';
+    }
+  } else {
+    s.classList.remove('active');
+  }
+});
+
+
+  window.addEventListener("load", () => {
+  const firstBg = document.querySelector(".slide.active .bg");
+  if (firstBg) {
+    firstBg.style.transform = "scale(1.2)";
+  }
+});
+
+
+
+  // Highlight service correctly
+  services.forEach(s => s.classList.remove('active'));
+  if (services[i]) services[i].classList.add('active');
+
+  resetSlideProgress();
+  animateSlideProgress(i);
+}
+
+function nextSlide() {
+  index = (index + 1) % slides.length;
+  showSlide(index);
+}
+
+function startSlider() {
+  clearInterval(timer);
+  showSlide(index);
+  timer = setInterval(nextSlide, duration);
+}
+
+// Manual click on services
+services.forEach(service => {
+  service.addEventListener('click', () => {
+    const i = parseInt(service.dataset.index);
+    if (i >= 0 && i < slides.length) {
+      index = i;
+      showSlide(index);
+      startSlider();
+    }
+  });
+});
+
+// Start autoplay
+startSlider();
+
+</script>
+
+<script>
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    var items = navbar.querySelectorAll(".w3-bar-item");
+    
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        // Add scroll styles
+        navbar.classList.add("w3-card", "w3-animate-top", "w3-white");
+        items.forEach(item => {
+            item.style.color = "black";   // change text to black
+        });
+    } else {
+        // Remove scroll styles
+        navbar.classList.remove("w3-card", "w3-animate-top", "w3-white");
+        items.forEach(item => {
+            item.style.color = "white";   // revert text to white
+        });
+    }
+}
+
+</script>
+
+</body>
+</html>

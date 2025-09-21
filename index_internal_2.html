@@ -578,7 +578,7 @@
 
   .services-nav div {
     flex: 0 0 auto;            /* do not shrink */
-    min-width: 45%;            /* two items visible at a time */
+    min-width: auto;            /* two items visible at a time */
     text-align: center;
     opacity: 0.6;
     transition: opacity 0.3s ease;
@@ -1098,12 +1098,12 @@ function showSlide(i) {
   animateSlideProgress(i);
 }
 
-window.addEventListener('load', () => {
-  const nav = document.querySelector('.services-nav');
-  if (nav && window.innerWidth <= 600) {
-    nav.scrollLeft = -10000; // make first service leftmost
-  }
-});
+// window.addEventListener('load', () => {
+//   const nav = document.querySelector('.services-nav');
+//   if (nav && window.innerWidth <= 600) {
+//     nav.scrollLeft = -10000; // make first service leftmost
+//   }
+// });
 
 </script>
 

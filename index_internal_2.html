@@ -422,9 +422,10 @@
 /* Container for all cards */
 .cards-container {
   display: flex;
-  gap: 3rem;          /* increased space between cards */
+  gap: 2rem;          /* increased space between cards */
   flex-wrap: wrap;     /* wrap to next line on smaller screens */
-  margin: 2rem 5%;     /* 2rem top/bottom, 5% left/right margins */
+  margin: 2rem 2%;     /* 2rem top/bottom, 5% left/right margins */
+  padding-bottom: 5vw;
 }
 
 /* Individual card */
@@ -437,6 +438,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding-bottom: 0.5vw;
 }
 
 /* Hover effect */
@@ -499,11 +501,17 @@
 }
 
 
+#servicesSec{
+  background-color: #fdf8f8;
+}
+
 #ourServicesHeaderTxt{
   text-align: center;
   font-size: 3vw;
   padding-top: 2vw;
-  padding-bottom: 2vw;
+  padding-bottom: 1vw;
+  font-weight: 900;
+  color: black;
 }
 
 #serviceCardHdrTxt{
@@ -582,6 +590,7 @@
     color: yellow;
   }
 }
+
 
   </style>
 </head>
@@ -794,15 +803,14 @@
     <div id="headerTxt">Elevate your Startup. Accelerate your Wealth. </div>
   </section>
   
-
-  <div id="ourServicesHeaderTxt"> Your One-Stop Growth Accelerator </div>
-  
+<section id="servicesSec">
+  <div id="ourServicesHeaderTxt"> Your One-Stop Growth Accelerator </div>  
   <div class="cards-container">
     <!-- Card 1 -->
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Digital Commerce</h2>
-        <div class="serviceTxt">We build and scale online stores, optimize marketplace performance, and run smart pricing and promotions. With omnichannel integration, CRO, and data-driven insights, we make digital selling simple, seamless, and scalable.</div>
+        <div class="serviceTxt">We power end-to-end digital growth across D2C and marketplaces. From building Shopify stores to seamless integrations to catalog management, merchandising, promotions, and CRO, we design strategies that connect channels, maximize visibility, and convert sales.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new1.png" alt="Image 1">
@@ -813,7 +821,7 @@
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Marketing & Growth</h2>
-        <div class="serviceTxt">We drive measurable growth through performance marketing on Meta, Google, TikTok, and affiliates — powered by SEO/ASO, CRM, and automation. With influencer partnerships and campaigns that convert, we boost reach, retention, and ROI.</div>
+        <div class="serviceTxt">We design omnichannel growth engines that unite digital precision with offline impact. From performance marketing, programmatic ads, SEO/ASO, affiliate programs, and influencer partnerships to social media management, CRM automation, and loyalty campaigns — we help brands acquire, retain, and scale customers sustainably. Beyond digital, we extend reach through OOH, radio, PR, and activations, while optimizing for LLMs and AI agents shaping the future of discovery.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new2.png" alt="Image 2">
@@ -824,7 +832,7 @@
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Creative & Content</h2>
-        <div class="serviceTxt">We create content that sells — from high-impact photography, lifestyle shoots, and videos to engaging reels, graphics, and localized copy. Our cutting-edge approach ensures every asset connects with your audience.</div>
+        <div class="serviceTxt">We craft content and experiences that sell. From celebrity ads, AI photoshoots, and editorial imagery to AI product shoots, lifestyle campaigns, and UGC, we deliver assets that capture attention and drive conversion. Our expertise spans brand identity, ad copies, banners, A+ content, marketplace brand stores, landing pages, and UI/UX design, ensuring every touchpoint elevates the customer journey.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new3.png" alt="Image 3">
@@ -835,14 +843,14 @@
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Consulting Services</h2>
-        <div class="serviceTxt">We help businesses scale smarter with bespoke advisory — spanning financial planning, startup acceleration, and digital transformation to fundraising, cross-border expansion, and supply chain optimization.</div>
+        <div class="serviceTxt">We help businesses and individuals scale smarter with tailored advisory across brand strategy, financial planning, and growth acceleration. Our expertise spans digital transformation, fundraising support, cross-border expansion, and supply chain optimization. We also provide real estate consultancy, financial advisory, and asset allocation strategies, offering strategic guidance without managing client capital.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new4.png" alt="Image 4">
       </div>
     </div>
   </div>
-
+</section>
 
   <div>Hello</div>
 <div>Hello</div>

@@ -560,6 +560,7 @@
 }
 
 /* Mobile Styles */
+/* Mobile Styles */
 @media (max-width: 768px) {
   .services-nav {
     overflow-x: auto;           /* enable horizontal scroll */
@@ -567,18 +568,19 @@
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 
+    justify-content: flex-start; /* align left on mobile */
     /* hide scrollbar */
-    -ms-overflow-style: none;  /* IE & Edge */
-    scrollbar-width: none;     /* Firefox */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;     
   }
 
   .services-nav::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari, Opera */
+    display: none;             
   }
 
   .services-nav div {
-    flex: 0 0 auto;            /* do not shrink */
-    min-width: auto;            /* two items visible at a time */
+    flex: 0 0 auto;            
+    min-width: 45%;            
     text-align: center;
     opacity: 0.6;
     transition: opacity 0.3s ease;
@@ -590,6 +592,7 @@
     color: yellow;
   }
 }
+
 
 
   </style>
@@ -1098,12 +1101,6 @@ function showSlide(i) {
   animateSlideProgress(i);
 }
 
-// window.addEventListener('load', () => {
-//   const nav = document.querySelector('.services-nav');
-//   if (nav && window.innerWidth <= 600) {
-//     nav.scrollLeft = -10000; // make first service leftmost
-//   }
-// });
 
 </script>
 

@@ -1092,16 +1092,20 @@ function showSlide(i) {
   // Highlight the active service
   services.forEach(s => s.classList.remove('active'));
   const activeService = services[i];
+  const navContainer = document.querySelector('.services-nav');
+
   if (activeService) {
     activeService.classList.add('active');
 
     // Scroll the active service to the leftmost on mobile
     if (window.innerWidth <= 600) {
-      activeService.scrollIntoView({ 
-        behavior: 'smooth', 
-        inline: 'start', 
-        block: 'nearest' 
-      });
+      // activeService.scrollIntoView({ 
+      //   behavior: 'smooth', 
+      //   inline: 'start', 
+      //   block: 'nearest' 
+      // });
+      navContainer.scrollTo({ left: activeService.offsetLeft, behavior: 'smooth' });
+
     }
   }
 

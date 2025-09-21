@@ -511,6 +511,78 @@
 }
 
 
+/* General Styles for Services Navigation */
+.services-nav {
+  display: flex;
+  gap: 60px;               /* space between services */
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  width: 90%;
+  justify-content: center;
+  flex-wrap: nowrap;       /* keep in single row */
+  overflow: hidden;        /* hide scroll overflow on desktop */
+}
+
+/* Individual Service Items */
+.services-nav div {
+  position: relative;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, font-size 0.3s ease;
+}
+
+.services-nav div.active {
+  opacity: 1;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: yellow;
+  margin-top: -0.15vw;
+}
+
+/* Progress underline inside service item */
+.services-nav div .progress {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: red;
+  transition: width linear;
+}
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+  .services-nav {
+    overflow-x: auto;           /* enable horizontal scroll */
+    flex-wrap: nowrap;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    /* hide scrollbar */
+    -ms-overflow-style: none;  /* IE & Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+
+  .services-nav::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari, Opera */
+  }
+
+  .services-nav div {
+    flex: 0 0 auto;            /* do not shrink */
+    min-width: 45%;            /* two items visible at a time */
+    text-align: center;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  .services-nav div.active {
+    opacity: 1;
+    font-weight: bold;
+    color: yellow;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -562,7 +634,7 @@
     <!-- Desktop Nav Items -->
     <a href="#about" class="w3-bar-item nav-link" data-menu="digital-commerce">Digital Commerce</a>
     <a href="#portfolio" class="w3-bar-item nav-link" data-menu="marketing">Marketing & Growth</a>
-    <a href="#contact" class="w3-bar-item nav-link" data-menu="creative">Creative & Content Production</a>
+    <a href="#contact" class="w3-bar-item nav-link" data-menu="creative">Creative & Content</a>
     <a href="#contact" class="w3-bar-item nav-link" data-menu="consulting">Consulting Services</a>
 
     <!-- Simple Links -->
@@ -713,7 +785,7 @@
     <div class="services-nav">
       <div data-index="0" class="active">Digital Commerce <div class="progress"></div></div>
       <div data-index="1">Marketing & Growth <div class="progress"></div></div>
-      <div data-index="2">Creative & Content Production <div class="progress"></div></div>
+      <div data-index="2">Creative & Content <div class="progress"></div></div>
       <div data-index="3">Consulting Services <div class="progress"></div></div>
     </div>
   </div>
@@ -730,7 +802,7 @@
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Digital Commerce</h2>
-        <p class="serviceTxt">We help brands build and manage online stores, optimize marketplace listings, and run effective pricing and promotions. With a focus on conversion, omnichannel integration, and data-driven insights, we make digital selling simple and scalable.</p>
+        <div class="serviceTxt">We build and scale online stores, optimize marketplace performance, and run smart pricing and promotions. With omnichannel integration, CRO, and data-driven insights, we make digital selling simple, seamless, and scalable.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new1.png" alt="Image 1">
@@ -741,7 +813,7 @@
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Marketing & Growth</h2>
-        <p class="serviceTxt">We fuel brand growth through performance marketing on Meta, Google, TikTok, and affiliates, backed by SEO/ASO and smart CRM programs. With automation, influencer partnerships, and impactful campaign execution, we drive retention, reach, and measurable results.</p>
+        <div class="serviceTxt">We drive measurable growth through performance marketing on Meta, Google, TikTok, and affiliates — powered by SEO/ASO, CRM, and automation. With influencer partnerships and campaigns that convert, we boost reach, retention, and ROI.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new2.png" alt="Image 2">
@@ -751,8 +823,8 @@
     <!-- Card 3 -->
     <div class="card">
       <div class="card-content">
-        <h2 id="serviceCardHdrTxt">Creative & Content Production</h2>
-        <p class="serviceTxt">We craft compelling content that sells — from AI-driven product photography, lifestyle shoots, and high-impact videos to engaging reels, graphics, and localized copy that connects with your audience.</p>
+        <h2 id="serviceCardHdrTxt">Creative & Content</h2>
+        <div class="serviceTxt">We create content that sells — from high-impact photography, lifestyle shoots, and videos to engaging reels, graphics, and localized copy. Our cutting-edge approach ensures every asset connects with your audience.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new3.png" alt="Image 3">
@@ -763,7 +835,7 @@
     <div class="card">
       <div class="card-content">
         <h2 id="serviceCardHdrTxt">Consulting Services</h2>
-        <p class="serviceTxt">We help businesses scale smarter with tailored advisory — from financial planning, startup acceleration, and digital transformation to fundraising, cross-border growth, and supply chain optimization.</p>
+        <div class="serviceTxt">We help businesses scale smarter with bespoke advisory — spanning financial planning, startup acceleration, and digital transformation to fundraising, cross-border expansion, and supply chain optimization.</div>
       </div>
       <div class="card-image">
         <img src="images/service-new4.png" alt="Image 4">
@@ -977,6 +1049,53 @@ navLinks.forEach(link => {
   }
 });
 
+
+function showSlide(i) {
+  if (i < 0 || i >= slides.length) return;
+
+  // Activate the current slide
+  slides.forEach((s, idx) => {
+    const bg = s.querySelector('.bg');
+    if (idx === i) {
+      s.classList.add('active');
+      if (bg) {
+        bg.style.transition = 'none';
+        bg.style.transform = 'scale(1)';
+        void bg.offsetWidth; // force reflow
+        bg.style.transition = 'transform 12s ease-in-out';
+        bg.style.transform = 'scale(1.1)';
+      }
+    } else {
+      s.classList.remove('active');
+    }
+  });
+
+  // Highlight the active service
+  services.forEach(s => s.classList.remove('active'));
+  const activeService = services[i];
+  if (activeService) {
+    activeService.classList.add('active');
+
+    // Scroll the active service to the leftmost on mobile
+    if (window.innerWidth <= 600) {
+      activeService.scrollIntoView({ 
+        behavior: 'smooth', 
+        inline: 'start', 
+        block: 'nearest' 
+      });
+    }
+  }
+
+  resetSlideProgress();
+  animateSlideProgress(i);
+}
+
+window.addEventListener('load', () => {
+  const nav = document.querySelector('.services-nav');
+  if (nav && window.innerWidth <= 600) {
+    nav.scrollLeft = -300; // make first service leftmost
+  }
+});
 
 </script>
 

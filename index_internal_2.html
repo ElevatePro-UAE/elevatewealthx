@@ -143,24 +143,28 @@
 
   /* Navbar items: equal spacing, vertically centered */
   #myNavbar .w3-bar-item {
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 1.2vw;
+    padding-bottom: 1.2vw;
     line-height: normal;
     color:white;
     text-decoration: none
   }
 
+  #myNavbar .w3-bar-item:hover{
+    font-weight: 800;
+  }
+
   /* Logo bigger and vertically centered */
   #myNavbar .w3-bar-item img {
-    height: 70px;             /* increase logo size */
+    height: 80px;             /* increase logo size */
     max-height: 100%;         /* do not overflow navbar */
     vertical-align: middle;
   }
 
   /* Adjust navbar on scroll (if using previous w3-card animation) */
   #myNavbar.w3-card {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0vw;
+    padding-bottom: 0vw;
   }
 
   #logo{
@@ -337,47 +341,321 @@
   50% { border-color: white; }
 }
 
+/* Navbar stays compact */
+.w3-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  transition: all 0.3s ease;
+}
+
+/* Mega menu as separate div */
+.mega-menu {
+  display: none;           /* hide by default */
+  position:fixed;
+  top: 68px;               /* adjust according to navbar height */
+  left: 15vw;
+  width: 70vw;            /* full width */
+  background: white;
+  padding: 1rem 5vw;
+  box-sizing: border-box;
+  z-index: 10001;
+  border-bottom-right-radius: 2vw;
+  border-bottom-left-radius: 2vw;
+  border-bottom: 8px solid red;
+}
+
+.mega-menu .row {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.mega-menu .mega-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu a {
+  color: black;
+  padding: 5px 0;
+  /* text-decoration: none; */
+}
+
+.mega-menu a:hover {
+  color: black;
+  font-weight: 800;
+}
+
+#megamenuImg1{
+  height: 12.5vw;
+  width: 10vw;
+  margin-left: 50vw;
+  margin-top: -10vw;
+}
+
+#megamenuImg2{
+  height: 12.5vw;
+  width: 10vw;
+  margin-left: 50vw;
+  margin-top: -10vw;
+}
+
+#megamenuImg3{
+  height: 12.5vw;
+  width: 10vw;
+  margin-left: 50vw;
+  margin-top: -10vw;
+}
+
+#megamenuImg4{
+  height: 12.5vw;
+  width: 10vw;
+  margin-left: 50vw;
+  margin-top: -10vw;
+}
+
+
+/* Container for all cards */
+.cards-container {
+  display: flex;
+  gap: 3rem;          /* increased space between cards */
+  flex-wrap: wrap;     /* wrap to next line on smaller screens */
+  margin: 2rem 5%;     /* 2rem top/bottom, 5% left/right margins */
+}
+
+/* Individual card */
+.card {
+  background: white;
+  flex: 1 1 calc(25% - 3rem); /* 4 cards per row minus gap */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Card content */
+.card-content {
+  padding: 1rem 1.5rem;
+}
+
+.card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.card-content p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* 16:9 image */
+.card-image {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  overflow: hidden;
+}
+
+.card-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Image zoom on hover */
+.card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media(max-width: 1024px) {
+  .card {
+    flex: 1 1 calc(50% - 3rem); /* 2 cards per row */
+  }
+}
+
+@media(max-width: 600px) {
+  .card {
+    flex: 1 1 100%; /* 1 card per row */
+  }
+}
 
 
   </style>
 </head>
 <body>
 
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
+
+<!-- <div class="w3-top">
   <div class="w3-bar" id="myNavbar">
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
     </a>
-    <a href="#home" class="w3-bar-item">HOME</a>
-    <a href="#about" class="w3-bar-item w3-hide-small"><i class="fa fa-user"></i> OUR SERVICES</a>
-    <a href="#portfolio" class="w3-bar-item w3-hide-small"><i class="fa fa-th"></i> OUR CLIENTS</a>
-    <a href="#contact" class="w3-bar-item w3-hide-small"><i class="fa fa-envelope"></i> CONTACT</a>
+    <a href="#home" class="w3-bar-item" style="position: relative; left: 10%; transform: translateX(-50%);">
+      <img id="logo" src="images/logo-nobg.png" alt="Logo" style="height:50px;">
+    </a>
+    <a href="#about" class="w3-bar-item w3-hide-small"><i class="fa fa-user"></i> Digital Commerce</a>
+    <a href="#portfolio" class="w3-bar-item w3-hide-small"><i class="fa fa-th"></i> Marketing & Growth</a>
+    <a href="#contact" class="w3-bar-item w3-hide-small">Creative & Content Production</a>
+    <a href="#contact" class="w3-bar-item w3-hide-small">Consulting Services</a>
+    <a href="#contact" class="w3-bar-item w3-hide-small">About</a>
+    <a href="#contact" class="w3-bar-item w3-hide-small">Contact</a>
     <a href="#" class="w3-bar-item w3-hide-small w3-right w3-hover-red">
       <i class="fa fa-search"></i>
     </a>
-    <a href="#home" class="w3-bar-item" style="position: absolute; left: 50%; transform: translateX(-50%);">
-      <img id="logo" src="images/logo-nobg.png" alt="Logo" style="height:50px;">
-    </a>
+    
   </div>
 
-  <!-- Navbar on small screens -->
   <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">OUR SERVICES</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">TOP CLIENTS</a>
-    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">ABOUT US</a>
-    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">CONTACT US</a>
+    <a href="#about" class="w3-bar-item w3-button" onclick="toggleFunction()">Digital Commerce</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">Marketing & Growth</a>
+    <a href="#portfolio" class="w3-bar-item w3-button" onclick="toggleFunction()">Creative & Content Production</a>
+    <a href="#contact" class="w3-bar-item w3-button" onclick="toggleFunction()">Consulting Services</a>
     <a href="#" class="w3-bar-item w3-button">SEARCH</a>
   </div>
+</div> -->
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar" id="myNavbar">
+    <!-- Hamburger for small screens -->
+    <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right" 
+       href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+
+    <!-- Logo -->
+    <a href="#home" class="w3-bar-item">
+      <img id="logo" src="images/logo-nobg.png" alt="Logo" style="height:50px;">
+    </a>
+
+    <!-- Desktop Nav Items -->
+    <a href="#about" class="w3-bar-item nav-link" data-menu="digital-commerce">Digital Commerce</a>
+    <a href="#portfolio" class="w3-bar-item nav-link" data-menu="marketing">Marketing & Growth</a>
+    <a href="#contact" class="w3-bar-item nav-link" data-menu="creative">Creative & Content Production</a>
+    <a href="#contact" class="w3-bar-item nav-link" data-menu="consulting">Consulting Services</a>
+
+    <!-- Simple Links -->
+    <a href="#about" class="w3-bar-item w3-hide-small">About</a>
+    <a href="#contact" class="w3-bar-item w3-hide-small">Contact</a>
+
+    <!-- Search Icon -->
+    <a href="#" class="w3-bar-item w3-hide-small w3-right w3-hover-red">
+      <i class="fa fa-search"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Mega Menus -->
+<div id="digital-commerce" class="mega-menu">
+  <!-- <h2>Digital Commerce</h2> -->
+  <div class="row">
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">E-commerce Strategy</a>
+      <a href="#">Online Store Setup</a>
+      <a href="#">Marketplace Management</a>
+      <a href="#">Cataloguing & Listings</a>
+    </div>
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">Pricing & Promotions</a>
+      <a href="#">Conversion Optimization</a>
+      <a href="#">Omnichannel Integration</a>
+      <a href="#">Analytics & Reporting</a>
+    </div>
+  </div>
+  <img id="megamenuImg1" src="images/mega-menu-img1.png">
+</div>
+
+<div id="marketing" class="mega-menu">
+  <!-- <h2>Marketing & Growth</h2> -->
+  <div class="row">
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">Performance Marketing (Meta, Google, TikTok, Affiliate)</a>
+      <a href="#">SEO & ASO</a>
+      <a href="#">CRM, Retention & Loyalty Programs</a>
+      <a href="#">Email, WhatsApp & SMS Automation</a>
+    </div>
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">Influencer & Affiliate Marketing</a>
+      <a href="#">Media Planning & Campaign Execution</a>
+    </div>
+  </div>
+  <img id="megamenuImg2" src="images/mega-menu-img2.png">
+</div>
+
+<div id="creative" class="mega-menu">
+  <div class="row">
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">AI Product Photography</a>
+      <a href="#">Lifestyle Shoots</a>
+      <a href="#">Video Production</a>
+      <a href="#">Reels & Shorts</a>
+    </div>
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">Graphic Design</a>
+      <a href="#">Copywriting & Content Localization</a>
+    </div>
+  </div>
+    <img id="megamenuImg3" src="images/mega-menu-img3.png">
+</div>
+
+<div id="consulting" class="mega-menu">
+  <div class="row">
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">Business & Financial Advisory</a>
+      <a href="#">Startup Acceleration</a>
+      <a href="#">Digital Transformation & Process Automation</a>
+      <a href="#">Fundraising & Investor Decks</a>
+    </div>
+    <div class="mega-column">
+      <h3> </h3>
+      <a href="#">Cross-Border Expansion</a>
+      <a href="#">Financial Planning</a>
+      <a href="#">Supply Chain Consulting</a>
+    </div>
+  </div>
+  <img id="megamenuImg4" src="images/mega-menu-img4.png">
+</div>
+
+<!-- Small screen menu -->
+<div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+  <a href="#" class="w3-bar-item w3-button">Digital Commerce</a>
+  <a href="#" class="w3-bar-item w3-button">Marketing & Growth</a>
+  <a href="#" class="w3-bar-item w3-button">Creative & Content</a>
+  <a href="#" class="w3-bar-item w3-button">Consulting</a>
+  <a href="#" class="w3-bar-item w3-button">About</a>
+  <a href="#" class="w3-bar-item w3-button">Contact</a>
+  <a href="#" class="w3-bar-item w3-button">Search</a>
 </div>
 
 
 
 <div class="slider">
   <div class="slide active">
-    <div class="bg" style="background-image: url('images/creative.png');"></div>
+    <div class="bg" style="background-image: url('images/ecommerce-3.png');"></div>
     <div class="slide-content">
-    <h1>Transforming ideas into stunning visuals with AI photoshoot and videography</h1>
+    <h1>Crafting stunning websites, apps and end-to-end Shopify stores</h1>
     <a href="#services" class="explore-btn">Explore Service</a> 
     </div>
     <div class="slide-progress"></div>
@@ -385,18 +663,18 @@
   </div>
 
   <div class="slide">
-    <div class="bg" style="background-image: url('images/ecommerce-3.png');"></div>
+    <div class="bg" style="background-image: url('images/marketing.png');"></div>
     <div class="slide-content">
-    <h1>Crafting stunning websites, apps, and Shopify stores</h1>
+    <h1>Amplifying your reach, engagement, and revenue through data-driven marketing & growth strategies</h1>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
     <div class="slide-progress"></div>
   </div>
 
   <div class="slide">
-    <div class="bg" style="background-image: url('images/marketing.png');"></div>
+    <div class="bg" style="background-image: url('images/creative.png');"></div>
     <div class="slide-content">
-    <h1>We carry your stories across the globe to elevate your growth</h1>
+    <h1>Transforming ideas into stunning visuals with AI photoshoot and videography</h1>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
     <div class="slide-progress"></div>
@@ -405,20 +683,13 @@
   <div class="slide">
     <div class="bg" style="background-image: url('images/marketplace.png');"></div>
     <div class="slide-content">
-    <h1>Marketplace setup, operations support — scaling made effortless and unstoppable!</h1>
+    <h1>Powering your business growth — from strategy and operations to fundraising and global expansion</h1>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
     <div class="slide-progress"></div>
   </div>
 
-  <div class="slide">
-    <div class="bg" style="background-image: url('images/financial-advisory.png');"></div>
-    <div class="slide-content">
-    <h1>Elevate your wealth exponentially with passive income strategies</h1>
-    <a href="#services" class="explore-btn">Explore Service</a>  
-    </div>
-    <div class="slide-progress"></div>
-  </div>
+
 </div>
 
     
@@ -429,11 +700,10 @@
 
     <!-- Service Navigation -->
     <div class="services-nav">
-      <div data-index="0" class="active">Creative & Content <div class="progress"></div></div>
-      <div data-index="1">eCommerce & Web <div class="progress"></div></div>
-      <div data-index="2">Marketing & Growth <div class="progress"></div></div>
-      <div data-index="3">Marketplace & Operations <div class="progress"></div></div>
-      <div data-index="4">Financial Advisory <div class="progress"></div></div>
+      <div data-index="0" class="active">Digital Commerce <div class="progress"></div></div>
+      <div data-index="1">Marketing & Growth <div class="progress"></div></div>
+      <div data-index="2">Creative & Content Production <div class="progress"></div></div>
+      <div data-index="3">Consulting Services <div class="progress"></div></div>
     </div>
   </div>
 
@@ -442,7 +712,51 @@
   </section>
   
   
+  <div class="cards-container">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>Digital Commerce</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+      <div class="card-image">
+        <img src="images/image1.jpg" alt="Image 1">
+      </div>
+    </div>
   
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>Marketing & Growth</h3>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </div>
+      <div class="card-image">
+        <img src="images/image2.jpg" alt="Image 2">
+      </div>
+    </div>
+  
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>Creative & Content Production</h3>
+        <p>Donec ullamcorper nulla non metus auctor fringilla.</p>
+      </div>
+      <div class="card-image">
+        <img src="images/image3.jpg" alt="Image 3">
+      </div>
+    </div>
+  
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-content">
+        <h3>Consulting Services</h3>
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+      </div>
+      <div class="card-image">
+        <img src="images/image4.jpg" alt="Image 4">
+      </div>
+    </div>
+  </div>
 
 
   <div>Hello</div>
@@ -623,6 +937,32 @@ function typeWriter() {
 // Start typing effect
 typeWriter();
 
+
+
+const navLinks = document.querySelectorAll('.nav-link');
+const megaMenus = document.querySelectorAll('.mega-menu');
+
+navLinks.forEach(link => {
+  const menuId = link.dataset.menu;
+  const menu = document.getElementById(menuId);
+
+  link.addEventListener('mouseenter', () => {
+    megaMenus.forEach(m => m.style.display = 'none'); // hide others
+    if (menu) menu.style.display = 'block';
+  });
+
+  link.addEventListener('mouseleave', () => {
+    setTimeout(() => { 
+      if (!menu.matches(':hover')) menu.style.display = 'none'; 
+    }, 50);
+  });
+
+  if (menu) {
+    menu.addEventListener('mouseleave', () => {
+      menu.style.display = 'none';
+    });
+  }
+});
 
 
 </script>

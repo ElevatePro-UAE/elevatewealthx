@@ -464,8 +464,7 @@
 /* 16:9 image */
 .card-image {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 ratio */
-  overflow: hidden;
+  padding-bottom: 67%; /* 16:9 ratio */
 }
 
 .card-image img {
@@ -479,6 +478,11 @@
 /* Image zoom on hover */
 .card:hover .card-image img {
   transform: scale(1.05);
+}
+
+.serviceTxt{
+  font-size: 1vw;
+  padding-bottom: 3vw;
 }
 
 /* Responsive adjustments */
@@ -500,6 +504,9 @@
   font-size: 3vw;
   padding-top: 2vw;
   padding-bottom: 2vw;
+}
+
+#serviceCardHdrTxt{
   font-weight: 800;
 }
 
@@ -562,10 +569,6 @@
     <a href="#about" class="w3-bar-item w3-hide-small">About</a>
     <a href="#contact" class="w3-bar-item w3-hide-small">Contact</a>
 
-    <!-- Search Icon -->
-    <a href="#" class="w3-bar-item w3-hide-small w3-right w3-hover-red">
-      <i class="fa fa-search"></i>
-    </a>
   </div>
 </div>
 
@@ -655,14 +658,13 @@
   <a href="#" class="w3-bar-item w3-button">Consulting</a>
   <a href="#" class="w3-bar-item w3-button">About</a>
   <a href="#" class="w3-bar-item w3-button">Contact</a>
-  <a href="#" class="w3-bar-item w3-button">Search</a>
 </div>
 
 
 
 <div class="slider">
   <div class="slide active">
-    <div class="bg" style="background-image: url('images/ecommerce-3.png');"></div>
+    <div class="bg" style="background-image: url('images/digitalCommerce.jpg');"></div>
     <div class="slide-content">
     <h1>Crafting stunning websites, apps and end-to-end Shopify stores</h1>
     <a href="#services" class="explore-btn">Explore Service</a> 
@@ -727,44 +729,44 @@
     <!-- Card 1 -->
     <div class="card">
       <div class="card-content">
-        <h3>Digital Commerce</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h2 id="serviceCardHdrTxt">Digital Commerce</h2>
+        <p class="serviceTxt">We help brands build and manage online stores, optimize marketplace listings, and run effective pricing and promotions. With a focus on conversion, omnichannel integration, and data-driven insights, we make digital selling simple and scalable.</p>
       </div>
       <div class="card-image">
-        <img src="images/image1.jpg" alt="Image 1">
+        <img src="images/service-new1.png" alt="Image 1">
       </div>
     </div>
   
     <!-- Card 2 -->
     <div class="card">
       <div class="card-content">
-        <h3>Marketing & Growth</h3>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        <h2 id="serviceCardHdrTxt">Marketing & Growth</h2>
+        <p class="serviceTxt">We fuel brand growth through performance marketing on Meta, Google, TikTok, and affiliates, backed by SEO/ASO and smart CRM programs. With automation, influencer partnerships, and impactful campaign execution, we drive retention, reach, and measurable results.</p>
       </div>
       <div class="card-image">
-        <img src="images/image2.jpg" alt="Image 2">
+        <img src="images/service-new2.png" alt="Image 2">
       </div>
     </div>
   
     <!-- Card 3 -->
     <div class="card">
       <div class="card-content">
-        <h3>Creative & Content Production</h3>
-        <p>Donec ullamcorper nulla non metus auctor fringilla.</p>
+        <h2 id="serviceCardHdrTxt">Creative & Content Production</h2>
+        <p class="serviceTxt">We craft compelling content that sells — from AI-driven product photography, lifestyle shoots, and high-impact videos to engaging reels, graphics, and localized copy that connects with your audience.</p>
       </div>
       <div class="card-image">
-        <img src="images/image3.jpg" alt="Image 3">
+        <img src="images/service-new3.png" alt="Image 3">
       </div>
     </div>
   
     <!-- Card 4 -->
     <div class="card">
       <div class="card-content">
-        <h3>Consulting Services</h3>
-        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+        <h2 id="serviceCardHdrTxt">Consulting Services</h2>
+        <p class="serviceTxt">We help businesses scale smarter with tailored advisory — from financial planning, startup acceleration, and digital transformation to fundraising, cross-border growth, and supply chain optimization.</p>
       </div>
       <div class="card-image">
-        <img src="images/image4.jpg" alt="Image 4">
+        <img src="images/service-new4.png" alt="Image 4">
       </div>
     </div>
   </div>

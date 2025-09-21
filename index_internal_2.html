@@ -72,7 +72,7 @@
     } */
 
         /* Services Navigation */
-        .services-nav {
+.services-nav {
   position: absolute;
   bottom: 40px;
   left: 50%;
@@ -239,6 +239,104 @@
 }
 
 
+/* #headerTxt {
+  color: white;
+  text-align: center;
+  font-size: 3vw;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+  animation: lightningBlink 3s infinite;
+}
+
+@keyframes lightningBlink {
+  0%, 95%, 100% {
+    opacity: 1;
+    text-shadow: none;
+  }
+  96%, 97% {
+    opacity: 0.1; 
+    text-shadow: 0 0 25px #fff, 0 0 50px #ff0, 0 0 70px #ff0, 0 0 90px #fff;
+  }
+  98%, 99% {
+    opacity: 1;
+    text-shadow: 0 0 15px #fff, 0 0 35px #ff0, 0 0 55px #ff0;
+  }
+}
+
+#sectionHeader {
+  text-align: center;
+  background-color: black;
+} */
+
+
+
+#headerTxt {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#sectionHeader {
+  position: relative;
+  text-align: left;
+  background-color: rgb(1, 6, 35);
+  padding: 4vw 0;
+}
+
+#headerTxt {
+  position: relative;
+  display: inline-block;
+  color: red;
+  font-weight: bold;
+}
+
+
+#headerTxt::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;          /* very slim spark */
+  height: 100%;       /* cover only text height */
+  background: linear-gradient(
+    0deg,
+    transparent 0%, 
+    cyan 40%,
+    white 50%,
+    cyan 60%,
+    transparent 100%
+  );
+  filter: blur(2px) brightness(3);
+  animation: lightningGlow 3.1s linear infinite;
+}
+
+@keyframes lightningGlow {
+  0%, 90% { transform: translateX(-100%) skewY(0deg); opacity: 0; filter: blur(0px) brightness(1); }
+  91% { opacity: 1; filter: blur(1px) brightness(2.5); }
+  92% { filter: blur(2px) brightness(3.2); }
+  93% { filter: blur(3px) brightness(4); }
+  94% { transform: translateX(120%) skewY(5deg); opacity: 1; filter: blur(2px) brightness(3); }
+  95%, 100% { transform: translateX(130%) skewY(0deg); opacity: 0; filter: blur(0px) brightness(1); }
+}
+
+
+#headerTxt {
+  font-size: 4vw;
+  white-space: nowrap; /* keep it on single line */
+  overflow: hidden;
+  border-right: 3px solid white; /* cursor effect */
+  display: inline-block; /* width grows with text */
+  animation: blinkCursor 0.7s step-end infinite; /* cursor blink */
+  margin-left: 7vw;
+  font-weight: bold;
+}
+
+/* Blinking cursor */
+@keyframes blinkCursor {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
 
 
   </style>
@@ -338,6 +436,13 @@
       <div data-index="4">Financial Advisory <div class="progress"></div></div>
     </div>
   </div>
+
+  <section id="sectionHeader">
+    <div id="headerTxt">Elevate your Startup. Accelerate your Wealth. </div>
+  </section>
+  
+  
+  
 
 
   <div>Hello</div>
@@ -492,6 +597,33 @@ function myFunction() {
         });
     }
 }
+
+const headerTxt = document.getElementById('headerTxt');
+const text = "Elevate your Startup. Accelerate your Wealth";
+const typingSpeed = 75; // ms per letter
+const pauseAfter = 5000; // 1 second pause after complete
+
+function typeWriter() {
+  headerTxt.textContent = ""; // clear text
+  let i = 0;
+
+  function type() {
+    if (i < text.length) {
+      headerTxt.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, typingSpeed);
+    } else {
+      setTimeout(typeWriter, pauseAfter); // repeat after pause
+    }
+  }
+
+  type();
+}
+
+// Start typing effect
+typeWriter();
+
+
 
 </script>
 

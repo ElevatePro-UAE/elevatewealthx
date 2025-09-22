@@ -675,16 +675,19 @@
 /* Mobile Styles */
 @media (max-width: 768px) {
   .services-nav {
-    overflow-x: auto;           /* enable horizontal scroll */
-    flex-wrap: nowrap;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding-right: 60vw;
-    justify-content: flex-start; /* align left on mobile */
-    /* hide scrollbar */
-    -ms-overflow-style: none;  
-    scrollbar-width: none;     
-  }
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
+  position: relative; /* for pseudo-element */
+}
+
+.services-nav::after {
+  content: "";
+  flex: 0 0 60vw; /* takes up space at the end for scroll */
+}
 
   .services-nav::-webkit-scrollbar {
     display: none;             

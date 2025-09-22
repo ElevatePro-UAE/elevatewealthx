@@ -439,7 +439,6 @@
   gap: 2rem;          /* increased space between cards */
   flex-wrap: wrap;     /* wrap to next line on smaller screens */
   margin: 2rem 2%;     /* 2rem top/bottom, 5% left/right margins */
-  padding-bottom: 5vw;
 }
 
 /* Individual card */
@@ -532,6 +531,14 @@
   color: black;
 }
 
+#ourClientsHeaderTxt{
+  text-align: center;
+  font-size: 3vw;
+  padding-bottom: 1vw;
+  font-weight: 900;
+  color: white;
+}
+
 #serviceCardHdrTxt{
   font-weight: 800;
   font-size: 2vw;
@@ -583,7 +590,90 @@
     font-size: 3vw;
   }
 
-/* Mobile Styles */
+.image-section {
+  background: black;
+  padding: 3vw 5vw;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+  gap: 3rem;
+  justify-content: center; /* keeps fewer items centered */
+}
+
+
+.image-item {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px; /* same as image */
+  padding: 2px; /* border thickness */
+  background: linear-gradient(90deg,
+    #4facfe, #00f2fe, #43e97b, #f9d423, #4facfe);
+  background-size: 300% 300%;
+  animation: borderFlow 6s linear infinite;
+
+  /* mask to show only border */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image-item img {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.image-item img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes borderFlow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .image-grid {
+  grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+}
+}
+
+@media (max-width: 600px) {
+  .image-grid {
+    /* grid-template-columns: repeat(auto-fit, minmax(0, max-content)); */
+    grid-template-columns: repeat(2, max-content);
+  }
+  .image-section {
+    padding: 3vw 5vw; /* top/bottom 3vw, left/right 5vw */
+  }
+}
+
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .services-nav {
@@ -627,6 +717,17 @@
     padding-bottom: 1vw;
     font-weight: 900;
     color: black;
+    flex-wrap: nowrap;
+    width: 95vw;
+    margin-left: 2.5vw;
+  }
+
+  #ourClientsHeaderTxt{
+    text-align: center;
+    font-size: 5.25vw;
+    padding-bottom: 3vw;
+    font-weight: 900;
+    color: white;
     flex-wrap: nowrap;
     width: 95vw;
     margin-left: 2.5vw;
@@ -900,6 +1001,18 @@
     </div>
   </div>
 </section>
+
+<section class="image-section">
+<div id="ourClientsHeaderTxt"> Our Clients </div>  
+  <div class="image-grid">
+    <div class="image-item"><img src="images/client1.png" alt="Image 1"></div>
+    <div class="image-item"><img src="images/client2.png" alt="Image 2"></div>
+    <div class="image-item"><img src="images/client3.png" alt="Image 3"></div>
+    <!-- Add 4th if available -->
+  </div>
+</section>
+
+
 
   <div>Hello</div>
 <div>Hello</div>

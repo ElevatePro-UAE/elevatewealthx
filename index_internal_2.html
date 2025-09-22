@@ -274,12 +274,6 @@
 
 
 
-#headerTxt {
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-}
-
 #sectionHeader {
   position: relative;
   text-align: left;
@@ -292,6 +286,7 @@
   display: inline-block;
   color: white;
   font-weight: bold;
+  overflow: hidden;
 }
 
 
@@ -333,6 +328,25 @@
   animation: blinkCursor 0.7s step-end infinite; /* cursor blink */
   margin-left: 7vw;
   font-weight: bold;
+}
+
+
+@media(max-width: 768px) {
+  #headerTxt {
+  font-size: 8vw;
+  white-space: normal;   /* allow wrapping */
+  overflow: hidden;
+  width: 80%;
+  border-right: 3px solid white; /* cursor effect */
+  display: inline-block; /* width grows with text */
+  animation: blinkCursor 0.7s step-end infinite; /* cursor blink */
+  margin-left: 7vw;
+  font-weight: bold;
+}
+#sectionHeader {
+  height: 50vw;
+}
+
 }
 
 /* Blinking cursor */
@@ -494,10 +508,14 @@
   }
 }
 
-@media(max-width: 600px) {
+@media(max-width: 768px) {
   .card {
     flex: 1 1 100%; /* 1 card per row */
   }
+  .serviceTxt{
+    font-size: 5vw;
+    padding-bottom: 3vw;
+}
 }
 
 
@@ -571,7 +589,7 @@
     flex-wrap: nowrap;
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
-
+    padding-right: 10vw;
     justify-content: flex-start; /* align left on mobile */
     /* hide scrollbar */
     -ms-overflow-style: none;  

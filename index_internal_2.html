@@ -338,19 +338,6 @@
 #sectionHeader {
   height: 50vw;
 }
-
-.slide .slide-progress {
-  position: absolute;
-  bottom: 50px;
-  left: 5%;
-  right: 5%;        /* add right margin */
-  height: 4px;
-  background: red;
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform linear;
-}
-
 }
 
 /* Blinking cursor */
@@ -817,6 +804,20 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+
+
+.slide .slide-progress {
+  position: absolute;
+  bottom: 9vh;
+  left: 5%;
+  right: 5%;        /* add right margin */
+  height: 4px;
+  background: red;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform linear;
+}
+
   .services-nav {
   display: flex;
   overflow-x: auto;
@@ -825,7 +826,7 @@
   -webkit-overflow-scrolling: touch;
   justify-content: flex-start;
   position: relative; /* for pseudo-element */
-  margin-top: -8vw;
+  margin-top: -12vh;
 }
 
 .services-nav::after {

@@ -699,8 +699,13 @@
 
 .image-section {
   /* background: black; */
-  background-image: url('Imagery/clients_bg.png');
-  padding: 3vw
+  /* background-image: url('Imagery/clients_bg.png'); */
+  /* background-image: url('Imagery/background_landscape.jpg'); */
+  background-image: url('Imagery/bg_landscape_2.png');
+  padding: 3vw;
+  background-size: cover;      /* fills entire section, may crop */
+  background-position: center; /* keeps it centered */
+  background-repeat: no-repeat;
 }
 
 .image-grid {
@@ -710,7 +715,6 @@
   justify-content: center; /* keeps fewer items centered */
 
 }
-
 
 .image-item {
   position: relative;
@@ -779,7 +783,124 @@
   }
 }
 
+/* Our Partners */
 
+#ourPartnersHeaderTxt{
+  text-align: center;
+  font-size: 3vw;
+  padding-bottom: 2vw;
+  font-weight: 900;
+  color: white;
+}
+
+
+.image-section-partner {
+  /* background: black; */
+  /* background-image: url('Imagery/clients_bg.png'); */
+  /* background-image: url('Imagery/background_landscape.jpg'); */
+  background-image: url('Imagery/bg_landscape_2.png');
+  padding: 3vw;
+  background-size: cover;      /* fills entire section, may crop */
+
+}
+
+.image-grid-partner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+  gap: 4vw;
+  justify-content: center; /* keeps fewer items centered */
+
+}
+
+.image-item-partner {
+  position: relative;
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.image-item-partner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px; /* same as image */
+  padding: 2px; /* border thickness */
+  background: linear-gradient(90deg,
+    #4facfe, #00f2fe, #43e97b, #f9d423, #4facfe);
+  background-size: 300% 300%;
+  animation: borderFlow 6s linear infinite;
+
+  /* mask to show only border */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+          mask-composite: exclude;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.image-item-partner img {
+  display: block;
+  width: 100%;
+  max-width: 15vw;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  z-index: 0;
+}
+
+.image-item-partner img:hover {
+  transform: scale(1.05);
+}
+
+
+@keyframes borderFlow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .image-grid-partner {
+  grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+}
+}
+
+@media (max-width: 768px) {
+  .image-grid-partner {
+    /* grid-template-columns: repeat(auto-fit, minmax(0, max-content)); */
+    grid-template-columns: repeat(2, max-content);
+  }
+
+#ourPartnersHeaderTxt{
+    text-align: center;
+    font-size: 5.25vw;
+    padding-bottom: 3vw;
+    font-weight: 900;
+    color: white;
+    flex-wrap: nowrap;
+    width: 95vw;
+  }
+
+  .image-item-partner img {
+    display: block;
+    width: 100%;
+    max-width: 40vw;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 0;
+}
+}
 
 #bg1{
   /* background-image: url('Imagery/DIGITAL\ COMMERCE_banner_landscape.jpg') */
@@ -879,7 +1000,6 @@
     color: white;
     flex-wrap: nowrap;
     width: 95vw;
-    margin-left: 2.5vw;
   }
 /* 
   #serviceCardHdrTxt{
@@ -1240,19 +1360,17 @@
 </section>
 
 
+<section class="image-section-partner">
+  <div id="ourPartnersHeaderTxt"> Our Partners </div>  
+    <div class="image-grid-partner">
+      <div class="image-item-partner"><img src="Imagery/partner1.png" alt="Handycraft Studios"></div>
+      <div class="image-item-partner"><img src="Imagery/partner2.png" alt="1K Sites"></div>
+      <!-- <div class="image-item"><img src="images/client2.png" alt="Image 2"></div>
+      <div class="image-item"><img src="images/client3.png" alt="Image 3"></div> -->
+      <!-- Add 4th if available -->
+    </div>
+  </section>
 
-  <div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
-<div>Hello</div>
   <script>
     // const slides = document.querySelectorAll('.slide');
     // const progress = document.querySelector('.progress');

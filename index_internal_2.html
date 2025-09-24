@@ -100,17 +100,9 @@
     }
 
     /* Red progress underline */
-    .progress {
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: red;
-      transition: width linear;
-    }
 
-    .slide .slide-progress {
+
+.slide .slide-progress {
   position: absolute;
   bottom: 20px;
   left: 5%;
@@ -345,6 +337,18 @@
 }
 #sectionHeader {
   height: 50vw;
+}
+
+.slide .slide-progress {
+  position: absolute;
+  bottom: 50px;
+  left: 5%;
+  right: 5%;        /* add right margin */
+  height: 4px;
+  background: red;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform linear;
 }
 
 }
@@ -644,13 +648,13 @@
 }
 #logo{
     height: 20vw;
-    width: 20vw;
+    width: 25vw;
   }
 }
 
 
 #servicesSec{
-  background-image: url('Imagery/Background\ landscape_blurred.png')
+  background-image: url('Imagery/clients_bg.png')
 }
 
 #ourClientsHeaderTxt{
@@ -821,7 +825,7 @@
   -webkit-overflow-scrolling: touch;
   justify-content: flex-start;
   position: relative; /* for pseudo-element */
-  margin-top: -5vw;
+  margin-top: -8vw;
 }
 
 .services-nav::after {
@@ -1073,7 +1077,7 @@
     <div class="sliderHdrTxt">Crafting stunning websites, apps and end-to-end Shopify stores</div>
     <a href="#services" class="explore-btn">Explore Service</a> 
     </div>
-    <div class="slide-progress"></div>
+    <div id="progress1" class="slide-progress"></div>
 
   </div>
 
@@ -1083,7 +1087,7 @@
     <div class="sliderHdrTxt">Amplifying your reach, engagement, and revenue through data-driven marketing & growth strategies</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
-    <div class="slide-progress"></div>
+    <div id="progress2" class="slide-progress"></div>
   </div>
 
   <div class="slide">
@@ -1092,7 +1096,7 @@
     <div class="sliderHdrTxt">Transforming ideas into stunning visuals with AI photoshoot and videography</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
-    <div class="slide-progress"></div>
+    <div id="progress3" class="slide-progress"></div>
   </div>
 
   <div class="slide">
@@ -1101,7 +1105,7 @@
     <div class="sliderHdrTxt">Powering your business growth — from strategy and operations to fundraising and global expansion</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
-    <div class="slide-progress"></div>
+    <div id="progress4" class="slide-progress"></div>
   </div>
 
 

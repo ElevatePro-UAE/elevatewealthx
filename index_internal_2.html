@@ -169,7 +169,7 @@
 
   #logo{
     height: 10vw;
-    width: 18vw;
+    width: 10vw;
   }
     
 
@@ -432,80 +432,207 @@
   margin-top: -10vw;
 }
 
-
-/* Container for all cards */
-.cards-container {
-  display: flex;
-  gap: 2rem;          /* increased space between cards */
-  flex-wrap: wrap;     /* wrap to next line on smaller screens */
-  margin: 2rem 2%;     /* 2rem top/bottom, 5% left/right margins */
+/* Section Header */
+#ourServicesHeaderTxt {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2vw;
+  padding-top: 2vw;
+  color: white;
 }
 
-/* Individual card */
-.card {
-  background: white;
-  flex: 1 1 calc(25% - 3rem); /* 4 cards per row minus gap */
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding-bottom: 0.5vw;
+
+/* Grid Layout */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  box-sizing: border-box;
+  /* max-width: 1400px; */
+  /* margin: 0 auto; */
+  width: 80vw;
+  margin-left: 10vw;
+
 }
 
-/* Hover effect */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-}
-
-/* Card content */
-.card-content {
-  padding: 1rem 1.5rem;
-}
-
-.card-content h3 {
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
-}
-
-.card-content p {
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* 16:9 image */
-.card-image {
+/* Service Item - wrapper for image + overlay */
+.service-item {
   position: relative;
-  padding-bottom: 67%; /* 16:9 ratio */
+  overflow: hidden;
+  border-radius: 16px;
+  transition: transform 0.6s ease; /* smooth zoom */
+  margin-left: 5.625vw;
+  width: 28vw;
+  height: 45vw;
 }
 
-.card-image img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-/* Image zoom on hover */
-.card:hover .card-image img {
+/* Scale the whole item on hover */
+.service-item:hover {
   transform: scale(1.05);
 }
 
-.serviceTxt{
-  font-size: 1vw;
-  padding-bottom: 3vw;
+/* Image */
+.service-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
 }
 
-/* Responsive adjustments */
-@media(max-width: 1024px) {
-  .card {
-    flex: 1 1 calc(50% - 3rem); /* 2 cards per row */
-  }
+/* Overlay Text - fixed box */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;           /* full width */
+  height: 50%;           /* fixed house for text */
+  padding: 2% 5%;        /* space inside box */
+  display: block;
+  flex-direction: column;
+  justify-content: center; /* vertical center inside box */
+  align-items: flex-start;
+  color: white;
+  text-align: left;
+  box-sizing: border-box;
+  pointer-events: none;   /* allows hover on container */
+  padding: 2vw;
 }
+
+.overlay h3 {
+  font-size: clamp(1rem, 1.4vw, 2rem);
+  margin: 0.2em 0;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 2vw;
+}
+
+.overlay p {
+  font-size: clamp(0.8rem, 1vw, 1.2rem);
+  line-height: 1.5;
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+  text-align: center;
+}
+
+/* 
+@media (max-width: 1024px) { 
+  
+ } */
+
+@media(max-width: 768px) {
+  .service-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    transition: transform 0.6s ease; /* smooth zoom */
+    margin-left: 5.625vw;
+    width: 72vw;
+    height: 115vw;
+  }
+
+  /* Scale the whole item on hover */
+  .service-item:hover {
+    transform: scale(1.05);
+  }
+
+  /* Image */
+  .service-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+   .services-grid {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+    padding: 0 8vw;
+  }
+
+  .overlay {
+    padding: 4vw;
+  }
+  
+/* Mobile-specific overlay text */
+  .overlay h3 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    margin: 0.2em 0;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5vw;
+  }
+
+  .overlay p {
+    font-size: clamp(0.8rem, 3vw, 1rem); /* smaller than before */
+    line-height: 1.4;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-align: center;
+  }
+
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .service-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    transition: transform 0.6s ease; /* smooth zoom */
+    margin-left: 5.625vw;
+    width: 50vw;
+    height: 80vw;
+  }
+
+  /* Scale the whole item on hover */
+  .service-item:hover {
+    transform: scale(1.05);
+  }
+
+  /* Image */
+  .service-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
+  }
+
+   .services-grid {
+    grid-template-columns: 1fr;
+    gap: 4vw;
+    padding: 0 8vw;
+  }
+
+  .overlay {
+    padding: 4vw;
+  }
+  
+/* Mobile-specific overlay text */
+  .overlay h3 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    margin: 0.2em 0;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5vw;
+  }
+
+  .overlay p {
+    font-size: clamp(0.8rem, 3vw, 1rem); /* smaller than before */
+    line-height: 1.4;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    text-align: center;
+  }
+
+}
+
+
+
+
 
 @media(max-width: 768px) {
   .card {
@@ -515,36 +642,24 @@
     font-size: 4.5vw;
     padding-bottom: 3vw;
 }
+#logo{
+    height: 20vw;
+    width: 20vw;
+  }
 }
 
 
 #servicesSec{
-  background-color: #fdf8f8;
-}
-
-#ourServicesHeaderTxt{
-  text-align: center;
-  font-size: 3vw;
-  padding-top: 2vw;
-  padding-bottom: 1vw;
-  font-weight: 900;
-  color: black;
+  background-image: url('imagery/Background\ landscape_blurred.png')
 }
 
 #ourClientsHeaderTxt{
   text-align: center;
   font-size: 3vw;
-  padding-bottom: 1vw;
+  padding-bottom: 2vw;
   font-weight: 900;
   color: white;
 }
-
-#serviceCardHdrTxt{
-  font-weight: 800;
-  font-size: 2vw;
-  padding-bottom: 1vw;
-}
-
 
 /* General Styles for Services Navigation */
 .services-nav {
@@ -591,7 +706,8 @@
   }
 
 .image-section {
-  background: black;
+  /* background: black; */
+  background-image: url('imagery/Background\ landscape_blurred.png');
   padding: 3vw
 }
 
@@ -664,11 +780,34 @@
 }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .image-grid {
     /* grid-template-columns: repeat(auto-fit, minmax(0, max-content)); */
     grid-template-columns: repeat(2, max-content);
   }
+}
+
+
+
+#bg1{
+  /* background-image: url('imagery/DIGITAL\ COMMERCE_banner_landscape.jpg') */
+  background-image: url('imagery/DIGITAL\ COMMERCE\ BANNER\ ABHI\ LANDSCAPE.png')
+}
+
+#bg2{
+  /* background-image: url('imagery/GROWTH\ MARKETING_landscape.jpg') */
+  background-image: url('imagery/MARKETING\ GROWTH\ BANNER\ ABHI\ LANDSCAPE.png')
+}
+
+#bg3{
+  /* background-image: url('imagery/CONSULTING\ SERVICES_landscape.jpg') */
+  background-image: url('imagery/CONSULTING SERVICES ABHI BANNER LANDSCAPE.png')
+
+}
+
+#bg4{
+  /* background-image: url('imagery/CREATIVE\ CONTENT_landscape.jpg') */
+  background-image: url('imagery/CREATIVE\ CONENT\ ABHI\ LANDSCAPE\ BANNER.png')
 }
 
 
@@ -682,6 +821,7 @@
   -webkit-overflow-scrolling: touch;
   justify-content: flex-start;
   position: relative; /* for pseudo-element */
+  margin-top: -5vw;
 }
 
 .services-nav::after {
@@ -708,10 +848,12 @@
   }
 
   .sliderHdrTxt{
-    font-size: 5vw;
+    font-size: 6vw;
+    margin-top: 50vw;
+
   }
 
-  #ourServicesHeaderTxt{
+  /* #ourServicesHeaderTxt{
     text-align: center;
     font-size: 5.25vw;
     padding-top: 3vw;
@@ -721,7 +863,7 @@
     flex-wrap: nowrap;
     width: 95vw;
     margin-left: 2.5vw;
-  }
+  } */
 
   #ourClientsHeaderTxt{
     text-align: center;
@@ -733,12 +875,12 @@
     width: 95vw;
     margin-left: 2.5vw;
   }
-
+/* 
   #serviceCardHdrTxt{
   font-weight: 800;
   font-size: 4.5vw;
   padding-bottom: 1vw;
-}
+} */
 
 .image-item img {
   display: block;
@@ -751,6 +893,24 @@
   position: relative;
   z-index: 0;
 }
+
+
+#bg1{
+  background-image: url('imagery/DIGITAL\ COMMERCE_banner_mobile.jpg')
+}
+
+#bg2{
+  background-image: url('imagery/GROWTH\ MARKETING_mobile.jpg')
+}
+
+#bg3{
+  background-image: url('imagery/CREATIVE\ CONTENT_mobile.jpg')
+}
+
+#bg4{
+  background-image: url('imagery/CONSULTING\ SERVICES_mobile.jpg')
+}
+
 }
 
 
@@ -800,7 +960,7 @@
 
     <!-- Logo -->
     <a href="#home" class="w3-bar-item">
-      <img id="logo" src="images/logo-nobg.png" alt="Logo" style="height:50px;">
+      <img id="logo" src="Imagery/ewealth_logo without background.png" alt="Logo">
     </a>
 
     <!-- Desktop Nav Items -->
@@ -908,7 +1068,7 @@
 
 <div class="slider">
   <div class="slide active">
-    <div class="bg" style="background-image: url('images/digitalCommerce.jpg');"></div>
+    <div class="bg" id="bg1"></div>
     <div class="slide-content">
     <div class="sliderHdrTxt">Crafting stunning websites, apps and end-to-end Shopify stores</div>
     <a href="#services" class="explore-btn">Explore Service</a> 
@@ -918,7 +1078,7 @@
   </div>
 
   <div class="slide">
-    <div class="bg" style="background-image: url('images/marketing.png');"></div>
+    <div class="bg" id="bg2"></div>
     <div class="slide-content">
     <div class="sliderHdrTxt">Amplifying your reach, engagement, and revenue through data-driven marketing & growth strategies</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
@@ -927,7 +1087,7 @@
   </div>
 
   <div class="slide">
-    <div class="bg" style="background-image: url('images/creative.png');"></div>
+    <div class="bg" id="bg3"></div>
     <div class="slide-content">
     <div class="sliderHdrTxt">Transforming ideas into stunning visuals with AI photoshoot and videography</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
@@ -936,7 +1096,7 @@
   </div>
 
   <div class="slide">
-    <div class="bg" style="background-image: url('images/marketplace.png');"></div>
+    <div class="bg" id="bg4"></div>
     <div class="slide-content">
     <div class="sliderHdrTxt">Powering your business growth — from strategy and operations to fundraising and global expansion</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
@@ -965,55 +1125,103 @@
   <section id="sectionHeader">
     <div id="headerTxt">Elevate your Startup. Accelerate your Wealth. </div>
   </section>
+    
+
+  <section id="servicesSec">
+    <div id="ourServicesHeaderTxt">Your One-Stop Growth Accelerator</div>
   
-<section id="servicesSec">
-  <div id="ourServicesHeaderTxt"> Your One-Stop Growth Accelerator </div>  
-  <div class="cards-container">
-    <!-- Card 1 -->
-    <div class="card">
-      <div class="card-content">
-        <div id="serviceCardHdrTxt">Digital Commerce</div>
-        <div class="serviceTxt">We power end-to-end digital growth across D2C and marketplaces. From building Shopify stores to seamless integrations to catalog management, merchandising, promotions, and CRO, we design strategies that connect channels, maximize visibility, and convert sales.</div>
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-item">
+        <img src="Imagery/2.png" alt="Digital Commerce">
+        <div class="overlay">
+          <h3>Digital Commerce</h3>
+          <p>
+            We power end-to-end digital growth across D2C and marketplaces. From building Shopify stores to seamless integrations to catalog management, merchandising, promotions, and CRO, we design strategies that connect channels, maximize visibility, and convert sales.
+          </p>
+        </div>
       </div>
-      <div class="card-image">
-        <img src="images/service-new1.png" alt="Image 1">
+  
+      <!-- Service 2 -->
+      <div class="service-item">
+        <img src="Imagery/4.png" alt="Marketing & Growth">
+        <div class="overlay">
+          <h3>Marketing & Growth</h3>
+          <p>
+            We design omnichannel growth engines that unite digital precision with offline impact. From performance marketing, programmatic ads, SEO/ASO, affiliate programs, and influencer partnerships to social media management, CRM automation, and loyalty campaigns — we help brands acquire, retain, and scale customers sustainably. Beyond digital, we extend reach through OOH, radio, PR, and activations, while optimizing for LLMs and AI agents shaping the future of discovery.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Service 3 -->
+      <div class="service-item">
+        <img src="Imagery/6.png" alt="Creative & Content">
+        <div class="overlay">
+          <h3>Creative & Content</h3>
+          <p>
+            We craft content and experiences that sell. From celebrity ads, AI photoshoots, and editorial imagery to AI product shoots, lifestyle campaigns, and UGC, we deliver assets that capture attention and drive conversion. Our expertise spans brand identity, ad copies, banners, A+ content, marketplace brand stores, landing pages, and UI/UX design, ensuring every touchpoint elevates the customer journey.
+          </p>
+        </div>
+      </div>
+  
+      <!-- Service 4 -->
+      <div class="service-item">
+        <img src="Imagery/8.png" alt="Consulting Services">
+        <div class="overlay">
+          <h3>Consulting Services</h3>
+          <p>
+            We help businesses and individuals scale smarter with tailored advisory across brand strategy, financial planning, and growth acceleration. Our expertise spans digital transformation, fundraising support, cross-border expansion, and supply chain optimization. We also provide real estate consultancy, financial advisory, and asset allocation strategies, offering strategic guidance without managing client capital.
+          </p>
+        </div>
+      </div>
+  
+    </div>
+  </section>
+  
+  <!-- <section id="servicesSec">
+    <div id="ourServicesHeaderTxt"> Your One-Stop Growth Accelerator </div>  
+    <div class="cards-container">
+      <div class="card">
+        <div class="card-content">
+          <div id="serviceCardHdrTxt">Digital Commerce</div>
+          <div class="serviceTxt">We power end-to-end digital growth across D2C and marketplaces. From building Shopify stores to seamless integrations to catalog management, merchandising, promotions, and CRO, we design strategies that connect channels, maximize visibility, and convert sales.</div>
+        </div>
+        <div class="card-image">
+          <img src="Imagery/2.png" alt="Image 1">
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-content">
+          <div id="serviceCardHdrTxt">Marketing & Growth</div>
+          <div class="serviceTxt">We design omnichannel growth engines that unite digital precision with offline impact. From performance marketing, programmatic ads, SEO/ASO, affiliate programs, and influencer partnerships to social media management, CRM automation, and loyalty campaigns — we help brands acquire, retain, and scale customers sustainably. Beyond digital, we extend reach through OOH, radio, PR, and activations, while optimizing for LLMs and AI agents shaping the future of discovery.</div>
+        </div>
+        <div class="card-image">
+          <img src="Imagery/4.png" alt="Image 2">
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-content">
+          <div id="serviceCardHdrTxt">Creative & Content</div>
+          <div class="serviceTxt">We craft content and experiences that sell. From celebrity ads, AI photoshoots, and editorial imagery to AI product shoots, lifestyle campaigns, and UGC, we deliver assets that capture attention and drive conversion. Our expertise spans brand identity, ad copies, banners, A+ content, marketplace brand stores, landing pages, and UI/UX design, ensuring every touchpoint elevates the customer journey.</div>
+        </div>
+        <div class="card-image">
+          <img src="Imagery/6.png" alt="Image 3">
+        </div>
+      </div>
+    
+      <div class="card">
+        <div class="card-content">
+          <div id="serviceCardHdrTxt">Consulting Services</div>
+          <div class="serviceTxt">We help businesses and individuals scale smarter with tailored advisory across brand strategy, financial planning, and growth acceleration. Our expertise spans digital transformation, fundraising support, cross-border expansion, and supply chain optimization. We also provide real estate consultancy, financial advisory, and asset allocation strategies, offering strategic guidance without managing client capital.</div>
+        </div>
+        <div class="card-image">
+          <img src="Imagery/8.png" alt="Image 4">
+        </div>
       </div>
     </div>
-  
-    <!-- Card 2 -->
-    <div class="card">
-      <div class="card-content">
-        <div id="serviceCardHdrTxt">Marketing & Growth</div>
-        <div class="serviceTxt">We design omnichannel growth engines that unite digital precision with offline impact. From performance marketing, programmatic ads, SEO/ASO, affiliate programs, and influencer partnerships to social media management, CRM automation, and loyalty campaigns — we help brands acquire, retain, and scale customers sustainably. Beyond digital, we extend reach through OOH, radio, PR, and activations, while optimizing for LLMs and AI agents shaping the future of discovery.</div>
-      </div>
-      <div class="card-image">
-        <img src="images/service-new2.png" alt="Image 2">
-      </div>
-    </div>
-  
-    <!-- Card 3 -->
-    <div class="card">
-      <div class="card-content">
-        <div id="serviceCardHdrTxt">Creative & Content</div>
-        <div class="serviceTxt">We craft content and experiences that sell. From celebrity ads, AI photoshoots, and editorial imagery to AI product shoots, lifestyle campaigns, and UGC, we deliver assets that capture attention and drive conversion. Our expertise spans brand identity, ad copies, banners, A+ content, marketplace brand stores, landing pages, and UI/UX design, ensuring every touchpoint elevates the customer journey.</div>
-      </div>
-      <div class="card-image">
-        <img src="images/service-new3.png" alt="Image 3">
-      </div>
-    </div>
-  
-    <!-- Card 4 -->
-    <div class="card">
-      <div class="card-content">
-        <div id="serviceCardHdrTxt">Consulting Services</div>
-        <div class="serviceTxt">We help businesses and individuals scale smarter with tailored advisory across brand strategy, financial planning, and growth acceleration. Our expertise spans digital transformation, fundraising support, cross-border expansion, and supply chain optimization. We also provide real estate consultancy, financial advisory, and asset allocation strategies, offering strategic guidance without managing client capital.</div>
-      </div>
-      <div class="card-image">
-        <img src="images/service-new4.png" alt="Image 4">
-      </div>
-    </div>
-  </div>
-</section>
+  </section> -->
 
 <section class="image-section">
 <div id="ourClientsHeaderTxt"> Our Clients </div>  
@@ -1167,13 +1375,13 @@ function myFunction() {
     
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         // Add scroll styles
-        navbar.classList.add("w3-card", "w3-animate-top", "w3-white");
+        navbar.classList.add("w3-card", "w3-animate-top", "w3-black");
         items.forEach(item => {
-            item.style.color = "black";   // change text to black
+            item.style.color = "white";   // change text to black
         });
     } else {
         // Remove scroll styles
-        navbar.classList.remove("w3-card", "w3-animate-top", "w3-white");
+        navbar.classList.remove("w3-card", "w3-animate-top", "w3-black");
         items.forEach(item => {
             item.style.color = "white";   // revert text to white
         });
@@ -1276,9 +1484,9 @@ function showSlide(i) {
   resetSlideProgress();
   animateSlideProgress(i);
 }
-
-
 </script>
+
+
 
 </body>
 </html>

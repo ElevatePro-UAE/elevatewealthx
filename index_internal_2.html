@@ -904,23 +904,23 @@
 
 #bg1{
   /* background-image: url('Imagery/DIGITAL\ COMMERCE_banner_landscape.jpg') */
-  background-image: url('Imagery/banner1_landscape.png')
+  background-image: url('Imagery/banner1_landscape.jpg')
 }
 
 #bg2{
   /* background-image: url('Imagery/GROWTH\ MARKETING_landscape.jpg') */
-  background-image: url('Imagery/banner2_landscape.png')
+  background-image: url('Imagery/banner2_landscape.jpg')
 }
 
 #bg3{
   /* background-image: url('Imagery/CONSULTING\ SERVICES_landscape.jpg') */
-  background-image: url('Imagery/banner3_landscape.png')
+  background-image: url('Imagery/banner3_landscape.jpg')
 
 }
 
 #bg4{
   /* background-image: url('Imagery/CREATIVE\ CONTENT_landscape.jpg') */
-  background-image: url('Imagery/banner4_landscape.png')
+  background-image: url('Imagery/banner4_landscape.jpg')
 }
 
 
@@ -1020,6 +1020,10 @@
   z-index: 0;
 }
 
+}
+
+@media (max-width: 768px) {
+
 
 #bg1{
   background-image: url('Imagery/banner1_mobile.jpg')
@@ -1037,9 +1041,17 @@
   background-image: url('Imagery/banner4_mobile.jpg')
 }
 
+
+#bg1, #bg2, #bg3, #bg4 {
+  width: 100%;
+  aspect-ratio: 9 / 16;          /* keeps perfect 9:16 ratio */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;      /* no cropping, full image */
+  background-color: black;       /* fill blank space (optional) */
 }
 
-
+}
 
   </style>
 </head>

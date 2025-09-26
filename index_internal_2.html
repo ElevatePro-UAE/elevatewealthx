@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 
   <title>Elevate WealthX</title>
   <style>
@@ -40,6 +41,8 @@
       justify-content: flex-start;
       padding: 5%;
       color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;         /* Bold */
     }
 
     .slide.active {
@@ -86,6 +89,9 @@
   width: 90%;           /* increase width to fit all services */
   justify-content: center;  /* center the services inside the wider container */
   flex-wrap: nowrap;     /* prevent wrapping to second line */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
+  text-transform: uppercase; /
 }
 
 
@@ -122,7 +128,8 @@
     justify-content: flex-start; 
     min-height: 80px;          /* optional: minimum height for bigger logo */
     padding: 0 20px;           /* horizontal padding */
-   
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;         /* Bold */
   }
 
   .w3-top {
@@ -281,16 +288,19 @@
   color: white;
   font-weight: bold;
   overflow: hidden;
+  font-size: 3.8vw;
+  white-space: nowrap; /* default desktop: single line */
+  font-family: 'Poppins', sans-serif;
 }
 
-
-#headerTxt::after {
+/* Lightning effect */
+#headerTxt::before {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
-  width: 100%;          /* very slim spark */
-  height: 100%;       /* cover only text height */
+  width: 100%;
+  height: 100%;
   background: linear-gradient(
     0deg,
     transparent 0%, 
@@ -301,6 +311,19 @@
   );
   filter: blur(2px) brightness(3);
   animation: lightningGlow 3.1s linear infinite;
+  pointer-events: none;
+}
+
+/* Cursor effect */
+#headerTxt::after {
+  content: "";
+  display: inline-block;
+  width: 3px;             /* cursor thickness */
+  height: 1em;            /* match font size */
+  background: white;
+  margin-left: 3px;
+  animation: blinkCursor 0.7s step-end infinite;
+  vertical-align: middle;
 }
 
 @keyframes lightningGlow {
@@ -312,47 +335,35 @@
   95%, 100% { transform: translateX(130%) skewY(0deg); opacity: 0; filter: blur(0px) brightness(1); }
 }
 
-
-#headerTxt {
-  font-size: 4vw;
-  white-space: nowrap; /* keep it on single line */
-  overflow: hidden;
-  border-right: 3px solid white; /* cursor effect */
-  display: inline-block; /* width grows with text */
-  animation: blinkCursor 0.7s step-end infinite; /* cursor blink */
-  margin-left: 7vw;
-  font-weight: bold;
-}
-
-
-
-
-@media(max-width: 768px) {
-  #headerTxt {
-  font-size: 7.5vw;
-  white-space: normal;   /* allow wrapping */
-  overflow: hidden;
-  width: 90%;
-  border-right: 3px solid white; /* cursor effect */
-  display: inline-block; /* width grows with text */
-  animation: blinkCursor 0.7s step-end infinite; /* cursor blink */
-  margin-left: 5vw;
-  font-weight: bold;
-  text-align: center;
-}
-#sectionHeader {
-  height: 30vw;
-  margin-top: -5vw;
-}
-}
-
-
-
-
-/* Blinking cursor */
 @keyframes blinkCursor {
-  from, to { border-color: transparent; }
-  50% { border-color: white; }
+  from, to { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  #headerTxt {
+    font-size: 7.25vw;
+    white-space: normal;   /* allow wrapping */
+    width: 90%;
+    margin-left: 5vw;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  #sectionHeader {
+    height: 30vw;
+    margin-top: -5vw;
+}
+}
+
+@media (min-width: 768px) {
+#sectionHeader {
+  height: 15vw;
+}
+
+#headerTxt{
+  margin-left: 6vw;
+}
+
 }
 
 /* Navbar stays compact */
@@ -440,6 +451,9 @@
   margin-bottom: 2vw;
   padding-top: 2vw;
   color: rgb(39, 229, 159);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
+  text-transform: uppercase; 
 }
 
 
@@ -465,6 +479,8 @@
   margin-left: 5.625vw;
   width: 28vw;
   height: 45vw;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
 }
 
 /* Scale the whole item on hover */
@@ -663,6 +679,9 @@
   padding-bottom: 2vw;
   font-weight: 700;
   color: rgb(39, 229, 159);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
+  text-transform: uppercase; 
 }
 
 /* General Styles for Services Navigation */
@@ -706,7 +725,7 @@
 }
 
 .sliderHdrTxt{
-    font-size: 3vw;
+    font-size: 2.8vw;
   }
 
 .image-section {
@@ -803,6 +822,9 @@
   padding-bottom: 2vw;
   font-weight: 900;
   color: rgb(39, 229, 159);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
+  text-transform: uppercase; 
 }
 
 
@@ -1146,6 +1168,8 @@
   background-position: center; /* keeps it centered */
   background-repeat: no-repeat;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
 }
 
 .why-us .container {
@@ -1158,6 +1182,9 @@
   font-weight: 700;
   margin-bottom: 10px;
   color: rgb(39, 229, 159);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;         /* Bold */
+  text-transform: uppercase; 
 }
 
 .why-us .section-subtitle {
@@ -1220,6 +1247,37 @@
     font-size: 16px;
     margin-bottom: 40px;
   }
+}
+
+
+/* banner text for laptops */
+@media (min-width: 768px) {
+
+#sliderContent1{
+  margin-left: 45vw;
+  width: 50vw;
+}
+
+#sliderContent2{
+  margin-left: 4vw;
+  width: 30vw;
+  margin-top: 4vw;
+}
+
+#sliderContent3{
+  margin-left: 47vw;
+  width: 50vw;
+}
+
+#sliderContent4{
+  margin-left: 4vw;
+  width: 30vw;
+  margin-top: 4vw;
+}
+
+/* #sliderHdrTxt1{
+
+} */
 }
 
   </style>
@@ -1371,13 +1429,11 @@
   <a href="#" class="w3-bar-item w3-button">Contact</a>
 </div>
 
-
-
 <div class="slider">
   <div class="slide active">
     <div class="bg" id="bg1"></div>
-    <div class="slide-content">
-    <div class="sliderHdrTxt">Crafting stunning websites, apps and end-to-end Shopify stores</div>
+    <div id ="sliderContent1" class="slide-content">
+    <div id="sliderHdrTxt1" class="sliderHdrTxt">Crafting stunning websites, apps and end-to-end Shopify stores</div>
     <a href="#services" class="explore-btn">Explore Service</a> 
     </div>
     <div id="progress1" class="slide-progress"></div>
@@ -1386,8 +1442,8 @@
 
   <div class="slide">
     <div class="bg" id="bg2"></div>
-    <div class="slide-content">
-    <div class="sliderHdrTxt">Amplifying your reach, engagement, and revenue through data-driven marketing & growth strategies</div>
+    <div id ="sliderContent2" class="slide-content">
+    <div id="sliderHdrTxt2" class="sliderHdrTxt">Amplifying your reach, engagement, and revenue through data-driven marketing & growth strategies</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
     <div id="progress2" class="slide-progress"></div>
@@ -1395,8 +1451,8 @@
 
   <div class="slide">
     <div class="bg" id="bg3"></div>
-    <div class="slide-content">
-    <div class="sliderHdrTxt">Transforming ideas into stunning visuals with AI photoshoot and videography</div>
+    <div id ="sliderContent3" class="slide-content">
+    <div id="sliderHdrTxt3" class="sliderHdrTxt">Transforming ideas into stunning visuals with AI photoshoot and videography</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
     <div id="progress3" class="slide-progress"></div>
@@ -1404,8 +1460,8 @@
 
   <div class="slide">
     <div class="bg" id="bg4"></div>
-    <div class="slide-content">
-    <div class="sliderHdrTxt">Powering your business growth — from strategy and operations to fundraising and global expansion</div>
+    <div id ="sliderContent4" class="slide-content">
+    <div id="sliderHdrTxt4" class="sliderHdrTxt">Powering your business growth — from strategy and operations to fundraising and global expansion</div>
     <a href="#services" class="explore-btn">Explore Service</a>  
     </div>
     <div id="progress4" class="slide-progress"></div>

@@ -312,19 +312,19 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div>
                         <label for="fullName" class="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                        <input type="text" id="fullName" name="entry.1180609201" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required>
+                        <input type="text" id="fullName" name="entry.1180609201" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required="">
                     </div>
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address *</label>
-                        <input type="email" id="email" name="entry.138640799" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required>
+                        <input type="email" id="email" name="entry.138640799" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required="">
                     </div>
                     <div>
                         <label for="mobile" class="block text-sm font-medium text-gray-700 mb-1">Mobile Number *</label>
-                        <input type="tel" id="mobile" name="entry.1951800791" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required>
+                        <input type="tel" id="mobile" name="entry.1951800791" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required="">
                     </div>
                     <div>
                         <label for="ageGroup" class="block text-sm font-medium text-gray-700 mb-1">Age Group</label>
-                        <select id="ageGroup" name="entry.1354843586" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required>
+                        <select id="ageGroup" name="entry.1028581668" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input">
                             <option value="18-35 (Youth Volunteer)">18-35 (Youth Volunteer)</option>
                             <option value="36-53 (Adult Volunteer)">36-53 (Adult Volunteer)</option>
                             <option value="54+ (Senior Participant)">54+ (Senior Participant)</option>
@@ -334,7 +334,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                 </div>
                 <div class="mb-6">
                     <label for="hearAbout" class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?</label>
-                    <input type="text" id="hearAbout" name="entry.1028581668" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required>
+                    <input type="text" id="hearAbout" name="entry.1354843586" required class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input">
                 </div>
                 <div class="text-center mt-8">
                     <button id="submitButton" type="submit" class="bg-sand-gold text-dark-charcoal py-3 px-12 rounded-full text-lg hover:bg-opacity-90 shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto cta-button">Register My Place</button>
@@ -400,23 +400,23 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
     const successMessage = document.getElementById('successMessage');
     const scriptURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfJ1sScXQruMGOAvIa6TwCTz_ZC64Z7ZbW6Gwh4Qit6rHqZUg/formResponse'; // <-- IMPORTANT: Replace with your deployed script URL
     form.addEventListener('submit', e => {
-  e.preventDefault();
-  submitButton.disabled = true;
-  submitButton.textContent = 'Submitting...';
+        e.preventDefault();
+        submitButton.disabled = true;
+        submitButton.textContent = 'Submitting...';
 
-  const formData = new FormData(form);
+        const formData = new FormData(form);
 
-  fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-    .then(() => {
-      form.style.display = 'none';
-      successMessage.classList.remove('hidden');
-    })
-    .catch(() => {
-      alert('⚠️ Something went wrong. Please try again.');
-      submitButton.disabled = false;
-      submitButton.textContent = 'Register My Place';
-    });
-});
+        fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+            .then(() => {
+            form.style.display = 'none';
+            successMessage.classList.remove('hidden');
+            })
+            .catch(() => {
+            alert('⚠️ Something went wrong. Please try again.');
+            submitButton.disabled = false;
+            submitButton.textContent = 'Register My Place';
+            });
+        });
 
     // form.addEventListener('submit', e => {
     //     e.preventDefault();
@@ -448,7 +448,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
     //         form.style.display = 'none';
     //         successMessage.classList.remove('hidden');
     //     }, 1000); 
-    // });
+    //});
 </script>
 
 

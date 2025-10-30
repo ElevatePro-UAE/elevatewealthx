@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<form id="registrationForm"
+      action="https://docs.google.com/forms/d/e/1FAIpQLSfJ1sScXQruMGOAvIa6TwCTz_ZC64Z7ZbW6Gwh4Qit6rHqZUg/formResponse"
+      method="POST"
+      target="_blank">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div>
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="entry.1180609201" required>
+        </div>
+        <div>
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="entry.138640799" required>
+        </div>
+        <div>
+            <label for="mobile">Mobile Number *</label>
+            <input type="tel" id="mobile" name="entry.1951800791" required>
+        </div>
+        <div>
+            <label for="ageGroup">Age Group</label>
+            <select id="ageGroup" name="entry.1028581668">
+                <option value="18-35 (Youth Volunteer)">18-35 (Youth Volunteer)</option>
+                <option value="36-53 (Adult Volunteer)">36-53 (Adult Volunteer)</option>
+                <option value="54+ (Senior Participant)">54+ (Senior Participant)</option>
+                <option value="Family/Group">Family/Group</option>
+            </select>
+        </div>
+    </div>
+    <div>
+        <label for="hearAbout">How did you hear about us?</label>
+        <input type="text" id="hearAbout" name="entry.1354843586">
+    </div>
+    <div>
+        <button type="submit">Register My Place</button>
+    </div>
+</form>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Intersection Observer for section animations
+    const sections = document.querySelectorAll('.section-fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    sections.forEach(section => observer.observe(section));
+    
+
+</script>
+</body>
+</html>

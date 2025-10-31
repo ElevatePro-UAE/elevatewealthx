@@ -184,6 +184,11 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
         color: white;
       }
 
+      #submitButton{
+        background-color: #000;
+        color: white;
+      }
+
   </style>
   
   <style>
@@ -202,10 +207,10 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
             <span class="text-uae-green">Threads</span><span class="text-uae-red"> of</span> Unity
         </a>
         <div class="hidden md:flex items-center space-x-8">
-            <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#about" class="text-gray-600 hover:text-uae-green transition-colors">The Initiative</a>
-            <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#why-join" class="text-gray-600 hover:text-uae-green transition-colors">Why Join</a>
-            <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#partners" class="text-gray-600 hover:text-uae-green transition-colors">Our Partners</a>
-            <a href="#register" style="background-color: #000; color: white;" href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#register" class="bg-white border border-uae-green text-uae-green py-2 px-6 rounded-full hover:bg-uae-green hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cta-button">Register Now</a>
+            <a href="#about" class="text-gray-600 hover:text-uae-green transition-colors">The Initiative</a>
+            <a href="#why-join" class="text-gray-600 hover:text-uae-green transition-colors">Why Join</a>
+            <a href="#partners" class="text-gray-600 hover:text-uae-green transition-colors">Our Partners</a>
+            <a href="#register" style="background-color: #000; color: white;" class="bg-white border border-uae-green text-uae-green py-2 px-6 rounded-full hover:bg-uae-green hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cta-button">Register Now</a>
         </div>
         <div class="md:hidden">
             <button id="menu-btn" class="text-gray-800 focus:outline-none">
@@ -215,10 +220,10 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
     </nav>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden">
-        <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">The Initiative</a>
-        <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#why-join" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Why Join</a>
-        <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#partners" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Our Partners</a>
-        <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#register" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Register Now</a>
+        <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">The Initiative</a>
+        <a href="#why-join" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Why Join</a>
+        <a href="#partners" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Our Partners</a>
+        <a href="#register" class="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100">Register Now</a>
     </div>
 </header>
 
@@ -287,23 +292,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
             <h2 class="text-4xl md:text-5xl font-bold text-gray-800">In Collaboration With</h2>
             <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">This initiative is made possible by the heartfelt collaboration of two dedicated organizations.</p>
         </div>
-        <div class="grid md:grid-cols-2 gap-10">
-            <!-- Elder Square Card -->
-            <div class="bg-white-50 p-8 rounded-xl shadow-lg section-fade-in border border-gray-100">
-                <div class="text-center">
-                  <!-- Fixed height logo container -->
-                  <div style= "height: 40vh;" class="flex items-center justify-center h-[23vw] min-h-[150px] max-h-[300px]">
-                    <img 
-                      src="eldersquare.png"
-                      alt="Elder Square Logo"
-                      class="max-h-full w-auto object-contain"
-                    >
-                  </div>
-                  <h3 class="text-3xl font-bold text-gray-800 mb-3 mt-6">Elder Square</h3>
-                  <p class="font-semibold text-uae-green mb-4">The Hands That Build Our Nation</p>
-                </div>`
-                <p class="text-gray-600 leading-relaxed text-center">The talented and spirited residents of Elder Square are the heart of this project. Their hands, rich with life and experience, will be stitching every piece of this monumental flag. Elder Square provides a vibrant, revolutionary community for seniors to thrive, and their participation embodies the wisdom and legacy we aim to celebrate.</p>
-            </div>
+        <div class="grid md:grid-cols-2 gap-10">            
             <!-- Be Kind Friends Card -->
             <div class="bg-white-50 p-8 rounded-xl shadow-lg section-fade-in border border-gray-100">
                 <div class="text-center">
@@ -344,6 +333,31 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                   
                       
             </div>
+            <!-- Elder Square Card -->
+
+            <div class="bg-white-50 p-8 rounded-xl shadow-lg section-fade-in border border-gray-100">
+                <div class="text-center">
+                  <!-- Fixed height logo container -->
+                  <div style= "height: 40vh;" class="flex items-center justify-center h-[23vw] min-h-[150px] max-h-[300px]">
+                    <img 
+                      src="eldersquare.png"
+                      alt="Elder Square Logo"
+                      class="max-h-full w-auto object-contain"
+                    >
+                  </div>
+                  <h3 class="text-3xl font-bold text-gray-800 mb-3 mt-6">Elder Square</h3>
+                  <p class="font-semibold text-uae-green mb-4">The Hands That Build Our Nation</p>
+                </div>`
+                <!-- <p class="text-gray-600 leading-relaxed text-center">The talented and spirited residents of Elder Square are the heart of this project. Their hands, rich with life and experience, will be stitching every piece of this monumental flag. Elder Square provides a vibrant, revolutionary community for seniors to thrive, and their participation embodies the wisdom and legacy we aim to celebrate.</p> -->
+            
+                <p class="text-gray-600 leading-relaxed text-center">
+                    The spirited residents of <strong>Elder Square</strong> — a groundbreaking senior healthcare and social club in Dubai — are the living essence of Threads of Unity.<br><br>
+                    Their hands, enriched with wisdom, experience, and compassion, will carefully stitch every piece of this monumental UAE flag.<br><br>
+                    Elder Square stands as a vibrant community where seniors thrive physically, mentally, and socially. Located in Jumeirah 1, it redefines geriatric care through world-class medical services, engaging activities, and a strong sense of belonging.<br><br>
+                    Their participation in Threads of Unity reflects the values of strength, legacy, and unity — honoring those whose contributions and stories have helped build the very fabric of our nation.
+                  </p>
+                  
+            </div>
         </div>
     </div>
 </section>
@@ -375,7 +389,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                         <input type="tel" id="mobile" name="entry.1951800791" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input" required="">
                     </div>
                     <div>
-                        <label for="ageGroup" class="block text-sm font-medium text-gray-700 mb-1">Age Group</label>
+                        <label for="ageGroup" class="block text-sm font-medium text-gray-700 mb-1">Age Group *</label>
                         <select id="ageGroup" name="entry.1028581668" class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input">
                             <option value="18-35 (Youth Volunteer)">18-35 (Youth Volunteer)</option>
                             <option value="36-53 (Adult Volunteer)">36-53 (Adult Volunteer)</option>
@@ -385,16 +399,17 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                     </div>
                 </div>
                 <div class="mb-6">
-                    <label for="hearAbout" class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?</label>
+                    <label for="hearAbout" class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us? *</label>
                     <input type="text" id="hearAbout" name="entry.1354843586" required class="w-full p-3 bg-gray-100 border border-gray-300 rounded-md form-input">
                 </div>
+                <p>☑️ I consent to the use of my photos and videos taken during the event by Be Kind Friends and Elder Square for promotional, digital, and social media purposes.</p>
                 <div class="text-center mt-8">
                     <button id="submitButton" type="submit" class="bg-sand-gold text-dark-charcoal py-3 px-12 rounded-full text-lg hover:bg-opacity-90 shadow-lg hover:shadow-xl transition-all duration-300 w-full md:w-auto cta-button">Register My Place</button>
                 </div>
             </form>
             <div id="successMessage" class="hidden mt-6 text-center p-4 bg-green-100 border border-green-400 text-green-800 rounded-md">
                 <p class="font-bold">Thank you for registering!</p>
-                <p>You are officially part of the Threads of Unity. We will be in touch with more details soon.</p>
+                <p>You’re one stitch closer to unity. Event details will be sent to your email soon.</p>
             </div>
         </div>
     </div>
@@ -403,14 +418,12 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
 <!-- Footer -->
 <footer style="background-color: white;" class="bg-white text-black py-12">
     <div class="container mx-auto px-6 text-center">
-        <h3 class="text-3xl text-gray-300 font-bold mb-4">
+        <h3 class="text-3xl text-black-300 font-bold mb-4">
              Threads of Unity
         </h3>
-        <p class="text-gray-300 mb-6">#ThreadsOfUnity &nbsp; #StitchForTheNation &nbsp; #UAE54Plus</p>
+        <p class="text-black-300 mb-6">#ThreadsOfUnity &nbsp; #StitchForTheNation &nbsp; #UAE54Plus</p>
         <div class="flex justify-center space-x-6 mb-8">
-            <!-- <a href="https://www.facebook.com/share/1AcKoWetkd/?mibextid=wwXIfr" target="_blank" class="text-gray-300 hover:text-white transition-colors" aria-label="Facebook">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path></svg>
-            </a> -->
+
             <a href="https://www.facebook.com/share/1AcKoWetkd/?mibextid=wwXIfr" 
             target="_blank" 
             aria-label="Facebook">
@@ -419,39 +432,18 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                 class="w-6 h-6 hover:scale-110 transition-transform duration-300">
             </a>
 
-            <!-- <a href="https://www.instagram.com/bekindfriendsofficial?igsh=MW55azhwdXk3NGt2MQ=="target="_blank" class="text-gray-300 hover:text-white transition-colors" aria-label="Instagram">
-                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.161 1.043c-1.049.043-1.696.2-2.186.385a3.892 3.892 0 00-1.426.918 3.892 3.892 0 00-.918 1.426c-.185.49-.342 1.137-.385 2.186-.043 1.023-.054 1.35-.054 3.666s.011 2.643.054 3.666c.043 1.049.2 1.696.385 2.186.202.533.477.938.918 1.426.44.44.893.715 1.426.918.49.185 1.137.342 2.186.385 1.023.043 1.35.054 3.666.054s2.643-.011 3.666-.054c1.049-.043 1.696-.2 2.186-.385.533-.202.938-.477 1.426-.918.44-.44.715-.893.918-1.426.185-.49.342-1.137.385-2.186.043-1.023.054-1.35.054-3.666s-.011-2.643-.054-3.666c-.043-1.049-.2-1.696-.385-2.186a3.892 3.892 0 00-.918-1.426 3.892 3.892 0 00-1.426-.918c-.49-.185-1.137-.342-2.186-.385-1.023-.043-1.35-.054-3.666-.054s-2.643.011-3.666.054zm2.593 2.15a4.49 4.49 0 100 8.98 4.49 4.49 0 000-8.98zm-2.433 4.49a2.433 2.433 0 114.866 0 2.433 2.433 0 01-4.866 0zm7.147-4.49a1.08 1.08 0 100 2.16 1.08 1.08 0 000-2.16z" clip-rule="evenodd"></path></svg>
-            </a> -->
+      
             <a href="https://www.instagram.com/bekindfriendsofficial?igsh=MW55azhwdXk3NGt2MQ==" target="_blank" aria-label="Instagram">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" 
                      alt="Instagram Logo" class="w-6 h-6">
               </a>
               
-            <!-- <a href="https://x.com/bkindfriends?s=11" target="_blank" 
-            class="text-gray-400 hover:text-white transition-colors" 
-            aria-label="X (Twitter)">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-                fill="currentColor" 
-                viewBox="0 0 24 24" 
-                class="w-6 h-6">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-            </a> -->
             <a href="https://x.com/bkindfriends?s=11" target="_blank" aria-label="Twitter">
                 <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" 
                      alt="Twitter X Logo" class="w-6 h-6">
               </a>
               
-            <!-- <a href="https://x.com/bkindfriends?s=11" target="_blank"
-            class="text-gray-400 hover:text-yellow-400 transition-colors"
-            aria-label="Snapchat">
-           <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="w-6 h-6">
-             <path d="M12 2c2.6 0 4.8 1.8 5.3 4.3.3 1.6 0 3.1.4 4.2.3.8.8 1.2 1.5 1.5.3.1.6.3.8.6.2.3.2.7-.1.9-.3.3-.8.3-1.1.5-.3.2-.4.4-.4.7s.1.5.3.7c.4.4 1 .7 1.6.8.5.1.8.5.8 1 0 .6-.5 1-1.1 1.1-.5.1-1 .1-1.4.3-.3.1-.5.3-.7.5-.2.3-.2.6 0 .8.2.3.6.5.9.7.3.2.6.4.6.8 0 .6-.5 1.1-1.1 1.1-.4 0-.8-.1-1.2-.3-.3-.1-.6-.2-.9-.4-.4-.2-.8-.4-1.3-.3-.4.1-.8.4-1.2.5-.6.3-1.2.4-1.8.4s-1.2-.1-1.8-.4c-.4-.2-.8-.5-1.2-.5-.5-.1-.9.1-1.3.3-.3.2-.6.3-.9.4-.4.2-.8.3-1.2.3-.6 0-1.1-.5-1.1-1.1 0-.4.3-.6.6-.8.3-.2.7-.4.9-.7.2-.2.2-.5 0-.8-.2-.3-.4-.4-.7-.5-.4-.2-.9-.2-1.4-.3-.6-.1-1.1-.5-1.1-1.1 0-.5.3-.9.8-1 .6-.1 1.2-.4 1.6-.8.2-.2.3-.5.3-.7s-.1-.5-.4-.7c-.3-.2-.8-.2-1.1-.5-.3-.2-.3-.6-.1-.9.2-.3.5-.5.8-.6.7-.3 1.2-.7 1.5-1.5.4-1.1.1-2.6.4-4.2C7.2 3.8 9.4 2 12 2z"/>
-           </svg>
-         </a> -->
+         
          <a href="https://www.snapchat.com/add/bekindfriends" target="_blank" aria-label="Snapchat">
             <img
               src="https://www.svgrepo.com/show/303130/snapchat-logo.svg"
@@ -459,10 +451,16 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
               class="w-6 h-6"
             >
           </a>
+
+          <a href="https://www.linkedin.com/company/be-kind-friends/" target="_blank" aria-label="LinkedIn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" 
+                 alt="LinkedIn Logo" class="w-6 h-6">
+          </a>
+           
           
          
         </div>
-        <p class="text-sm text-gray-400">© 2025 Threads of Unity Initiative. A collaboration between Elder Square &amp; Be Kind Friends. All Rights Reserved.</p>
+        <p class="text-sm text-black-400">© 2025 Threads of Unity Initiative. A collaboration between Elder Square &amp; Be Kind Friends. All Rights Reserved.</p>
     </div>
 </footer>
 

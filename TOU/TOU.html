@@ -213,9 +213,16 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
             <a href="#register" style="background-color: #000; color: white;" class="bg-white border border-uae-green text-uae-green py-2 px-6 rounded-full hover:bg-uae-green hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 cta-button">Register Now</a>
         </div>
         <div class="md:hidden">
-            <button id="menu-btn" class="text-gray-800 focus:outline-none">
+            <!-- <button id="menu-btn" class="text-gray-800 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+            </button> -->
+
+            <button id="menu-btn" class="text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+              
         </div>
     </nav>
     <!-- Mobile Menu -->
@@ -347,7 +354,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                   </div>
                   <h3 class="text-3xl font-bold text-gray-800 mb-3 mt-6">Elder Square</h3>
                   <p class="font-semibold text-uae-green mb-4">The Hands That Build Our Nation</p>
-                </div>`
+                </div>
                 <!-- <p class="text-gray-600 leading-relaxed text-center">The talented and spirited residents of Elder Square are the heart of this project. Their hands, rich with life and experience, will be stitching every piece of this monumental flag. Elder Square provides a vibrant, revolutionary community for seniors to thrive, and their participation embodies the wisdom and legacy we aim to celebrate.</p> -->
             
                 <p class="text-gray-600 leading-relaxed text-center">
@@ -471,6 +478,14 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
     const mobileMenu = document.getElementById('mobile-menu');
     menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
+    });
+
+     // Close menu when any link inside mobile menu is clicked
+     const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
     });
 
     // Intersection Observer for section animations

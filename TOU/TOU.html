@@ -65,7 +65,6 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
 
 </script>
 
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Threads of Unity - Stitching the Spirit of the UAE</title>
     <script src="https://cdn.tailwindcss.com/"></script>
@@ -198,20 +197,110 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
       scroll-behavior: smooth;
     }
   </style>
-  
+
+<style>
+    /* Base logo style */
+    .logo-img {
+  height: 50px;   /* Base size for normal screens */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Small screens (phones) */
+@media (max-width: 640px) {
+  .logo-img {
+    height: 100px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .logo-img {
+    height: 100px;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1025px) {
+  .logo-img {
+    height: 100px;   /* Increased for large screens */
+  }
+}
+
+/* Extra-large screens (monitors) */
+@media (min-width: 1440px) {
+  .logo-img {
+    height: 100px;   /* Even bigger for very large displays */
+  }
+}
+
+.logo-footer {
+  height: 50px;   /* Base size for normal screens */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Small screens (phones) */
+@media (max-width: 640px) {
+  .logo-footer {
+    height: 300px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .logo-footer {
+    height: 300px;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1025px) {
+  .logo-footer {
+    height: 500px;   /* Increased for large screens */
+  }
+}
+
+/* Extra-large screens (monitors) */
+@media (min-width: 1440px) {
+  .logo-footer {
+    height: 500px;   /* Even bigger for very large displays */
+  }
+}
+
+ </style>
+
+<style>
+    /* Enable marquee only for larger screens */
+    @media (min-width: 768px) {
+      .marquee-container {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 18s linear infinite;
+      }
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    </style>
+
 </head>
 <body class="bg-gray-50">
-
 <!-- Header -->
-<header class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
-    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<header style="background-color: white;" class="bg-white/90 backdrop-blur-lg sticky top-0 z-50 shadow-md">
+    <nav class="container mx-auto px-6 py-1 flex justify-between items-center">
         <!-- <a href="blob:https://04u9dc8bnu98cwpllq52cwepay18khoexkp4t46sebnky5seu4-h822042238.scf.usercontent.goog/f0814de0-7489-4cdb-bb11-dafcd259dee2#" class="text-2xl font-bold text-gray-800">
             <span class="text-uae-green">Threads</span><span class="text-uae-red"> of</span> Unity
         </a> -->
-        <a href="#" class="text-2xl font-bold text-gray-800 mx-auto md:mx-0 md:text-left text-center">
-            <span class="text-uae-green">Threads</span>
-            <span class="text-uae-red"> of</span> Unity
-          </a>
+        <a href="#" id="logotou">
+            <img 
+              src="threadsofunitylogo.png" 
+              alt="Threads of Unity Logo" 
+              class="logo-img"
+            >
+          </a> 
       
         <div class="hidden md:flex items-center space-x-8">
             <a href="#about" class="text-gray-600 hover:text-uae-green transition-colors">The Initiative</a>
@@ -249,7 +338,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
         <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-8 font-light" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);">Join us to hand-stitch the longest UAE flag—a tapestry of our nation's pride, woven by the hands of its people.</p>
         <!-- <a href="#register" class="bg-uae-red text-white py-3 px-10 rounded-full text-lg hover:bg-uae-red/90 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 cta-button animate-pulse-bright">Become a Part of History</a> -->
         <a href="#register" 
-        class="bg-uae-red text-white py-3 px-8 rounded-full 
+        class="bg-uae-red text-white py-3 px-10 rounded-full 
                 text-base sm:text-lg md:text-xl 
                 hover:bg-uae-red/90 shadow-xl hover:shadow-2xl 
                 transition-all duration-300 transform hover:scale-105 
@@ -258,6 +347,24 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
         </a>
     </div>
 </section>
+
+<!-- <section class="mb-0 pb-0">
+    <h2 
+      style="color:#49422d; background-color:#F7F0DD;" 
+      class="text-4xl md:text-5xl font-bold mb-0 text-center py-4 md:py-6 px-4 md:px-8">
+      Every Stitch, A Story. Every Thread, Our Legacy.
+    </h2>
+  </section> -->
+  <section class="mb-0 pb-0" style="background-color:#F7F0DD; overflow:hidden;">
+    <div class="marquee-container">
+      <h2 
+        style="color:#49422d;"
+        class="text-4xl md:text-5xl font-bold mb-0 text-center py-4 md:py-6 px-4 md:px-8">
+        Every Stitch, A Story. Every Thread, Our Legacy.
+      </h2>
+    </div>
+  </section>
+  
 
 <!-- About the Initiative Section -->
 <section id="about" class="py-20 md:py-28 bg-white">
@@ -383,9 +490,7 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
                     The spirited residents of Elder Square — a groundbreaking senior community and health daycare center in Dubai — are the living essence of Threads of Unity. Their hands, enriched with wisdom, experience, and compassion, will carefully stitch pieces of this monumental UAE flag.<br><br>
                     As the UAE's first dedicated healthcare center for individuals aged 60 and above, Elder Square redefines geriatric care by providing a complete continuum of services. More than just a medical facility, it is a vibrant community where seniors flourish physically, mentally, and socially, offering everything from advanced day care and rehabilitation to engaging recreational activities.<br><br>
                     Founded by Tamara Binladin, Elder Square ensures seniors remain connected and active members of society. Their participation in Threads of Unity beautifully reflects the values of strength, legacy, and unity — honoring the generation whose contributions and stories have helped build the very fabric of our nation.
-                  </p>
-                  
-                  
+                  </p>  
             </div>
         </div>
     </div>
@@ -454,15 +559,16 @@ Node.ELEMENT_NODE&&m.target.tagName==="IMG"&&g(m.target,!0):m.type==="attributes
   
 <!-- <p>Total registrations so far: <strong id="submissionCount">Loading...</strong></p> -->
 
-  
-
 
 <!-- Footer -->
 <footer style="background-color: white;" class="bg-white text-black py-12">
     <div class="container mx-auto px-6 text-center">
-        <h3 class="text-3xl text-black-300 font-bold mb-4">
+
+        <img src="threadsofunitylogo.png" alt="Threads of Unity Logo" class="logo-footer mx-auto mb-4">
+
+        <!-- <h3 class="text-3xl text-black-300 font-bold mb-4">
              Threads of Unity
-        </h3>
+        </h3> -->
         <p class="text-black-300 mb-6">#ThreadsOfUnity &nbsp; #StitchForTheNation &nbsp; #UAE54</p>
         <div class="flex justify-center space-x-6 mb-8">
 

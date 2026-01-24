@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands To Go | Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* Shared Design System */
+        :root {
+            --brand-red: #EF3340;
+            --brand-red-dark: #AB001F;
+            --secondary-purple: #6C5E7E;
+            --secondary-beige: #DBC9B1;
+            --secondary-gold: #CEA988;
+            --primary-black: #0c0c0c;
+            --off-white: #f8f8f8;
+            --grey-200: #e0e0e0;
+            --grey-400: #888888;
+            
+            --font-primary: 'ITC Fenice', 'Playfair Display', serif;
+            --font-secondary: 'Gotham Pro Black', 'Montserrat', sans-serif;
+            
+            --nav-h: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-primary); background-color: var(--off-white); color: var(--primary-black); line-height: 1.6; }
+        
+        h1, h2, h3, h4, .btn, .badge, .nav-links a { font-family: var(--font-secondary); }
+        h1 { font-size: 4rem; text-transform: uppercase; font-weight: 900; }
+        
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
+        .section-py { padding: 100px 0; }
+        .grid { display: grid; }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; height: var(--nav-h); background: white; display: flex; align-items: center; z-index: 1000; border-bottom: 1px solid #f0f0f0; }
+        .nav-content { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -1.5px; font-family: var(--font-secondary); text-decoration: none; color: black; }
+        .brand-logo span { color: var(--brand-red); }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--secondary-purple); font-weight: 900; font-size: 12px; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--brand-red); }
+        .nav-cta { background: var(--brand-red); color: white !important; padding: 10px 18px; }
+
+        /* Job Filter & List */
+        .badge { background: var(--brand-red); color: white; padding: 6px 14px; font-size: 11px; font-weight: 800; text-transform: uppercase; display: inline-block; margin-bottom: 16px; }
+        .form-control { width: 100%; padding: 16px; border: 1px solid var(--grey-200); margin-bottom: 16px; font-family: var(--font-primary); font-size: 1rem; border-radius: 0; outline: none; }
+        .form-control:focus { border-color: var(--brand-red); }
+
+        .job-card { background:white; border-bottom:1px solid #eee; padding:30px; margin-bottom:10px; cursor:pointer; transition: 0.2s; }
+        .job-card:hover { border-left: 5px solid var(--brand-red); padding-left: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+
+        /* Modal */
+        .modal { position: fixed; inset: 0; background: rgba(108, 94, 126, 0.9); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 20px; }
+        .modal.open { display: flex; }
+        .modal-inner { background: white; width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; padding: 50px; position: relative; }
+        .close-modal { position: absolute; top: 25px; right: 25px; font-size: 30px; cursor: pointer; color: var(--grey-400); }
+        
+        .btn-red { background: var(--brand-red); color: white; border: none; padding: 15px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
+        .btn-red:hover { background: var(--brand-red-dark); }
+        .grid-2 { grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        @media (max-width:900px) { .layout-grid { display: block; } .grid-2 { grid-template-columns: 1fr; } aside { margin-bottom: 40px; } }
+        
+        .layout-grid { display: grid; grid-template-columns: 280px 1fr; gap: 60px; margin-top: 60px; }
+        
+        
+    </style>
+
+<style>
+    .brand-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .brand-logo img {
+        height: 290px;       /* adjust as needed */
+        width: auto;
+        object-fit: contain;
+    }
+
+
+    @media (max-width: 768px) {
+        .brand-logo img {
+            height: 290px;
+        }
+    }
+
+    .brand-logo {
+    flex-shrink: 0;
+    }
+
+    /* 
+    ------------------------------------------------------------------
+    FOOTER
+    ------------------------------------------------------------------
+    */
+    footer { background: var(--primary-black); color: white; padding: 100px 0 50px 0; }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+    .footer-col h5 { margin-bottom: 30px; font-size: 14px; opacity: 0.5; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: white; text-decoration: none; opacity: 0.8; transition: var(--transition); font-size: 15px; }
+    .footer-links a:hover { opacity: 1; padding-left: 8px; }
+
+    .logoFooter{
+        margin-top: -35%;
+    }
+
+
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-content">
+            <!-- <a href="index.html" class="brand-logo">BRANDS <span>TO GO.</span></a> -->
+            <a href="index.html" class="brand-logo" style="background:none">
+                <img src="images/logo.png" alt="Brands To Go">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="careers.html" class="active">Careers</a></li>
+                <li><a href="careers.html" class="nav-cta">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main style="margin-top: 80px;">
+        <section class="section-py container">
+            <span class="badge">Join The Team</span>
+            <h1>Pioneer With Us.</h1>
+            <p>Join the launch team for the most anticipated retail opening in Abu Dhabi.</p>
+            
+            <div class="layout-grid">
+                <aside>
+                    <div style="margin-bottom: 40px;">
+                        <h4 style="font-size: 13px; margin-bottom: 20px;">Mall Site</h4>
+                        <select class="form-control" id="f-loc" onchange="jobSystem.renderJobs()">
+                            <option value="all">All Sites</option>
+                            <option value="Reem Mall">Reem Mall</option>
+                            <option value="Al Wahda">Al Wahda Mall</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom: 40px;">
+                        <h4 style="font-size: 13px; margin-bottom: 20px;">Category</h4>
+                        <select class="form-control" id="f-dep" onchange="jobSystem.renderJobs()">
+                            <option value="all">All Roles</option>
+                            <option value="Retail">Retail & Styling</option>
+                            <option value="Operations">Operations</option>
+                            <option value="Management">Management</option>
+                        </select>
+                    </div>
+                </aside>
+                <div id="job-list-container">
+                    <!-- Dynamic Jobs -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- APPLICATION MODAL -->
+    <div id="modal-app" class="modal">
+        <div class="modal-inner">
+            <div class="close-modal" onclick="jobSystem.closeModal()">&times;</div>
+            <div id="role-data"></div>
+            <hr style="margin:30px 0; border:0; border-top: 1px solid var(--grey-200);">
+            
+            <h3 style="margin-bottom: 20px;">Submit Application</h3>
+            <form id="apply-form" onsubmit="jobSystem.handleApply(event)">
+                <input type="hidden" name="applied_role" id="target-role">
+                <div class="grid grid-2">
+                    <div>
+                        <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">FULL NAME *</label>
+                        <input type="text" name="name" required class="form-control">
+                    </div>
+                    <div>
+                        <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">EMAIL *</label>
+                        <input type="email" name="email" required class="form-control">
+                    </div>
+                </div>
+                <div class="grid grid-2">
+                    <div>
+                        <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">PHONE *</label>
+                        <input type="tel" name="phone" required class="form-control">
+                    </div>
+                    <div>
+                        <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">PREFERRED SITE</label>
+                        <select name="mall_pref" class="form-control">
+                            <option>Reem Mall</option>
+                            <option>Al Wahda Mall</option>
+                        </select>
+                    </div>
+                </div>
+                <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">UPLOAD CV (PDF) *</label>
+                <input type="file" id="cv" required accept=".pdf" class="form-control">
+                
+                <p id="msg" style="display:none; text-align:center; padding:15px; margin-bottom:15px;"></p>
+                <button type="submit" class="btn btn-red" style="width:100%;" id="btn-submit">Submit Credentials</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        const JOBS = [
+            { title: 'Flagship General Manager', loc: 'Reem Mall', dep: 'Management', desc: 'Direct operations for our largest UAE flagship.' },
+            { title: 'Fashion Advisor (Sales)', loc: 'Reem Mall', dep: 'Retail', desc: 'Expert customer service focusing on styling.' },
+            { title: 'Merchandising Lead', loc: 'Reem Mall', dep: 'Retail', desc: 'Craft high-converting visual floor plans.' },
+            { title: 'Site Supervisor', loc: 'Al Wahda Mall', dep: 'Management', desc: 'Run daily floor ops for the city flagship.' },
+            { title: 'Inventory Analyst', loc: 'Al Wahda Mall', dep: 'Operations', desc: 'Audit and manage incoming global surpluses.' },
+            { title: 'Front of House Host', loc: 'Al Wahda Mall', dep: 'Retail', desc: 'Greeting and providing elite service to our VIP visitors.' }
+        ];
+
+        const jobSystem = {
+            renderJobs: () => {
+                const locVal = document.getElementById('f-loc').value;
+                const depVal = document.getElementById('f-dep').value;
+                
+                const filtered = JOBS.filter(j => {
+                    const lM = (locVal === 'all' || j.loc.includes(locVal));
+                    const dM = (depVal === 'all' || j.dep === depVal);
+                    return lM && dM;
+                });
+
+                const container = document.getElementById('job-list-container');
+                if (filtered.length === 0) {
+                    container.innerHTML = '<div style="background:white; padding:40px; text-align:center;">No openings currently available for this search.</div>';
+                    return;
+                }
+
+                container.innerHTML = filtered.map(j => `
+                    <div class="job-card" onclick="jobSystem.openModal('${j.title}', '${j.desc}', '${j.loc}')">
+                        <div class="badge" style="margin-bottom:10px;">${j.loc}</div>
+                        <h4 style="margin-bottom:5px;">${j.title}</h4>
+                        <p style="font-size:0.9rem; color:var(--secondary-purple);">${j.dep} Department • UAE Nationals & Expats</p>
+                    </div>
+                `).join('');
+            },
+
+            openModal: (title, desc, loc) => {
+                document.getElementById('role-data').innerHTML = `
+                    <div class="badge">${loc}</div>
+                    <h2 style="margin-top:20px; font-size:2rem;">${title}</h2>
+                    <p style="margin-top:15px; font-size: 1.1rem;">${desc}</p>
+                `;
+                document.getElementById('target-role').value = title;
+                document.getElementById('modal-app').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            },
+
+            closeModal: () => {
+                document.getElementById('modal-app').classList.remove('open');
+                document.body.style.overflow = 'auto';
+                document.getElementById('apply-form').reset();
+            },
+
+            handleApply: (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('btn-submit');
+                const msg = document.getElementById('msg');
+                
+                btn.innerText = "Transmitting Credentials...";
+                btn.disabled = true;
+
+                // Simulate API Call
+                setTimeout(() => {
+                    msg.style.display = "block";
+                    msg.innerText = "✓ Application received.";
+                    msg.style.color = "#AB001F"; // Dark Red
+                    
+                    setTimeout(() => {
+                        btn.innerText = "Submit Credentials";
+                        btn.disabled = false;
+                        msg.style.display = 'none';
+                        jobSystem.closeModal();
+                    }, 2000);
+                }, 1000);
+            }
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', jobSystem.renderJobs);
+    </script>
+
+<footer>
+    <div class="container">
+        <div class="grid footer-grid">
+            <div class="footer-col">
+                <div class="brand-logo"> <img class="logoFooter" src="images/logo.png" alt="Brands To Go"></div>
+                <p style="margin-top: -20%; color: white;">A premium fashion ecosystem bridging the gap between designer surplus and eco-conscious shopping enthusiasts in the MENA region.</p>
+            </div>
+            <div class="footer-col">
+                <h5>Connect</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">TikTok</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Company</h5>
+                <ul class="footer-links">
+                    <li><a href="story.html">Our Story</a></li>
+                    <li><a href="locations.html">Locations</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Direct</h5>
+                <p style="color:white; font-size:14px; margin-top:5px;">careers@brandstogo.me</p>
+                <p style="color:white; font-size:14px; margin-top:5px;">+971 00 000 0000</p>
+            </div>
+        </div>
+        <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
+            <p style="font-size:12px;">© 2026 BRANDS TO GO. ALL RIGHTS RESERVED.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

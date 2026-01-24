@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brands To Go | Home</title>
+    <!-- Fonts Fallback -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* DESIGN SYSTEM */
+        :root {
+            --brand-red: #EF3340;
+            --brand-red-dark: #AB001F;
+            --secondary-purple: #6C5E7E;
+            --secondary-beige: #DBC9B1;
+            --secondary-gold: #CEA988;
+            
+            --primary-black: #0c0c0c;
+            --off-white: #f8f8f8;
+            --pure-white: #ffffff;
+            --grey-100: #f0f0f0;
+
+            /* Requested Fonts with Google/System Fallbacks */
+            --font-primary: 'ITC Fenice', 'Playfair Display', 'Times New Roman', serif;
+            --font-secondary: 'Gotham Pro Black', 'Montserrat', 'Segoe UI Black', sans-serif;
+            
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --container-max: 1300px;
+            --nav-h: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: white;
+            color: var(--primary-black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, .btn, .nav-links a, .badge { font-family: var(--font-secondary); }
+        h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-weight: 900; }
+        
+        h1 { font-size: clamp(3rem, 12vw, 7rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 30px; }
+        p { color: var(--secondary-purple); font-size: 1.2rem; font-family: var(--font-primary); }
+
+        /* UTILITIES */
+        .container { max-width: var(--container-max); margin: 0 auto; padding: 0 5%; }
+        .section-py { padding: 100px 0; }
+        .grid { display: grid; }
+        .center { text-align: center; }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block; padding: 18px 36px; background: var(--primary-black); color: white;
+            text-decoration: none; text-transform: uppercase; font-size: 13px; font-weight: 900;
+            letter-spacing: 1.5px; transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn:hover { background: var(--brand-red); transform: translateY(-2px); }
+        .btn-red { background: var(--brand-red); color: white; }
+        .btn-red:hover { background: var(--brand-red-dark); }
+        
+        .badge {
+            background: var(--brand-red); color: white; padding: 6px 14px;
+            font-size: 11px; font-weight: 800; text-transform: uppercase; 
+            letter-spacing: 1.5px; display: inline-block; margin-bottom: 16px;
+        }
+
+        /* img { width: 100%; height: auto; object-fit: cover; display: block; background: var(--secondary-beige); } */
+
+        img { width: 100%; height: auto; object-fit: cover; display: block; }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed; top: 0; width: 100%; height: var(--nav-h);
+            background: white; display: flex; align-items: center;
+            z-index: 1000; transition: var(--transition); border-bottom: 1px solid var(--grey-100);
+        }
+        nav.scrolled { box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 70px; }
+        .nav-content { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo { font-size: 1.4rem; font-weight: 900; letter-spacing: -1.5px; font-family: var(--font-secondary); text-decoration: none; color: black; }
+        .brand-logo span { color: var(--brand-red); }
+        .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; color: var(--secondary-purple); font-weight: 900; font-size: 12px;
+            text-transform: uppercase; cursor: pointer; transition: var(--transition); letter-spacing: 1px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--brand-red); }
+        .nav-cta { background: var(--brand-red); color: white !important; padding: 10px 18px; }
+        .nav-cta:hover { background: var(--brand-red-dark) !important; }
+
+        /* HOME SPECIFIC STYLES */
+        .hero-banner {
+            position: relative; height: 100vh;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+            background: var(--primary-black);
+        }
+        .hero-img { position: absolute; inset: 0; z-index: 1; }
+        .hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .hero-overlay { position: relative; z-index: 2; text-align: center; color: var(--pure-white); }
+        .hero-overlay p { color: var(--secondary-beige); letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-secondary); font-weight: 700; margin-bottom: 20px; font-size: 1rem; }
+
+        .card { background: white; transition: var(--transition); border-left: 0 solid var(--brand-red); border-bottom: 1px solid var(--grey-100); }
+        .card:hover { transform: translateY(-5px); border-left-width: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-img { height: 400px; overflow: hidden; }
+        .card-body { padding: 40px; }
+        .card-body h3 { font-size: 1.8rem; margin: 10px 0; }
+
+        .hiring-teaser { background:#6C5E7E ; color: white; text-align: center; padding: 100px 0; }
+        .hiring-teaser h2 { color: white; font-size: 3.5rem; }
+        .hiring-teaser p { color: rgba(255,255,255,0.9); margin-bottom: 40px; font-size: 1.3rem; }
+
+        .grid-2 { grid-template-columns: 1fr 1fr; gap: 40px; }
+
+       
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            h1 { font-size: 3.5rem; }
+        }
+
+        .hero-banner::after {
+            content: "";          /* REQUIRED */
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                rgba(0,0,0,0.55),
+                rgba(0,0,0,0.35)
+            );
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            inset: 0;
+            z-index: 2; /* text above overlay */
+        }
+
+        .opensoonTxt { position: relative; z-index: 2; text-align: center; color: var(--pure-black); }
+        .opensoonTxt p { color: #EF3340; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-secondary); font-weight: 700; margin-bottom: 20px; font-size: 1rem; }
+
+
+    </style>
+
+<style>
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: #CEA988;
+    padding: 18px 0;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.08);
+}
+
+.marquee-track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee 45s linear infinite;
+}
+
+.marquee-track span {
+    margin-right: 60px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    color: white;
+}
+
+/* Continuous marquee animation */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
+
+.video-text-section {
+    display: flex;
+    width: 100%;
+    min-height: 70vh;
+}
+
+/* 50 / 50 layout */
+.video-box,
+.text-box {
+    width: 50%;
+}
+
+/* Video styling */
+.video-box {
+    overflow: hidden;
+}
+
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none; /* no interaction */
+}
+
+/* Text content */
+.text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    background: #ab001f;
+    color: white;
+}
+
+.text-box h2 {
+    font-size: 48px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+}
+
+.text-box p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 480px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .text-box {
+        padding: 40px;
+    }
+
+    .text-box h2 {
+        font-size: 38px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .video-text-section {
+        flex-direction: column;
+    }
+
+    .video-box,
+    .text-box {
+        width: 100%;
+    }
+
+    .video-box {
+        height: 40vh;
+    }
+
+    .text-box {
+        padding: 30px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .text-box h2 {
+        font-size: 32px;
+    }
+
+    .text-box p {
+        font-size: 16px;
+    }
+}
+
+    .brand-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    .brand-logo img {
+        height: 290px;       /* adjust as needed */
+        width: auto;
+        object-fit: contain;
+    }
+
+
+    @media (max-width: 768px) {
+        .brand-logo img {
+            height: 290px;
+        }
+    }
+
+    .brand-logo {
+    flex-shrink: 0;
+    }
+
+
+    .text-box h2 {
+        color: white;
+        font-size: 42px;
+        /* transition: all 0.4s ease; */
+    /* }
+
+
+    .text-box h2:hover { */
+        background: linear-gradient(
+            90deg,
+            #CEA988,
+            white
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .textStrip p{
+        font-size: 40px;
+        color: black;
+    }
+
+    .textStrip {
+    position: relative;
+    margin-top: -35px;              /* pulls it up over previous section */
+    /* padding: 2.5% 6%; */
+    background-color: white;
+    border-radius: 40px 40px 0 0;   /* rounded top corners */
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+    z-index: 5;
+}
+
+/* Text styling (optional but recommended) */
+.textStrip p {
+    margin: 0;
+    text-align: left;
+    font-size: 40px;
+    line-height: 1.6;
+    color: white;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-inline: auto;
+}
+
+
+.gradient-subtext {
+    transition: all 0.35s ease;
+    cursor: default;
+}
+
+/* Hover gradient */
+.gradient-subtext:hover {
+    background: linear-gradient(
+        90deg,
+        #CEA988,
+        white
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+.dual-image-banner{
+    position: relative;        /* REQUIRED for layering */
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+}
+
+.dual-image-banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.dual-image-banner h2{
+    position: absolute;
+    inset: 0;
+    margin:0;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-family: inherit;
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+ /* 
+    ------------------------------------------------------------------
+    FOOTER
+    ------------------------------------------------------------------
+    */
+    footer { background: var(--primary-black); color: white; padding: 100px 0 50px 0; }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+    .footer-col h5 { margin-bottom: 30px; font-size: 14px; opacity: 0.5; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: white; text-decoration: none; opacity: 0.8; transition: var(--transition); font-size: 15px; }
+    .footer-links a:hover { opacity: 1; padding-left: 8px; }
+
+    .logoFooter{
+        margin-top: -40%;
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="container nav-content">
+            <!-- <a href="index.html" class="brand-logo">BRANDS <span>TO GO.</span></a> -->
+            <a href="index.html" class="brand-logo" style="background:none">
+                <img src="images/logo.png" alt="Brands To Go">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="locations.html">Locations</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="careers.html" class="nav-cta">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main style="margin-top: 5%;"> 
+        <!-- <div class="marquee-wrapper">
+            <div class="marquee-content">
+                <span>Your Brands. Your Prices.</span>
+                <span>Luxury made accessible. Upto 70% off on retail</span>
+                <span>Opening soon in Abu Dhabi</span>
+                <span>Built with love in UAE</span>
+            </div>
+        </div> -->
+        <div class="marquee-wrapper">
+            <span style="margin-right: 100px;"></span>
+            <div class="marquee-track">
+                <span>Your Brands. Your Prices.</span>
+                <span>Luxury made accessible. Up to 70% off</span>
+                <span>Opening soon in Abu Dhabi</span>
+                <span>Built with love in UAE</span>
+                <!-- Duplicate content inline -->
+                <span>Your Brands. Your Prices.</span>
+                <span>Luxury made accessible. Up to 70% off</span>
+                <span>Opening soon in Abu Dhabi</span>
+                <span>Built with love in UAE</span>
+            </div>
+        </div>
+        
+        
+
+     
+
+        <section style="padding: 2%; padding-bottom: 2vw; background-color: white;" class="opensoonTxt">
+         <p>Establishing UAE's Premier Value Hub</p>
+                <h2 style="color: black;">OPENING 2026 in Abu Dhabi</h2>
+        </section>
+
+        <!-- <section class="hero-banner">
+            <div class="hero-img">
+                <img src="images/banner.png" alt="Brands To Go Opening Soon">
+            </div>
+            <div class="hero-overlay">
+                <p>Establishing UAE's Premier Value Hub</p>
+                <h1>OPENING <br>SOON</h1>
+            </div>
+        </section> -->
+
+        <section class="video-text-section">
+            <div class="video-box">
+                <video autoplay muted loop playsinline>
+                    <source src="videos/lady-store.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        
+            <div class="text-box" style="background-color: black;">
+                <!-- <h2>OPENING SOON</h2>
+                <p>
+                    Establishing UAE's premier value hub with unmatched
+                    quality, affordability, and experience.
+                </p> -->
+                <!-- <span class="badge">Abu Dhabi Flagships</span> -->
+                <h2 style="color: white;">Luxury made accessible. Upto 70% off.</h2>
+            </div>
+        </section>
+        
+        <section class="dual-image-banner">
+                <img src="images/banner6.png" alt="Left banner image">    
+                <h2 style="color: black;">Your Brands. <br>Your Prices.</h2>
+        </section>
+
+        <section style="padding: 2%; padding-bottom: 5%; background-color: black;" class="textStrip">
+            <p style="font-size: 50px">The one retailer for premium brands at off-price.</p>
+            <p style="margin-top: 1.5%;">
+            <span class="gradient-subtext">Overproduced inventory comes directly to our stores.</span> 
+            <span class="gradient-subtext">Global designers, direct supply.</span> 
+            <span class="gradient-subtext">Get upto 70% off on your favourite brands.</span></p>
+           <br><br>
+            <!-- <div class="center" style="margin-bottom:60px;">
+                <span class="badge">Abu Dhabi Flagships</span>
+                <h2>Launching 2026</h2>
+            </div> -->
+            <div class="grid grid-2">
+                <a href="locations.html" style="text-decoration: none; color: inherit;">
+                    <div class="card">
+                        <div class="card-img"><img src="images/banner-3.png" alt="Reem Mall"></div>
+                        <div class="card-body">
+                             <div class="badge">Early Q1 2026</div>
+                             <h3>Reem Mall</h3>
+                             <h4 style="margin-top:10px; color: black;">Abu Dhabi</h4>
+                        </div>
+                    </div>
+                </a>
+                <a href="locations.html" style="text-decoration: none; color: inherit;">
+                    <div class="card">
+                        <div class="card-img"><img src="images/store-img-2.png" alt="Al Wahda Mall"></div>
+                        <div class="card-body">
+                             <div class="badge">Early Q2 2026</div>
+                             <h3>Al Wahda Mall</h3>
+                             <h4 style="margin-top:10px; color: black;">Abu Dhabi</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- <section class="hoarding">
+            <div class="hoardingImg">
+                <img src="images/ReemColour.png">
+            </div>
+        </section> -->
+
+        <div class="marquee-wrapper">
+            <span style="margin-right: 100px;"></span>
+            <div class="marquee-track">
+                <span>Your Brands. Your Prices.</span>
+                <span>Luxury made accessible. Up to 70% off</span>
+                <span>Opening soon in Abu Dhabi</span>
+                <span>Built with love in UAE</span>
+                <!-- Duplicate content inline -->
+                <span>Your Brands. Your Prices.</span>
+                <span>Luxury made accessible. Up to 70% off</span>
+                <span>Opening soon in Abu Dhabi</span>
+                <span>Built with love in UAE</span>
+            </div>
+        </div>
+
+        <!-- Story Teaser -->
+        <section class="section-py" style="background: white; border-top: 1px solid var(--grey-100);">
+            <div class="container grid grid-2" style="align-items: center;">
+                <div>
+                    <span class="badge" style="background: var(--primary-black);">The Experience</span>
+                    <h2 style="color: var(--brand-red-dark);">Premium Labels. <br>Lower Logic.</h2>
+                    <p style="margin-bottom: 25px;">Brands To Go redefines off-price retail. We provide a boutique sanctuary for global designer labels at up to 70% off original retail, ensuring luxury is a standard, not a luxury.</p>
+                    <ul style="list-style: none; margin-bottom: 25px;">
+                        <li style="margin-bottom: 15px; font-family: var(--font-secondary);"><strong>+ Certified Authenticity</strong></li>
+                        <li style="margin-bottom: 15px; font-family: var(--font-secondary);"><strong>+ Daily Fresh Edits</strong></li>
+                        <li style="margin-bottom: 15px; font-family: var(--font-secondary);"><strong>+ Sustainable Discovery</strong></li>
+                    </ul>
+                    <a href="story.html" class="btn btn-red">Read Our Full Story</a>
+                </div>
+                <div style="height: 600px;">
+                    <!-- <img src="" alt="Store Atmosphere" style="height:100%;"> -->
+                    <div class="video-box">
+                        <video autoplay muted loop playsinline>
+                            <source src="videos/store-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section class="dual-image-banner">
+                <img src="images/banner-7.png" alt="Left banner image">          
+        </section> -->
+        
+
+        <!-- Hiring Teaser -->
+        <section class="hiring-teaser">
+            <div class="container">
+                <h2>BE A PIONEER.</h2>
+                <p>Join the founding crew for our flagship sites.</p>
+                <a href="careers.html" class="btn" style="background:white; color:var(--brand-red);">View Roles & Apply</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="grid footer-grid">
+                <div class="footer-col">
+                    <div class="brand-logo"> <img class="logoFooter" src="images/logo.png" alt="Brands To Go"></div>
+                    <p style="margin-top: -20%; color: white;">A premium fashion ecosystem bridging the gap between designer surplus and eco-conscious shopping enthusiasts in the MENA region.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Connect</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="story.html">Our Story</a></li>
+                        <li><a href="locations.html">Locations</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Direct</h5>
+                    <p style="color:white; font-size:14px; margin-top:5px;">careers@brandstogo.me</p>
+                    <p style="color:white; font-size:14px; margin-top:5px;">+971 00 000 0000</p>
+                </div>
+            </div>
+            <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
+                <p style="font-size:12px; opacity:0.3;">© 2026 BRANDS TO GO RETAIL GROUP. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if(window.scrollY > 80) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    </script>
+</body>
+</html>

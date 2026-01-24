@@ -101,9 +101,9 @@
         .hero-img { position: absolute; inset: 0; z-index: 1; }
         .hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .hero-overlay { position: relative; z-index: 2; text-align: center; color: var(--pure-white); }
-        .hero-overlay p { color: var(--secondary-beige); letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-secondary); font-weight: 700; margin-bottom: 20px; font-size: 1rem; }
+        .hero-overlay p { color: var(--secondary-beige); letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-secondary); font-weight: 700; margin-bottom: 20px; font-size: 1.5rem; }
 
-        .card { background: white; transition: var(--transition); border-left: 0 solid var(--brand-red); border-bottom: 1px solid var(--grey-100); }
+        .card { background: #DBC9B1; transition: var(--transition); border-left: 0 solid var(--brand-red); border-bottom: 1px solid var(--grey-100); }
         .card:hover { transform: translateY(-5px); border-left-width: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         .card-img { height: 400px; overflow: hidden; }
         .card-body { padding: 40px; }
@@ -118,7 +118,7 @@
        
         @media (max-width: 900px) {
             .grid-2 { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
+            /* .nav-links { display: none; } */
             h1 { font-size: 3.5rem; }
         }
 
@@ -309,13 +309,13 @@
     }
 
     .textStrip {
-    position: relative;
-    margin-top: -35px;              /* pulls it up over previous section */
-    /* padding: 2.5% 6%; */
-    background-color: white;
-    border-radius: 40px 40px 0 0;   /* rounded top corners */
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
-    z-index: 5;
+        position: relative;
+        /* margin-top: -35px;              pulls it up over previous section */
+        /* padding: 2.5% 6%; */
+        background-color: white;
+        /* border-radius: 40px 40px 0 0;   rounded top corners */
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+        z-index: 5;
 }
 
 /* Text styling (optional but recommended) */
@@ -348,52 +348,233 @@
     background-clip: text;
 }
 
-
-.dual-image-banner{
-    position: relative;        /* REQUIRED for layering */
+.image-text-section{
+    position: relative;
     width: 100%;
     aspect-ratio: 21 / 9;
     overflow: hidden;
 }
 
-.dual-image-banner img{
+/* Image */
+.image-text-section img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.dual-image-banner h2{
+/* Text container */
+.image-text-content{
     position: absolute;
-    inset: 0;
-    margin:0;
-    line-height: 1.6;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    width: 42%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 50px;
-    font-family: inherit;
-    z-index: 1;
-    pointer-events: none;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Text */
+.image-text-content h2{
+    font-size: clamp(26px, 4vw, 50px);
+    line-height: 1.2;
+}
+
+.image-text-content p{
+    font-size: clamp(14px, 1.4vw, 18px);
+    line-height: 1.6;
+}
+
+/* Button */
+.image-text-content a{
+    align-self: flex-start;
+    padding: 12px 28px;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px){
+    .image-text-section{
+        aspect-ratio: auto;
+        min-height: 540px;
+    }
+
+    .image-text-content{
+        position: relative;
+        top: auto;
+        right: auto;
+        transform: none;
+        width: 90%;
+        margin: 0 auto;
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .image-text-content a{
+        align-self: center;
+    }
 }
 
 
- /* 
-    ------------------------------------------------------------------
-    FOOTER
-    ------------------------------------------------------------------
-    */
-    footer { background: var(--primary-black); color: white; padding: 100px 0 50px 0; }
-    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
-    .footer-col h5 { margin-bottom: 30px; font-size: 14px; opacity: 0.5; }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 12px; }
-    .footer-links a { color: white; text-decoration: none; opacity: 0.8; transition: var(--transition); font-size: 15px; }
-    .footer-links a:hover { opacity: 1; padding-left: 8px; }
+/* ------------------------------------------------------------------
+   FOOTER (RESPONSIVE)
+------------------------------------------------------------------ */
+
+footer{
+    background: var(--primary-black);
+    color: white;
+    padding: 80px 0 40px;
+}
+
+/* Grid */
+.footer-grid{
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+/* Logo */
+.logoFooter{
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footertxt{
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+/* Columns */
+.footer-col h5{
+    margin-bottom: 20px;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.footer-links{
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li{
+    margin-bottom: 12px;
+}
+
+.footer-links a{
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: var(--transition);
+    font-size: 15px;
+}
+
+.footer-links a:hover{
+    opacity: 1;
+    padding-left: 6px;
+}
+
+/* Tablet */
+@media (max-width: 1024px){
+    .footer-grid{
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    footer{
+        padding: 60px 0 30px;
+        text-align: left;
+    }
+
+    .footer-grid{
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-col{
+        max-width: 100%;
+    }
 
     .logoFooter{
-        margin-top: -40%;
+        margin-bottom: 10px;
     }
+}
+
+/* Bottom bar */
+footer > .container > div:last-child{
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+}
+
+
+
+    /*
+    NAV BAR PHONE CSS
+    --------------------------------------------
+    /* HAMBURGER */
+/* HAMBURGER – hidden by default */
+/* Hidden by default */
+.nav-toggle,
+.nav-close {
+    display: none;
+}
+
+/* PHONE ONLY */
+@media (max-width: 768px) {
+
+    .nav-toggle {
+        display: block;
+        font-size: 26px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;                      /* IMPORTANT */
+        height: 100vh;
+        width: 80%;
+        max-width: 320px;
+        background: white;
+        flex-direction: column;
+        padding: 100px 30px 30px;
+        gap: 25px;
+        box-shadow: 20px 0 40px rgba(0,0,0,0.1);
+        transform: translateX(-100%); /* hidden */
+        transition: transform 0.45s ease;
+        z-index: 1200;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links.open {
+        transform: translateX(0);     /* slides in */
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .nav-close {
+        display: block;
+        position: absolute;
+        top: 30px;
+        right: 25px;
+        font-size: 26px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
 
 
     </style>
@@ -402,64 +583,76 @@
 
     <nav id="navbar">
         <div class="container nav-content">
-            <!-- <a href="index.html" class="brand-logo">BRANDS <span>TO GO.</span></a> -->
+    
+            <!-- Hamburger (phone only via CSS) -->
+            <button class="nav-toggle" aria-label="Open Menu">
+                ☰
+            </button>
+    
+            <!-- Logo -->
             <a href="index.html" class="brand-logo" style="background:none">
                 <img src="images/logo.png" alt="Brands To Go">
             </a>
+    
+            <!-- Sliding Menu -->
             <ul class="nav-links">
+    
+                <!-- Close button INSIDE menu -->
+                <button class="nav-close" aria-label="Close Menu">✕</button>
+    
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="story.html">Our Story</a></li>
                 <li><a href="locations.html">Locations</a></li>
                 <li><a href="careers.html">Careers</a></li>
                 <li><a href="careers.html" class="nav-cta">Apply Now</a></li>
+    
             </ul>
+    
         </div>
     </nav>
+    
 
     <main style="margin-top: 5%;"> 
+ 
+
+
         <!-- <div class="marquee-wrapper">
-            <div class="marquee-content">
-                <span>Your Brands. Your Prices.</span>
-                <span>Luxury made accessible. Upto 70% off on retail</span>
-                <span>Opening soon in Abu Dhabi</span>
-                <span>Built with love in UAE</span>
-            </div>
-        </div> -->
-        <div class="marquee-wrapper">
             <span style="margin-right: 100px;"></span>
             <div class="marquee-track">
                 <span>Your Brands. Your Prices.</span>
-                <span>Luxury made accessible. Up to 70% off</span>
-                <span>Opening soon in Abu Dhabi</span>
+                <span>Luxury made accessible</span>
+                <span>Opening soon</span>
                 <span>Built with love in UAE</span>
-                <!-- Duplicate content inline -->
                 <span>Your Brands. Your Prices.</span>
-                <span>Luxury made accessible. Up to 70% off</span>
-                <span>Opening soon in Abu Dhabi</span>
+                <span>Luxury made accessible</span>
+                <span>Opening soon</span>
                 <span>Built with love in UAE</span>
             </div>
-        </div>
+        </div> -->
         
         
 
      
 
-        <section style="padding: 2%; padding-bottom: 2vw; background-color: white;" class="opensoonTxt">
+        <!-- <section style="padding: 2%; padding-bottom: 2vw; background-color: white;" class="opensoonTxt">
          <p>Establishing UAE's Premier Value Hub</p>
-                <h2 style="color: black;">OPENING 2026 in Abu Dhabi</h2>
-        </section>
-
-        <!-- <section class="hero-banner">
-            <div class="hero-img">
-                <img src="images/banner.png" alt="Brands To Go Opening Soon">
-            </div>
-            <div class="hero-overlay">
-                <p>Establishing UAE's Premier Value Hub</p>
-                <h1>OPENING <br>SOON</h1>
-            </div>
+                <h1 style="color: black;">OPENING SOON</h1>
         </section> -->
 
-        <section class="video-text-section">
+<section class="hero-banner">
+            <div class="hero-img">
+                <img src="images/banner-top.png" alt="Brands To Go Opening Soon">
+            </div>
+            <div class="hero-overlay">
+                <!-- <p>Establishing UAE's Premier Value Hub</p> -->
+                <p>Smart Luxury is here</p>
+
+                <h1>OPENING SOON</h1>
+
+            </div>
+        </section> 
+
+        <!-- <section class="video-text-section">
             <div class="video-box">
                 <video autoplay muted loop playsinline>
                     <source src="videos/lady-store.mp4" type="video/mp4">
@@ -468,32 +661,55 @@
             </div>
         
             <div class="text-box" style="background-color: black;">
-                <!-- <h2>OPENING SOON</h2>
-                <p>
-                    Establishing UAE's premier value hub with unmatched
-                    quality, affordability, and experience.
-                </p> -->
-                <!-- <span class="badge">Abu Dhabi Flagships</span> -->
                 <h2 style="color: white;">Luxury made accessible. Upto 70% off.</h2>
             </div>
-        </section>
-        
-        <section class="dual-image-banner">
-                <img src="images/banner6.png" alt="Left banner image">    
-                <h2 style="color: black;">Your Brands. <br>Your Prices.</h2>
-        </section>
+        </section> -->
+      
+        <!-- <a href="story.html" class="storyBtn">Read Our Full Story</a> -->
 
-        <section style="padding: 2%; padding-bottom: 5%; background-color: black;" class="textStrip">
-            <p style="font-size: 50px">The one retailer for premium brands at off-price.</p>
+        <section class="image-text-section">
+            <img src="images/banner-8.png" alt="Left banner image">
+        
+            <div class="image-text-content">
+                <h2>Your Brands. Your Prices.</h2>
+        
+                <p>
+                    Welcome to Brands to Go <br> <br>
+                    We champion smart luxury, bringing you a curated blend of world-class
+                    brands at unbeatable prices.
+                    
+                    Whether you're a young professional seeking a stylish edge, a family
+                    looking for quality essentials, or someone who loves a great deal on luxury,
+                    we have something for you.
+                    
+                    With 40+ years of Lals Group retail expertise behind us, we are more than
+                    a store – it's a treasure map! Discover premium brands and unbeatable
+                    deals with every exciting visit.
+                    Your next find awaits!
+                    <br><br>
+                    EVERY VISIT, EVERY FIND,
+                    ALWAYS A TREASURE
+
+                 </p>
+                <a href="story.html" class="btn btn-red">Read Our Full Story</a>
+            </div>
+        </section>
+    
+
+        <section style="padding: 2%; padding-bottom: 5%; background-color: white;" class="textStrip">
+            <!-- <p style="font-size: 50px">The one retailer for premium brands at off-price.</p>
             <p style="margin-top: 1.5%;">
             <span class="gradient-subtext">Overproduced inventory comes directly to our stores.</span> 
             <span class="gradient-subtext">Global designers, direct supply.</span> 
             <span class="gradient-subtext">Get upto 70% off on your favourite brands.</span></p>
-           <br><br>
+           <br><br> -->
+           
             <!-- <div class="center" style="margin-bottom:60px;">
                 <span class="badge">Abu Dhabi Flagships</span>
                 <h2>Launching 2026</h2>
             </div> -->
+            <h2 style="text-align: center;">OUR LOCATIONS</h2>
+
             <div class="grid grid-2">
                 <a href="locations.html" style="text-decoration: none; color: inherit;">
                     <div class="card">
@@ -528,19 +744,19 @@
             <span style="margin-right: 100px;"></span>
             <div class="marquee-track">
                 <span>Your Brands. Your Prices.</span>
-                <span>Luxury made accessible. Up to 70% off</span>
-                <span>Opening soon in Abu Dhabi</span>
+                <span>Luxury made accessible</span>
+                <span>Opening soon</span>
                 <span>Built with love in UAE</span>
                 <!-- Duplicate content inline -->
                 <span>Your Brands. Your Prices.</span>
-                <span>Luxury made accessible. Up to 70% off</span>
-                <span>Opening soon in Abu Dhabi</span>
+                <span>Luxury made accessible</span>
+                <span>Opening soon</span>
                 <span>Built with love in UAE</span>
             </div>
         </div>
 
         <!-- Story Teaser -->
-        <section class="section-py" style="background: white; border-top: 1px solid var(--grey-100);">
+        <!-- <section class="section-py" style="background: white; border-top: 1px solid var(--grey-100);">
             <div class="container grid grid-2" style="align-items: center;">
                 <div>
                     <span class="badge" style="background: var(--primary-black);">The Experience</span>
@@ -551,10 +767,9 @@
                         <li style="margin-bottom: 15px; font-family: var(--font-secondary);"><strong>+ Daily Fresh Edits</strong></li>
                         <li style="margin-bottom: 15px; font-family: var(--font-secondary);"><strong>+ Sustainable Discovery</strong></li>
                     </ul>
-                    <a href="story.html" class="btn btn-red">Read Our Full Story</a>
                 </div>
                 <div style="height: 600px;">
-                    <!-- <img src="" alt="Store Atmosphere" style="height:100%;"> -->
+                
                     <div class="video-box">
                         <video autoplay muted loop playsinline>
                             <source src="videos/store-video.mp4" type="video/mp4">
@@ -563,18 +778,17 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <!-- <section class="dual-image-banner">
                 <img src="images/banner-7.png" alt="Left banner image">          
         </section> -->
         
-
         <!-- Hiring Teaser -->
         <section class="hiring-teaser">
             <div class="container">
-                <h2>BE A PIONEER.</h2>
-                <p>Join the founding crew for our flagship sites.</p>
+                <h2>HIRING NOW!</h2>
+                <p>Join the crew.</p>
                 <a href="careers.html" class="btn" style="background:white; color:var(--brand-red);">View Roles & Apply</a>
             </div>
         </section>
@@ -584,8 +798,7 @@
         <div class="container">
             <div class="grid footer-grid">
                 <div class="footer-col">
-                    <div class="brand-logo"> <img class="logoFooter" src="images/logo.png" alt="Brands To Go"></div>
-                    <p style="margin-top: -20%; color: white;">A premium fashion ecosystem bridging the gap between designer surplus and eco-conscious shopping enthusiasts in the MENA region.</p>
+                    <div> <img class="logoFooter" src="images/logo.png" alt="Brands To Go"></div>
                 </div>
                 <div class="footer-col">
                     <h5>Connect</h5>
@@ -609,10 +822,13 @@
                     <p style="color:white; font-size:14px; margin-top:5px;">+971 00 000 0000</p>
                 </div>
             </div>
+        <div class="footertxt" style="color:  #DBC9B1;"> Your brand. Your Prices.</p></div>
+
             <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
-                <p style="font-size:12px; opacity:0.3;">© 2026 BRANDS TO GO RETAIL GROUP. ALL RIGHTS RESERVED.</p>
+                <p style="font-size:12px; color: #6C5E7E;">© 2026 BRANDS TO GO RETAIL GROUP. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
+
     </footer>
 
     <script>
@@ -623,5 +839,27 @@
             else nav.classList.remove('scrolled');
         });
     </script>
+
+
+<!-- Nav bar phone js -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    
+        const toggle = document.querySelector(".nav-toggle");
+        const closeBtn = document.querySelector(".nav-close");
+        const navLinks = document.querySelector(".nav-links");
+    
+        toggle.addEventListener("click", () => {
+            navLinks.classList.add("open");
+        });
+    
+        closeBtn.addEventListener("click", () => {
+            navLinks.classList.remove("open");
+        });
+    
+    });
+    </script>
+    
+    
 </body>
 </html>

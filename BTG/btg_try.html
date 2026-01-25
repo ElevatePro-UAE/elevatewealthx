@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Apply | Brands To Go</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 520px; margin: 40px auto; }
+    input, select, button { width: 100%; padding: 12px; margin-bottom: 12px; }
+    button { background: #EF3340; color: white; border: none; cursor: pointer; }
+    #msg { text-align: center; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h2>Apply for Position</h2>
+
+<form onsubmit="event.preventDefault(); submitForm(this);">
+  <input name="name" placeholder="Full Name" required />
+  <input name="email" type="email" placeholder="Email" required />
+  <input name="phone" placeholder="Phone" required />
+
+  <select name="mall_pref">
+    <option>Reem Mall</option>
+    <option>Al Wahda Mall</option>
+  </select>
+
+  <input name="applied_role" placeholder="Role Applying For" required />
+
+  <input id="cv" type="file" accept="application/pdf" required />
+
+  <button type="submit" id="btn">Submit Application</button>
+</form>
+
+<p id="msg"></p>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzAwpODbP9ttyr4XTpbVLWifhTimlxTXENaAmzehIehFUFoYcB5D62jNN-Jt8bKT78l/exec";
+
+async function submitForm(form) {
+  const msg = document.getElementById("msg");
+  const btn = document.getElementById("btn");
+  const file = document.getElementById("cv").files[0];
+
+  btn.disabled = true;
+  msg.textContent = "Uploading...";
+
+  try {
+    if (!file || file.type !== "application/pdf")
+      throw new Error("Upload a PDF CV only.");
+
+    const base64 = await new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result.split(",")[1]);
+      r.onerror = reject;
+      r.readAsDataURL(file);
+    });
+
+    const payload = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value,
+      mall_pref: form.mall_pref.value,
+      applied_role: form.applied_role.value,
+      cv_filename: file.name,
+      cv_base64: base64
+    };
+
+    // text/plain avoids CORS preflight issues
+    const res = await fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+    if (!data.success) throw new Error(data.error);
+
+    msg.textContent = "✅ Application submitted!";
+    form.reset();
+
+  } catch (e) {
+    msg.textContent = "❌ " + e.message;
+  }
+
+  btn.disabled = false;
+}
+</script>
+
+</body>
+</html>

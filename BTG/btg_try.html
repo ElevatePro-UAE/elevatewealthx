@@ -332,7 +332,7 @@ footer > .container > div:last-child{
             <div id="role-data"></div>
             <hr style="margin:30px 0; border:0; border-top: 1px solid var(--grey-200);">
             
-            <h3 style="margin-bottom: 20px;">Submit Application</h3>
+            <h3 style="margin-bottom: 20px;">Submit your Application</h3>
             <!-- <form id="apply-form" onsubmit="event.preventDefault(); submitApplication(this);"> -->
                 <form id="apply-form" onsubmit="event.preventDefault(); submitJobApplication(this);">
 
@@ -558,70 +558,77 @@ footer > .container > div:last-child{
         </script>
         
 
-        <script>
-            async function submitJobApplication(form) {
-                const msg = document.getElementById("msg");
-                const btn = document.getElementById("btn-submit");
-            
-                btn.disabled = true;
-                btn.innerText = "Uploading...";
-                msg.style.display = "none";
-            
-                const fileInput = document.getElementById("cv");
-                const file = fileInput.files[0];
-            
-                if (!file || file.type !== "application/pdf") {
-                    alert("Please upload a PDF file only");
-                    btn.disabled = false;
-                    btn.innerText = "Submit";
-                    return;
+      <script>
+async function submitJobApplication(form) {
+    const msg = document.getElementById("msg");
+    const btn = document.getElementById("btn-submit");
+
+    btn.disabled = true;
+    btn.innerText = "Uploading...";
+    msg.style.display = "none";
+
+    const fileInput = document.getElementById("cv");
+    const file = fileInput.files[0];
+
+    if (!file || file.type !== "application/pdf") {
+        msg.innerText = "❌ Please upload a PDF file only.";
+        msg.style.color = "red";
+        msg.style.display = "block";
+        btn.disabled = false;
+        btn.innerText = "Submit";
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = async () => {
+        try {
+            const payload = {
+                name: form.name.value,
+                email: form.email.value,
+                phone: form.phone.value,
+                mall_pref: form.mall_pref.value,
+                applied_role: document.getElementById("target-role").value,
+                cv_filename: file.name,
+                cv_base64: reader.result.split(",")[1]
+            };
+
+            const res = await fetch(
+                "https://script.google.com/macros/s/AKfycbzAwpODbP9ttyr4XTpbVLWifhTimlxTXENaAmzehIehFUFoYcB5D62jNN-Jt8bKT78l/exec",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(payload)
                 }
-            
-                const reader = new FileReader();
-            
-                reader.onload = async () => {
-                    const payload = {
-                        name: form.name.value,
-                        email: form.email.value,
-                        phone: form.phone.value,
-                        mall_pref: form.mall_pref.value,
-                        applied_role: document.getElementById("target-role").value,
-                        cv_filename: file.name,
-                        cv_base64: reader.result.split(",")[1]
-                    };
-            
-                    try {
-                        const res = await fetch(
-                            "https://script.google.com/macros/s/AKfycbzeIDyO0kHNvKVeuC9q8G9PJnbZUJp6v2gIuROK35lpJo60iIUMsywC745pxAmPD2RDLg/exec",
-                            {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(payload)
-                            }
-                        );
-            
-                        const data = await res.json();
-            
-                        if (data.success) {
-                            msg.innerText = "✅ Application submitted successfully!";
-                            msg.style.color = "green";
-                            form.reset();
-                        } else {
-                            throw new Error(data.error);
-                        }
-                    } catch (err) {
-                        msg.innerText = "❌ Upload failed. Please try again.";
-                        msg.style.color = "red";
-                    }
-            
-                    msg.style.display = "block";
-                    btn.disabled = false;
-                    btn.innerText = "Submit";
-                };
-            
-                reader.readAsDataURL(file);
+            );
+
+            const data = await res.json();
+
+            if (!data.success) {
+                throw new Error(data.error || "Unknown error");
             }
-            </script>
+
+            msg.innerText = "✅ Application submitted successfully!";
+            msg.style.color = "green";
+            msg.style.display = "block";
+            form.reset();
+
+        } catch (err) {
+            msg.innerText = "❌ Upload failed. Please try again.";
+            msg.style.color = "red";
+            msg.style.display = "block";
+        }
+
+        btn.disabled = false;
+        btn.innerText = "Submit";
+    };
+
+    reader.readAsDataURL(file);
+}
+</script>
+
             
             
 

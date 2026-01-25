@@ -331,12 +331,12 @@
 }
 
 
-.gradient-subtext {
+/* .gradient-subtext {
     transition: all 0.35s ease;
     cursor: default;
 }
 
-/* Hover gradient */
+
 .gradient-subtext:hover {
     background: linear-gradient(
         90deg,
@@ -346,7 +346,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
+} */
 
 .image-text-section{
     position: relative;
@@ -366,7 +366,7 @@
 /* Text container */
 .image-text-content{
     position: absolute;
-    top: 50%;
+    top: 42%;
     right: 5%;
     transform: translateY(-50%);
     width: 42%;
@@ -377,7 +377,8 @@
 
 /* Text */
 .image-text-content h2{
-    font-size: clamp(26px, 4vw, 50px);
+    /* font-size: clamp(26px, 4vw, 50px); */
+    font-size: 30px;
     line-height: 1.2;
 }
 
@@ -412,6 +413,77 @@
 
     .image-text-content a{
         align-self: center;
+    }
+}
+
+
+/* ------------------------------------------------------------------
+   SCROLL to animate
+------------------------------------------------------------------ */
+/* Initial hidden state */
+
+    /* IMAGE */
+.image-text-section img, .image-text-section h2{
+
+    transform: translateY(120px);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+/* PARAGRAPH */
+.image-text-content p{
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(.22,.61,.36,1),
+                opacity 1s ease;
+}
+
+/* BUTTON */
+.image-text-content a{
+    transform: translateX(400px);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(.22,.61,.36,1),
+                opacity 1s ease;
+}
+
+
+.reveal{
+    transform: translate(0,0) !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 768px){
+    .image-text-content p,
+    .image-text-content a{
+        transform: translateX(-220px);
+    }
+}
+
+/* ------------------------------------------------------------------
+   PARALLAX EFFECT
+------------------------------------------------------------------ */
+/* PARALLAX BASE */
+.image-text-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image parallax */
+.image-text-section img {
+    will-change: transform;
+
+}
+
+/* Optional: very subtle parallax for text */
+.image-text-content {
+    will-change: transform;
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+    .image-text-section img,
+    .image-text-content {
+        transform: none !important;
     }
 }
 
@@ -575,6 +647,7 @@ footer > .container > div:last-child{
         cursor: pointer;
     }
 }
+
 
 
     </style>
@@ -860,6 +933,76 @@ footer > .container > div:last-child{
     });
     </script>
     
+
+    <!-- ANIMATE ON SCROLL -->
+    <script>
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('reveal');
+                    observer.unobserve(entry.target); // one-time only
+                }
+            });
+        },{
+            threshold: 0.1   // element must be 25% visible
+        });
+        
+        document.querySelectorAll(
+            '.image-text-section img, .image-text-section h2,.image-text-content p, .image-text-content a'
+        ).forEach(el => observer.observe(el));
+        </script>
+        
+        
+<!-- PARALLAX EFFECT -->
+<script>
+    (() => {
+        const section = document.querySelector('.image-text-section');
+        const image = section.querySelector('img');
+        const text = section.querySelector('.image-text-content');
     
+        let ticking = false;
+    
+        function onScroll() {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const rect = section.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+    
+                    // Trigger reveal first
+                    if (rect.top < windowHeight * 0.9 && !image.classList.contains('revealed')) {
+                        image.classList.add('revealed');
+                    }
+    
+                    if (rect.top < windowHeight * 0.9 && !text.classList.contains('revealed')) {
+                        text.classList.add('revealed');
+                    }
+    
+                    // Parallax only after reveal
+                    if (rect.bottom > 0 && rect.top < windowHeight) {
+                        const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+    
+                        // Increased multipliers for stronger effect
+                        const imageTranslate = Math.min(progress * 350, 350);  // was 60
+                        image.style.transform = `translateY(${imageTranslate}px)`;
+    
+                        const textTranslate = Math.min(progress * 200, 200);     // was 40
+                        text.style.transform = `translateY(calc(-50% + ${textTranslate}px))`;
+                    }
+    
+                    ticking = false;
+                });
+    
+                ticking = true;
+            }
+        }
+    
+        window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+    </script>
+    
+    
+    
+    
+
 </body>
 </html>

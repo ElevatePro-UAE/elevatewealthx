@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<h2>Apply for Position</h2>
+<h2>Apply rn Position</h2>
 
 <form onsubmit="event.preventDefault(); submitForm(this);">
   <input name="name" placeholder="Full Name" required />
@@ -34,57 +34,66 @@
 <p id="msg"></p>
 
 <script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzAth25gvmgm88CRzVq83aqvcmG2-Buf7Asl2nJk0hsmn0D_miIyB7Sen596EuD4NjrzQ/exec";
-
-async function submitForm(form) {
-  const msg = document.getElementById("msg");
-  const btn = document.getElementById("btn");
-  const file = document.getElementById("cv").files[0];
-
-  btn.disabled = true;
-  msg.textContent = "Uploading...";
-
-  try {
-    if (!file || file.type !== "application/pdf")
-      throw new Error("Upload a PDF CV only.");
-
-    const base64 = await new Promise((resolve, reject) => {
-      const r = new FileReader();
-      r.onload = () => resolve(r.result.split(",")[1]);
-      r.onerror = reject;
-      r.readAsDataURL(file);
-    });
-
-    const payload = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      mall_pref: form.mall_pref.value,
-      applied_role: form.applied_role.value,
-      cv_filename: file.name,
-      cv_base64: base64
-    };
-
-    // text/plain avoids CORS preflight issues
-    const res = await fetch(WEB_APP_URL, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
-    });
-
-    const data = await res.json();
-    if (!data.success) throw new Error(data.error);
-
-    msg.textContent = "✅ Application submitted!";
-    form.reset();
-
-  } catch (e) {
-    msg.textContent = "❌ " + e.message;
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzAth25gvmgm88CRzVq83aqvcmG2-Buf7Asl2nJk0hsmn0D_miIyB7Sen596EuD4NjrzQ/exec";
+  
+  async function submitForm(form) {
+    const msg = document.getElementById("msg");
+    const btn = document.getElementById("btn");
+    const file = document.getElementById("cv").files[0];
+  
+    btn.disabled = true;
+    msg.textContent = "Uploading...";
+  
+    try {
+      if (!file || file.type !== "application/pdf")
+        throw new Error("Upload a PDF CV only.");
+  
+      if (file.size > 2 * 1024 * 1024)
+        throw new Error("PDF must be under 2MB.");
+  
+      const base64 = await new Promise((resolve, reject) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result.split(",")[1]);
+        r.onerror = reject;
+        r.readAsDataURL(file);
+      });
+  
+      const payload = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        mall_pref: form.mall_pref.value,
+        applied_role: form.applied_role.value.trim(),
+        cv_filename: file.name,
+        cv_base64: base64
+      };
+  
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+  
+      const raw = await res.text();
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        throw new Error("Server error. Please try again.");
+      }
+  
+      if (!data.success) throw new Error(data.error || "Submission failed.");
+  
+      msg.textContent = "✅ Application submitted!";
+      form.reset();
+  
+    } catch (e) {
+      msg.textContent = "❌ " + e.message;
+    } finally {
+      btn.disabled = false;
+    }
   }
-
-  btn.disabled = false;
-}
-</script>
-
+  </script>
+  
 </body>
 </html>

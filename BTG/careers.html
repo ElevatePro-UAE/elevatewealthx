@@ -429,67 +429,72 @@
   </script>
 
   <!-- SUBMIT HANDLER -->
-  <script>
-    async function submitJobApplication(form) {
-      const msg = document.getElementById("msg");
-      const btn = document.getElementById("btn-submit");
-      const fileInput = document.getElementById("cv");
-      const file = fileInput.files[0];
+<script>
+async function submitJobApplication(form) {
+  const msg = document.getElementById("msg");
+  const btn = document.getElementById("btn-submit");
+  const fileInput = document.getElementById("cv");
+  const file = fileInput.files[0];
 
-      btn.disabled = true;
-      btn.innerText = "Uploading...";
-      msg.style.display = "none";
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzAwpODbP9ttyr4XTpbVLWifhTimlxTXENaAmzehIehFUFoYcB5D62jNN-Jt8bKT78l/exec";
 
-      try {
-        if (!file) throw new Error("Please upload your CV as a PDF.");
-        if (file.type !== "application/pdf") throw new Error("PDF files only.");
-        if (file.size > 2 * 1024 * 1024) throw new Error("File too large. Max 2MB.");
+  btn.disabled = true;
+  btn.innerText = "Uploading...";
+  msg.style.display = "none";
 
-        const base64 = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(String(reader.result).split(",")[1]);
-          reader.onerror = () => reject(new Error("Failed to read file."));
-          reader.readAsDataURL(file);
-        });
+  try {
+    if (!file) throw new Error("No PDF selected.");
+    if (file.type !== "application/pdf") throw new Error("PDF files only.");
+    if (file.size > 2 * 1024 * 1024) throw new Error("Max 2MB PDF.");
 
-        const payload = {
-          name: (form.name.value || "").trim(),
-          email: (form.email.value || "").trim(),
-          phone: (form.phone.value || "").trim(),
-          mall_pref: form.mall_pref.value,
-          applied_role: document.getElementById("target-role").value,
-          cv_filename: file.name,
-          cv_base64: base64
-        };
+    const base64 = await new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(String(r.result).split(",")[1]);
+      r.onerror = () => reject(new Error("File read failed."));
+      r.readAsDataURL(file);
+    });
 
-        const res = await fetch(WEB_APP_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-          redirect: "follow"
-        });
+    const payload = {
+      name: (form.name.value || "").trim(),
+      email: (form.email.value || "").trim(),
+      phone: (form.phone.value || "").trim(),
+      mall_pref: form.mall_pref.value,
+      applied_role: document.getElementById("target-role").value,
+      cv_filename: file.name,
+      cv_base64: base64
+    };
 
-        const raw = await res.text();
-        let data;
-        try { data = JSON.parse(raw); }
-        catch { throw new Error("Server returned non-JSON: " + raw.slice(0, 200)); }
+    const res = await fetch(WEB_APP_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      redirect: "follow",
+      // mode: "cors" // default, but explicit is fine
+    });
 
-        if (!res.ok) throw new Error(`HTTP ${res.status}: ${raw.slice(0, 200)}`);
-        if (!data.success) throw new Error(data.error || "Unknown server error");
+    const raw = await res.text(); // IMPORTANT: don't assume JSON
+    let data;
+    try { data = JSON.parse(raw); }
+    catch { throw new Error("Non-JSON reply (likely HTML/login page): " + raw.slice(0, 180)); }
 
-        msg.innerText = "✅ Application submitted successfully!";
-        msg.style.color = "green";
-        form.reset();
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${raw.slice(0, 180)}`);
+    if (!data.success) throw new Error(data.error || "Server error");
 
-      } catch (err) {
-        msg.innerText = "❌ " + (err.message || "Upload failed");
-        msg.style.color = "red";
-      } finally {
-        msg.style.display = "block";
-        btn.disabled = false;
-        btn.innerText = "Submit";
-      }
-    }
-  </script>
+    msg.innerText = "✅ Submitted! CV saved: " + (data.fileUrl || "");
+    msg.style.color = "green";
+    form.reset();
+
+  } catch (err) {
+    // This will reveal CORS/origin issues properly
+    msg.innerText = "❌ " + (err.message || String(err));
+    msg.style.color = "red";
+    console.error("Submit error:", err);
+  } finally {
+    msg.style.display = "block";
+    btn.disabled = false;
+    btn.innerText = "Submit";
+  }
+}
+</script>
 </body>
 </html>

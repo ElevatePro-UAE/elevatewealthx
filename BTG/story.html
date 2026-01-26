@@ -265,6 +265,112 @@ Locking in Font
   font-display: swap;
 }
 
+/* 
+----------------------------------------------------
+Locking in Font
+----------------------------------------------------
+*/
+@font-face {
+  font-family: "ITC Fenice";
+  src: url("fonts/ITC-Fenice-Regular.otf") format("opentype");
+  font-weight: 400;     /* describes THIS file */
+  font-style: normal;  /* describes THIS file */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham Pro Black";
+  src: url("fonts/GothamPro-Black.ttf") format("truetype");
+  font-weight: 900;        /* Black = 900 */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== STORY SECTION ===== */
+
+.story-section {
+  padding: 38px 0;
+}
+
+.story-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.story-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid rgba(244,244,246,.12);
+  border-radius: 18px;
+  overflow: hidden;
+  background: black
+
+  /* background: rgba(244,244,246,.03);
+   */
+   /* background-color: #6C5E7E; */
+}
+
+.story-media {
+  min-height: 360px;
+  background:
+    /* linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.70)), */
+    url("images/locations1.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.story-copy {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.story-copy p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(244,244,246,.72);
+}
+
+.story-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(244,244,246,.78);
+  margin: 0;
+}
+
+.story-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #c81d25;
+  box-shadow: 0 0 0 6px rgba(200,29,37,.14);
+}
+
+.story-title {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f4f4f6;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .story-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .story-media {
+    min-height: 260px;
+  }
+}
 
 </style>
 
@@ -291,10 +397,8 @@ Locking in Font
                 <button class="nav-close" aria-label="Close Menu">✕</button>
     
                 <li><a href="index.html">Home</a></li>
-                <li><a href="story.html" class="active">Our Story</a></li>
-                <li><a href="locations.html">Locations</a></li>
+                <li><a href="story.html" class="active">About Us</a></li>
                 <li><a href="careers.html">Careers</a></li>
-                <li><a href="careers.html" class="nav-cta">Apply Now</a></li>
     
             </ul>
     
@@ -320,6 +424,30 @@ Locking in Font
             </div>
         </div>
     </section>
+
+
+    <section id="story" class="story-section">
+        <div class="story-container">
+          <div class="story-strip">
+            <div class="story-media" aria-label="Lifestyle imagery placeholder"></div>
+            <div class="story-copy">
+              <p class="story-kicker">
+                <span class="story-dot"></span> The Story
+              </p>
+              <h2 class="story-title">Luxury should feel inviting.</h2>
+              <p>
+                Brands to Go is a destination designed for modern shoppers who want more than a single style lane.
+                We bring together luxurious brands with a shopping experience that feels clean, effortless, and contemporary.
+              </p>
+              <p>
+                From statement pieces to everyday essentials, our selection is built for discovery.
+                Every visit is a chance to find what fits your taste now.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
     <section style="background: var(--secondary-gold); padding: 80px 0;">
         <div class="container">

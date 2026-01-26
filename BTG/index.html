@@ -40,7 +40,7 @@
         }
 
         /* TYPOGRAPHY */
-        h1, h2, h3, h4, .btn, .nav-links a, .badge { font-family: var(--font-secondary); }
+        h1, h2, h3, h4, .btn, .nav-links a, .badge { font-family: "Gotham Pro Black"; }
         h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: -0.02em; line-height: 1; font-weight: 900; }
         
         h1 { font-size: clamp(3rem, 12vw, 7rem); }
@@ -163,7 +163,7 @@
     margin-right: 60px;
     font-size: 18px;
     font-weight: 600;
-    font-family: 'Segoe UI', 'Poppins', sans-serif;
+    font-family: 'Gotham Pro Black';
     color: white;
 }
 
@@ -308,6 +308,11 @@
         color: black;
     }
 
+    .textStrip h2{
+        font-family: "ITC Fenice";
+    }
+
+
     .textStrip {
         position: relative;
         /* margin-top: -35px;              pulls it up over previous section */
@@ -367,12 +372,13 @@
 .image-text-content{
     position: absolute;
     top: 42%;
-    right: 5%;
+    right: 10%;
     transform: translateY(-50%);
-    width: 42%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 18px;
+    color: black;
 }
 
 /* Text */
@@ -380,15 +386,20 @@
     /* font-size: clamp(26px, 4vw, 50px); */
     font-size: 30px;
     line-height: 1.2;
+    font-family: "ITC Fenice";
 }
 
 .image-text-content p{
+    font-family: "Gotham Pro Black";
     font-size: clamp(14px, 1.4vw, 18px);
     line-height: 1.6;
+    color: black;
+
 }
 
 /* Button */
 .image-text-content a{
+    font-family: "Gotham Pro Black";
     align-self: flex-start;
     padding: 12px 28px;
 }
@@ -545,6 +556,7 @@ footer{
 .footer-links a:hover{
     opacity: 1;
     padding-left: 6px;
+    color: #CEA988
 }
 
 /* Tablet */
@@ -648,6 +660,26 @@ footer > .container > div:last-child{
     }
 }
 
+/* 
+----------------------------------------------------
+Locking in Font
+----------------------------------------------------
+*/
+@font-face {
+  font-family: "ITC Fenice";
+  src: url("fonts/ITC-Fenice-Regular.otf") format("opentype");
+  font-weight: 400;     /* describes THIS file */
+  font-style: normal;  /* describes THIS file */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham Pro Black";
+  src: url("fonts/GothamPro-Black.ttf") format("truetype");
+  font-weight: 900;        /* Black = 900 */
+  font-style: normal;
+  font-display: swap;
+}
 
 
     </style>
@@ -718,9 +750,9 @@ footer > .container > div:last-child{
             </div>
             <div class="hero-overlay">
                 <!-- <p>Establishing UAE's Premier Value Hub</p> -->
-                <p>Smart Luxury is here</p>
+                <p style="font-family: Gotham Pro Black;">Smart Luxury is here</p>
 
-                <h1>OPENING SOON</h1>
+                <h1 style="font-family: Gotham Pro Black;">OPENING SOON</h1>
 
             </div>
         </section> 
@@ -748,20 +780,14 @@ footer > .container > div:last-child{
         
                 <p>
                     Welcome to Brands to Go <br> <br>
-                    We champion smart luxury, bringing you a curated blend of world-class
-                    brands at unbeatable prices.
+                    Brands to Go stands for smart luxury a curated selection of world-class brands at accessible prices.
+                    Created for modern shoppers who value style, quality, and discovery, Brands to Go offers something for every visit. From fashion-forward finds to everyday premium essentials, the experience is designed to surprise and reward.
+
                     
-                    Whether you're a young professional seeking a stylish edge, a family
-                    looking for quality essentials, or someone who loves a great deal on luxury,
-                    we have something for you.
-                    
-                    With 40+ years of Lals Group retail expertise behind us, we are more than
-                    a store – it's a treasure map! Discover premium brands and unbeatable
-                    deals with every exciting visit.
-                    Your next find awaits!
+                    Backed by 40+ years of Lals Group retail expertise, Brands to Go is more than a store. It’s a destination built on trust, curation, and value.
+
                     <br><br>
-                    EVERY VISIT, EVERY FIND,
-                    ALWAYS A TREASURE
+                    Every visit. Every find. Always a treasure.
 
                  </p>
                 <a href="story.html" class="btn btn-red">Read Our Full Story</a>
@@ -781,26 +807,26 @@ footer > .container > div:last-child{
                 <span class="badge">Abu Dhabi Flagships</span>
                 <h2>Launching 2026</h2>
             </div> -->
-            <h2 style="text-align: center;">OUR LOCATIONS</h2>
+            <h2 style="text-align: center;">UPCOMING LOCATIONS</h2>
 
             <div class="grid grid-2">
                 <a href="locations.html" style="text-decoration: none; color: inherit;">
                     <div class="card">
-                        <div class="card-img"><img src="images/banner-3.png" alt="Reem Mall"></div>
+                        <div class="card-img"><img src="images/locations1.png" alt="Reem Mall"></div>
                         <div class="card-body">
-                             <div class="badge">Early Q1 2026</div>
-                             <h3>Reem Mall</h3>
-                             <h4 style="margin-top:10px; color: black;">Abu Dhabi</h4>
+                             <div style="font-family: Gotham Pro Black;" class="badge">Early Q1 2026</div>
+                             <h3  style="font-family: Gotham Pro Black;">Reem Mall</h3>
+                             <h4 style="font-family: Gotham Pro Black; margin-top:10px; color: black;">Abu Dhabi</h4>
                         </div>
                     </div>
                 </a>
                 <a href="locations.html" style="text-decoration: none; color: inherit;">
                     <div class="card">
-                        <div class="card-img"><img src="images/store-img-2.png" alt="Al Wahda Mall"></div>
+                        <div class="card-img"><img src="images/locations2.png" alt="Al Wahda Mall"></div>
                         <div class="card-body">
-                             <div class="badge">Early Q2 2026</div>
-                             <h3>Al Wahda Mall</h3>
-                             <h4 style="margin-top:10px; color: black;">Abu Dhabi</h4>
+                             <div style="font-family: Gotham Pro Black;" class="badge">Early Q2 2026</div>
+                             <h3 style="font-family: Gotham Pro Black;">Al Wahda Mall</h3>
+                             <h4 style="font-family: Gotham Pro Black; margin-top:10px; color: black;">Abu Dhabi</h4>
                         </div>
                     </div>
                 </a>
@@ -867,7 +893,7 @@ footer > .container > div:last-child{
         </section>
     </main>
 
-    <footer>
+    <footer style="font-family: Gotham Pro Black;">
         <div class="container">
             <div class="grid footer-grid">
                 <div class="footer-col">
@@ -895,7 +921,7 @@ footer > .container > div:last-child{
                     <p style="color:white; font-size:14px; margin-top:5px;">+971 00 000 0000</p>
                 </div>
             </div>
-        <div class="footertxt" style="color:  #DBC9B1;"> Your brand. Your Prices.</p></div>
+        <div class="footertxt" style="color:  #DBC9B1;"> Your Brand. Your Prices.</p></div>
 
             <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
                 <p style="font-size:12px; color: #6C5E7E;">© 2026 BRANDS TO GO RETAIL GROUP. ALL RIGHTS RESERVED.</p>
@@ -982,10 +1008,10 @@ footer > .container > div:last-child{
                         const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
     
                         // Increased multipliers for stronger effect
-                        const imageTranslate = Math.min(progress * 350, 350);  // was 60
+                        const imageTranslate = Math.min(progress * 220, 220);  // was 60
                         image.style.transform = `translateY(${imageTranslate}px)`;
     
-                        const textTranslate = Math.min(progress * 200, 200);     // was 40
+                        const textTranslate = Math.min(progress * 150, 150);     // was 40
                         text.style.transform = `translateY(calc(-50% + ${textTranslate}px))`;
                     }
     

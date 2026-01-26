@@ -435,13 +435,13 @@
 .image-text-section {
     display: flex;
     width: 100%;
-    min-height: 70vh;
+    height: 50vw;
 }
 
 /* IMAGE AREA */
 .image-text-image {
     width: 50%;
-    border-right: 5px solid #CEA988;
+    /* border-right: 5px solid #CEA988; */
     position: relative;
     overflow: hidden; /* parallax-safe */
 }
@@ -466,14 +466,14 @@
 /* Headings */
 .image-text-content h2 {
     font-family: "ITC Fenice";
-
+    font-size: 3vw;
     line-height: 1.2;
 }
 
 /* Paragraph */
 .image-text-content p {
     font-family: "Gotham Pro Black";
-
+    font-size: 1.3vw;
     line-height: 1.6;
     color: black;
 }
@@ -482,13 +482,15 @@
 .image-text-content a {
     align-self: flex-start;
     font-family: "Gotham Pro Black";
-
+    font-size: 1.3vw;
 }
 
 @media (max-width: 768px) {
 
 .image-text-section {
     flex-direction: column;
+    height: 190vw;
+
 }
 
 .image-text-image,
@@ -496,17 +498,23 @@
     width: 100%;
 }
 
-.image-text-image {
-    height: 260px;
-}
-
 .image-text-content {
     padding: 32px 20px;
     text-align: center;
 }
 
+.image-text-content p{
+    font-size: 2.75vw;
+}
+
+.image-text-content h2{
+    font-size: 5vw;
+ 
+}
+
 .image-text-content a {
     align-self: center;
+    font-size: 2.75vw;
 }
 }
 
@@ -714,8 +722,6 @@ footer > .container > div:last-child{
         cursor: pointer;
     }
 }
-
-
 
 
     </style>
@@ -941,7 +947,7 @@ footer > .container > div:last-child{
         </section>
     </main>
 
-    <footer style="font-family: Gotham Pro Black;">
+    <footer class="footer-btg"  style="font-family: Gotham Pro Black;">
         <div class="container">
             <div class="grid footer-grid">
                 <div class="footer-col">

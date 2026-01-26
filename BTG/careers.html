@@ -18,8 +18,8 @@
             --grey-200: #e0e0e0;
             --grey-400: #888888;
             
-            --font-primary: 'ITC Fenice', 'Playfair Display', serif;
-            --font-secondary: 'Gotham Pro Black', 'Montserrat', sans-serif;
+            --font-primary: 'ITC Fenice';
+            --font-secondary: 'Gotham Pro Black';
             
             --nav-h: 80px;
         }
@@ -27,7 +27,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: var(--font-primary); background-color: var(--off-white); color: var(--primary-black); line-height: 1.6; }
         
-        h1, h2, h3, h4, .btn, .badge, .nav-links a { font-family: var(--font-secondary); }
+        h1, h2, h3, h4, .btn, .badge, .nav-links a { font-family: "Gotham Pro Black"; }
         h1 { font-size: 4rem; text-transform: uppercase; font-weight: 900; }
         
         .container { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
@@ -46,7 +46,7 @@
 
         /* Job Filter & List */
         .badge { background: var(--brand-red); color: white; padding: 6px 14px; font-size: 11px; font-weight: 800; text-transform: uppercase; display: inline-block; margin-bottom: 16px; }
-        .form-control { width: 100%; padding: 16px; border: 1px solid var(--grey-200); margin-bottom: 16px; font-family: var(--font-primary); font-size: 1rem; border-radius: 0; outline: none; }
+        .form-control { width: 100%; padding: 16px; border: 1px solid var(--grey-200); margin-bottom: 16px; font-family: "Gotham Pro Black"; font-size: 1rem; border-radius: 0; outline: none; }
         .form-control:focus { border-color: var(--brand-red); }
 
         .job-card { background:white; border-bottom:1px solid #eee; padding:30px; margin-bottom:10px; cursor:pointer; transition: 0.2s; }
@@ -257,6 +257,29 @@ footer > .container > div:last-child{
     }
 }
 
+
+/* 
+----------------------------------------------------
+Locking in Font
+----------------------------------------------------
+*/
+@font-face {
+  font-family: "ITC Fenice";
+  src: url("fonts/ITC-Fenice-Regular.otf") format("opentype");
+  font-weight: 400;     /* describes THIS file */
+  font-style: normal;  /* describes THIS file */
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham Pro Black";
+  src: url("fonts/GothamPro-Black.ttf") format("truetype");
+  font-weight: 900;        /* Black = 900 */
+  font-style: normal;
+  font-display: swap;
+}
+
+
 </style>
 
 </head>
@@ -294,14 +317,14 @@ footer > .container > div:last-child{
 
     <main style="margin-top: 80px;">
         <section class="section-py container">
-            <span class="badge">Join The Team</span>
-            <h1>Pioneer With Us.</h1>
-            <p>Join the launch team for the most anticipated retail opening in Abu Dhabi.</p>
+            <span class="badge" style="font-family: Gotham Pro Black;">Join The Team</span>
+            <h1 style="font-family:ITC Fenice">Pioneer With Us.</h1>
+            <p style="font-family: Gotham Pro Black;">Join the launch team for the most anticipated retail opening in Abu Dhabi.</p>
             
-            <div class="layout-grid">
+            <div class="layout-grid" style="font-family: Gotham Pro Black;">
                 <aside>
                     <div style="margin-bottom: 40px;">
-                        <h4 style="font-size: 13px; margin-bottom: 20px;">Mall Site</h4>
+                        <h4 style="font-family: Gotham Pro Black; font-size: 13px; margin-bottom: 20px;">Mall Site</h4>
                         <select class="form-control" id="f-loc" onchange="jobSystem.renderJobs()">
                             <option value="all">All Sites</option>
                             <option value="Reem Mall">Reem Mall</option>
@@ -309,7 +332,7 @@ footer > .container > div:last-child{
                         </select>
                     </div>
                     <div style="margin-bottom: 40px;">
-                        <h4 style="font-size: 13px; margin-bottom: 20px;">Category</h4>
+                        <h4 style="font-family: Gotham Pro Black; font-size: 13px; margin-bottom: 20px;">Category</h4>
                         <select class="form-control" id="f-dep" onchange="jobSystem.renderJobs()">
                             <option value="all">All Roles</option>
                             <option value="Retail">Retail & Styling</option>
@@ -318,7 +341,7 @@ footer > .container > div:last-child{
                         </select>
                     </div>
                 </aside>
-                <div id="job-list-container">
+                <div id="job-list-container" style="color: black; font-family: Gotham Pro Black;">
                     <!-- Dynamic Jobs -->
                 </div>
             </div>
@@ -402,7 +425,7 @@ footer > .container > div:last-child{
                     <div class="job-card" onclick="jobSystem.openModal('${j.title}', '${j.desc}', '${j.loc}')">
                         <div class="badge" style="margin-bottom:10px;">${j.loc}</div>
                         <h4 style="margin-bottom:5px;">${j.title}</h4>
-                        <p style="font-size:0.9rem; color:var(--secondary-purple);">${j.dep} Department • UAE Nationals & Expats</p>
+                        <p style="font-size:0.9rem; color:black;">${j.dep} Department • UAE Nationals & Expats</p>
                     </div>
                 `).join('');
             },
@@ -410,8 +433,8 @@ footer > .container > div:last-child{
             openModal: (title, desc, loc) => {
                 document.getElementById('role-data').innerHTML = `
                     <div class="badge">${loc}</div>
-                    <h2 style="margin-top:20px; font-size:2rem;">${title}</h2>
-                    <p style="margin-top:15px; font-size: 1.1rem;">${desc}</p>
+                    <h2 style="font-family:Gotham Pro Black; margin-top:20px; font-size:2rem;">${title}</h2>
+                    <p style="font-family:Gotham Pro Black; margin-top:15px; font-size: 1.1rem;">${desc}</p>
                 `;
                 document.getElementById('target-role').value = title;
                 document.getElementById('modal-app').classList.add('open');
@@ -429,7 +452,7 @@ footer > .container > div:last-child{
         document.addEventListener('DOMContentLoaded', jobSystem.renderJobs);
     </script>
 
-<footer>
+<footer style="font-family: Gotham Pro Black;">
     <div class="container">
         <div class="grid footer-grid">
             <div class="footer-col">
@@ -457,7 +480,7 @@ footer > .container > div:last-child{
                 <p style="color:white; font-size:14px; margin-top:5px;">+971 00 000 0000</p>
             </div>
         </div>
-    <div class="footertxt" style="color:  #DBC9B1;"> Your brand. Your Prices.</p></div>
+    <div class="footertxt" style="color:  #DBC9B1;"> Your Brand. Your Prices.</p></div>
 
         <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
             <p style="font-size:12px; color: #6C5E7E;">© 2026 BRANDS TO GO RETAIL GROUP. ALL RIGHTS RESERVED.</p>
@@ -559,7 +582,7 @@ footer > .container > div:last-child{
         
 
       <script>
-async function submitJobApplication(form) {
+    async function submitJobApplication(form) {
     const msg = document.getElementById("msg");
     const btn = document.getElementById("btn-submit");
 

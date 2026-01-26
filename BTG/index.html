@@ -470,34 +470,6 @@
     }
 }
 
-/* ------------------------------------------------------------------
-   PARALLAX EFFECT
------------------------------------------------------------------- */
-/* PARALLAX BASE */
-.image-text-section {
-    position: relative;
-    overflow: hidden;
-}
-
-/* Image parallax */
-.image-text-section img {
-    will-change: transform;
-
-}
-
-/* Optional: very subtle parallax for text */
-.image-text-content {
-    will-change: transform;
-}
-
-/* Reduce motion support */
-@media (prefers-reduced-motion: reduce) {
-    .image-text-section img,
-    .image-text-content {
-        transform: none !important;
-    }
-}
-
 
 /* ------------------------------------------------------------------
    FOOTER (RESPONSIVE)
@@ -660,26 +632,7 @@ footer > .container > div:last-child{
     }
 }
 
-/* 
-----------------------------------------------------
-Locking in Font
-----------------------------------------------------
-*/
-@font-face {
-  font-family: "ITC Fenice";
-  src: url("fonts/ITC-Fenice-Regular.otf") format("opentype");
-  font-weight: 400;     /* describes THIS file */
-  font-style: normal;  /* describes THIS file */
-  font-display: swap;
-}
 
-@font-face {
-  font-family: "Gotham Pro Black";
-  src: url("fonts/GothamPro-Black.ttf") format("truetype");
-  font-weight: 900;        /* Black = 900 */
-  font-style: normal;
-  font-display: swap;
-}
 
 
     </style>
@@ -706,10 +659,9 @@ Locking in Font
                 <button class="nav-close" aria-label="Close Menu">✕</button>
     
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="story.html">Our Story</a></li>
-                <li><a href="locations.html">Locations</a></li>
+                <li><a href="story.html">About Us</a></li>
                 <li><a href="careers.html">Careers</a></li>
-                <li><a href="careers.html" class="nav-cta">Apply Now</a></li>
+                <!-- <li><a href="careers.html" class="nav-cta">Apply Now</a></li> -->
     
             </ul>
     
@@ -736,9 +688,6 @@ Locking in Font
         </div> -->
         
         
-
-     
-
         <!-- <section style="padding: 2%; padding-bottom: 2vw; background-color: white;" class="opensoonTxt">
          <p>Establishing UAE's Premier Value Hub</p>
                 <h1 style="color: black;">OPENING SOON</h1>
@@ -750,7 +699,7 @@ Locking in Font
             </div>
             <div class="hero-overlay">
                 <!-- <p>Establishing UAE's Premier Value Hub</p> -->
-                <p style="font-family: Gotham Pro Black;">Smart Luxury is here</p>
+                <!-- <p style="font-family: Gotham Pro Black;">Smart Luxury is here</p> -->
 
                 <h1 style="font-family: Gotham Pro Black;">OPENING SOON</h1>
 
@@ -790,10 +739,12 @@ Locking in Font
                     Every visit. Every find. Always a treasure.
 
                  </p>
-                <a href="story.html" class="btn btn-red">Read Our Full Story</a>
+                <a href="story.html" class="btn btn-red">Read More</a>
             </div>
         </section>
     
+     
+          
 
         <section style="padding: 2%; padding-bottom: 5%; background-color: white;" class="textStrip">
             <!-- <p style="font-size: 50px">The one retailer for premium brands at off-price.</p>
@@ -977,56 +928,6 @@ Locking in Font
             '.image-text-section img, .image-text-section h2,.image-text-content p, .image-text-content a'
         ).forEach(el => observer.observe(el));
         </script>
-        
-        
-<!-- PARALLAX EFFECT -->
-<script>
-    (() => {
-        const section = document.querySelector('.image-text-section');
-        const image = section.querySelector('img');
-        const text = section.querySelector('.image-text-content');
-    
-        let ticking = false;
-    
-        function onScroll() {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    const rect = section.getBoundingClientRect();
-                    const windowHeight = window.innerHeight;
-    
-                    // Trigger reveal first
-                    if (rect.top < windowHeight * 0.9 && !image.classList.contains('revealed')) {
-                        image.classList.add('revealed');
-                    }
-    
-                    if (rect.top < windowHeight * 0.9 && !text.classList.contains('revealed')) {
-                        text.classList.add('revealed');
-                    }
-    
-                    // Parallax only after reveal
-                    if (rect.bottom > 0 && rect.top < windowHeight) {
-                        const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-    
-                        // Increased multipliers for stronger effect
-                        const imageTranslate = Math.min(progress * 220, 220);  // was 60
-                        image.style.transform = `translateY(${imageTranslate}px)`;
-    
-                        const textTranslate = Math.min(progress * 150, 150);     // was 40
-                        text.style.transform = `translateY(calc(-50% + ${textTranslate}px))`;
-                    }
-    
-                    ticking = false;
-                });
-    
-                ticking = true;
-            }
-        }
-    
-        window.addEventListener('scroll', onScroll, { passive: true });
-    })();
-    </script>
-    
-    
     
     
 

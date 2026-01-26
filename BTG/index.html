@@ -45,7 +45,7 @@
         
         h1 { font-size: clamp(3rem, 12vw, 7rem); }
         h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 30px; }
-        p { color: var(--secondary-purple); font-size: 1.2rem; font-family: var(--font-primary); }
+        p { color: var(--secondary-purple); font-size: 19px; font-family: var(--font-primary); }
 
         /* UTILITIES */
         .container { max-width: var(--container-max); margin: 0 auto; padding: 0 5%; }
@@ -102,16 +102,16 @@
         .hero-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .hero-overlay { position: relative; z-index: 2; text-align: center; color: var(--pure-white); }
         .hero-overlay p { color: var(--secondary-beige); letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-secondary); font-weight: 700; margin-bottom: 20px; font-size: 1.5rem; }
-
+/* 
         .card { background: #DBC9B1; transition: var(--transition); border-left: 0 solid var(--brand-red); border-bottom: 1px solid var(--grey-100); }
         .card:hover { transform: translateY(-5px); border-left-width: 5px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         .card-img { height: 400px; overflow: hidden; }
         .card-body { padding: 40px; }
-        .card-body h3 { font-size: 1.8rem; margin: 10px 0; }
+        .card-body h3 { font-size: 1.8rem; margin: 10px 0; } */
 
-        .hiring-teaser { background:#6C5E7E ; color: white; text-align: center; padding: 100px 0; }
-        .hiring-teaser h2 { color: white; font-size: 3.5rem; }
-        .hiring-teaser p { color: rgba(255,255,255,0.9); margin-bottom: 40px; font-size: 1.3rem; }
+        .hiring-teaser { background:white ; color: black; text-align: center; padding: 100px 0; }
+        .hiring-teaser h2 { color: black}
+        .hiring-teaser p { color: black; margin-bottom: 40px; }
 
         .grid-2 { grid-template-columns: 1fr 1fr; gap: 40px; }
 
@@ -252,10 +252,10 @@
         text-align: center;
         align-items: center;
     }
-
+/* 
     .text-box h2 {
         font-size: 32px;
-    }
+    } */
 
     .text-box p {
         font-size: 16px;
@@ -302,37 +302,117 @@
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
+/* -----------------------------
+   CARD STYLES
+------------------------------ */
 
-    .textStrip p{
-        font-size: 40px;
-        color: black;
-    }
-
-    .textStrip h2{
-        font-family: "ITC Fenice";
-    }
-
-
-    .textStrip {
-        position: relative;
-        /* margin-top: -35px;              pulls it up over previous section */
-        /* padding: 2.5% 6%; */
-        background-color: white;
-        /* border-radius: 40px 40px 0 0;   rounded top corners */
-        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
-        z-index: 5;
+.card {
+    background: #DBC9B1;
+    transition: var(--transition);
+    border-left: 0 solid var(--brand-red);
+    border-bottom: 1px solid var(--grey-100);
+    border-radius: 2%;
 }
 
-/* Text styling (optional but recommended) */
+.card:hover {
+    transform: translateY(-5px);
+    border-left-width: 5px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+/* Image container — responsive height */
+.card-img {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    overflow: hidden;
+    border-top-right-radius: 2%;
+    border-top-left-radius: 2%;
+}
+
+/* Ensure image fills container properly */
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Card body */
+.card-body {
+    padding: 40px;
+}
+
+.card-body h3 {
+    font-size: 1.8rem;
+    margin: 8px 0;
+}
+
+.card-body h4 {
+    margin: 0;
+}
+
+/* -----------------------------
+   TEXT STRIP SECTION
+------------------------------ */
+
+.textStrip {
+    position: relative;
+    background-color: white;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.08);
+    z-index: 5;
+}
+
+/* Paragraph text */
 .textStrip p {
     margin: 0;
     text-align: left;
     font-size: 40px;
     line-height: 1.6;
-    color: white;
+    color: black;
     padding-left: 3%;
     padding-right: 3%;
     margin-inline: auto;
+}
+
+/* Headings */
+.textStrip h2 {
+    font-family: "ITC Fenice";
+    text-align: center;
+}
+
+/* -----------------------------
+   RESPONSIVE FIXES (MOBILE)
+------------------------------ */
+
+@media (max-width: 768px) {
+
+/* Card image wrapper adapts to image */
+.card-img {
+    height: auto;              /* 🔥 remove fixed height */
+    aspect-ratio: auto;        /* 🔥 remove forced ratio */
+    overflow: hidden;          /* ✅ keep overflow hidden */
+}
+
+/* Image keeps natural ratio */
+.card-img img {
+    width: 100%;
+    height: auto;              /* 🔥 critical */
+    object-fit: contain;       /* 🔥 prevents cropping */
+    display: block;
+}
+
+/* Card body tighter */
+.card-body {
+    padding: 20px;
+}
+
+.textStrip {
+    padding: 24px 16px 40px;
+}
+
+.textStrip p {
+    font-size: 24px;
+}
 }
 
 
@@ -352,79 +432,82 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 } */
-
-.image-text-section{
-    position: relative;
+.image-text-section {
+    display: flex;
     width: 100%;
-    aspect-ratio: 21 / 9;
-    overflow: hidden;
+    min-height: 70vh;
 }
 
-/* Image */
-.image-text-section img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Text container */
-.image-text-content{
-    position: absolute;
-    top: 42%;
-    right: 10%;
-    transform: translateY(-50%);
+/* IMAGE AREA */
+.image-text-image {
     width: 50%;
+    border-right: 5px solid #CEA988;
+    position: relative;
+    overflow: hidden; /* parallax-safe */
+}
+
+.image-text-image img {
+    display: block;
+    will-change: transform;
+}
+
+/* TEXT AREA */
+.image-text-content {
+    position: relative; /* NOT absolute anymore */
+    width: 50%;
+    padding: clamp(40px, 6vw, 80px);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 18px;
     color: black;
 }
 
-/* Text */
-.image-text-content h2{
-    /* font-size: clamp(26px, 4vw, 50px); */
-    font-size: 30px;
-    line-height: 1.2;
+/* Headings */
+.image-text-content h2 {
     font-family: "ITC Fenice";
+
+    line-height: 1.2;
 }
 
-.image-text-content p{
+/* Paragraph */
+.image-text-content p {
     font-family: "Gotham Pro Black";
-    font-size: clamp(14px, 1.4vw, 18px);
+
     line-height: 1.6;
     color: black;
-
 }
 
 /* Button */
-.image-text-content a{
-    font-family: "Gotham Pro Black";
+.image-text-content a {
     align-self: flex-start;
-    padding: 12px 28px;
+    font-family: "Gotham Pro Black";
+
 }
 
-/* 📱 Mobile */
-@media (max-width: 768px){
-    .image-text-section{
-        aspect-ratio: auto;
-        min-height: 540px;
-    }
+@media (max-width: 768px) {
 
-    .image-text-content{
-        position: relative;
-        top: auto;
-        right: auto;
-        transform: none;
-        width: 90%;
-        margin: 0 auto;
-        padding: 40px 0;
-        text-align: center;
-    }
+.image-text-section {
+    flex-direction: column;
+}
 
-    .image-text-content a{
-        align-self: center;
-    }
+.image-text-image,
+.image-text-content {
+    width: 100%;
+}
+
+.image-text-image {
+    height: 260px;
+}
+
+.image-text-content {
+    padding: 32px 20px;
+    text-align: center;
+}
+
+.image-text-content a {
+    align-self: center;
+}
 }
 
 
@@ -722,29 +805,37 @@ footer > .container > div:last-child{
         <!-- <a href="story.html" class="storyBtn">Read Our Full Story</a> -->
 
         <section class="image-text-section">
-            <img src="images/banner-8.png" alt="Left banner image">
+
+            <div class="image-text-image">
+                <img src="images/banner-girl.png" alt="Brands to Go">
+            </div>
         
             <div class="image-text-content">
                 <h2>Your Brands. Your Prices.</h2>
         
                 <p>
-                    Welcome to Brands to Go <br> <br>
-                    Brands to Go stands for smart luxury a curated selection of world-class brands at accessible prices.
-                    Created for modern shoppers who value style, quality, and discovery, Brands to Go offers something for every visit. From fashion-forward finds to everyday premium essentials, the experience is designed to surprise and reward.
-
-                    
-                    Backed by 40+ years of Lals Group retail expertise, Brands to Go is more than a store. It’s a destination built on trust, curation, and value.
-
+                    Welcome to Brands to Go <br><br>
+        
+                    Brands to Go stands for smart luxury — a curated selection of world-class
+                    brands at accessible prices. Created for modern shoppers who value style,
+                    quality, and discovery, Brands to Go offers something for every visit.
+        
                     <br><br>
+        
+                    Backed by 40+ years of Lals Group retail expertise, Brands to Go is more than
+                    a store. It’s a destination built on trust, curation, and value.
+        
+                    <br><br>
+        
                     Every visit. Every find. Always a treasure.
-
-                 </p>
+                </p>
+        
                 <a href="story.html" class="btn btn-red">Read More</a>
             </div>
+        
         </section>
-    
-     
-          
+        
+             
 
         <section style="padding: 2%; padding-bottom: 5%; background-color: white;" class="textStrip">
             <!-- <p style="font-size: 50px">The one retailer for premium brands at off-price.</p>
@@ -838,8 +929,14 @@ footer > .container > div:last-child{
         <section class="hiring-teaser">
             <div class="container">
                 <h2>HIRING NOW!</h2>
-                <p>Join the crew.</p>
-                <a href="careers.html" class="btn" style="background:white; color:var(--brand-red);">View Roles & Apply</a>
+                <p>
+                    Brands to Go is growing and we’re building teams that grow with it.
+                    From retail and operations to digital and corporate roles, we’re creating an environment where ambition, ownership, and style come together.
+                </p><p>   If you’re passionate about brands, customer experience, and doing things better every day, you’ll feel at home here.
+                 Now hiring across multiple roles.</p>
+
+                
+                <a href="careers.html" class="btn btn-red">View Roles & Apply</a>
             </div>
         </section>
     </main>
@@ -872,7 +969,7 @@ footer > .container > div:last-child{
                     <p style="color:white; font-size:14px; margin-top:5px;">+971 00 000 0000</p>
                 </div>
             </div>
-        <div class="footertxt" style="color:  #DBC9B1;"> Your Brand. Your Prices.</p></div>
+        <div class="footertxt" style="color:  #DBC9B1;"> Your Brands. Your Prices.</p></div>
 
             <div style="padding-top:40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center;">
                 <p style="font-size:12px; color: #6C5E7E;">© 2026 BRANDS TO GO RETAIL GROUP. ALL RIGHTS RESERVED.</p>

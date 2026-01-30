@@ -800,6 +800,102 @@ footer > .container > div:last-child{
 }
 
 
+/* what we stand for container */
+.containerStory{max-width:var(--max); margin:0 auto; padding:0 30px;}
+
+.sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px;
+      margin-bottom:20px;
+      margin-top: 20px;
+    }
+
+    .lead{
+      margin:0;
+      color:var(--muted);
+      max-width:64ch;
+      font-size:14px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+      margin-bottom: 20px;
+      font-family: "Gotham Pro Black";
+    }
+    .card{
+      border:1px solid var(--grey-100);
+      border-radius: 10px;
+      overflow:hidden;
+      background: rgba(244,244,246,.03);
+      min-height:260px;
+      position:relative;
+    }
+    .cardImg{
+      height:150px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .cardImg::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55));
+    }
+    .cardBody{ padding:14px 14px 16px; }
+    .cardKicker{
+      font-size:11px;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:rgba(244,244,246,.75);
+      margin:0 0 8px;
+    }
+    .cardTitle{
+      margin:0 0 8px;
+      font-size:18px;
+      letter-spacing:.5px;
+    }
+    .cardText{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    /* ---------------------------------
+   MOBILE: Stack cards vertically
+---------------------------------- */
+@media (max-width: 768px) {
+
+.sectionHead{
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.lead{
+  font-size: 15px;
+  max-width: 100%;
+}
+
+.cards{
+  grid-template-columns: 1fr;   /* ONE card per row */
+  gap: 18px;
+}
+
+.cardImg{
+  height: 200px;                /* slightly taller for mobile */
+}
+
+.cardTitle{
+  font-size: 18px;
+}
+
+.cardText{
+  font-size: 14px;
+  line-height: 1.6;
+}
+}
 
     </style>
 </head>
@@ -887,6 +983,49 @@ footer > .container > div:last-child{
       
         <!-- <a href="story.html" class="storyBtn">Read Our Full Story</a> -->
 
+        <section>
+            <div class="containerStory">
+                <h2 style="text-align: center; margin-top: 20px;">What We Stand For</h2>
+
+              <div class="sectionHead">
+                
+                <!-- <p class="lead">
+                  The Brands to Go experience is built around luxury selection, simplicity, and trust.
+                </p> -->
+              </div>
+        
+              <div class="cards">
+                <div class="card">
+                  <div class="cardImg" style="background-image:url('https://images.unsplash.com/photo-1520975869018-1e1c5d7f9e5f?auto=format&fit=crop&w=1400&q=80');"></div>
+                  <div class="cardBody">
+                    <p class="cardKicker">Curated Variety</p>
+                    <h3 class="cardTitle">Luxury, expanded</h3>
+                    <p class="cardText">A wide selection of brands and styles, thoughtfully assembled for relevance and versatility.</p>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="cardImg" style="background-image:url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1400&q=80');"></div>
+                  <div class="cardBody">
+                    <p class="cardKicker">Accessible</p>
+                    <h3 class="cardTitle">Prices that make sense</h3>
+                    <p class="cardText">Premium pieces at accessible price points, so you can elevate your wardrobe with confidence.</p>
+                  </div>
+                </div>
+        
+                <div class="card">
+                  <div class="cardImg" style="background-image:url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=80');"></div>
+                  <div class="cardBody">
+                    <p class="cardKicker">Trust</p>
+                    <h3 class="cardTitle">Authenticity, always</h3>
+                    <p class="cardText">100% genuine products, sourced through trusted channels and presented with care.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
         <section class="image-text-section">
 
             <div class="image-text-image">
@@ -917,7 +1056,8 @@ footer > .container > div:last-child{
             </div>
         
         </section>
-        
+
+
         <section class="mobileOurStory">
             <div class="image-text-image-mobile">
                 <img src="images/banner-girl.png" alt="Brands to Go">
@@ -947,6 +1087,7 @@ footer > .container > div:last-child{
             </div>
 
         </section>
+
 
         <section style="padding: 2%; padding-bottom: 5%; background-color: white;" class="textStrip">
             <!-- <p style="font-size: 50px">The one retailer for premium brands at off-price.</p>

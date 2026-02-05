@@ -578,6 +578,113 @@ transition: transform 2s ease, opacity 2s ease;
   }
 }
 
+/* ================= EMAIL Capture ================= */
+.email-capture {
+  background: #000;
+  padding: 120px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.email-container {
+  width: 80%;
+  max-width: 720px;
+  text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.4);
+  padding-top: 40px;
+}
+
+.email-container img{
+  width: 500px;
+  height: 375px;
+  padding: 2vw;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  padding: 50px;
+}
+
+
+.email-heading {
+  font-size: clamp(24px, 3vw, 40px);
+  color: #fff;
+  margin-bottom: 30px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+#emailForm {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#emailInput {
+  flex: 1;
+  min-width: 260px;
+  padding: 14px 16px;
+  background: transparent;
+  border: 1px solid rgba(212,175,55,0.6);
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+#emailInput::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+#emailForm button {
+  padding: 14px 28px;
+  background: transparent;
+  border: 1px solid #d4af37;
+  color: #d4af37;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#emailForm button:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+.email-success {
+  margin-top: 20px;
+  color: #d4af37;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* footer beep */
+/* FOOTER LOGO BREATHING EFFECT */
+.footerlogo img {
+  animation: logoBreath 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Breathing keyframes */
+@keyframes logoBreath {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0.0));
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 22px rgba(212, 175, 55, 0.45));
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(212, 175, 55, 0.0));
+    opacity: 0.85;
+  }
+}
+
+
 </style>
 </head>
 
@@ -816,8 +923,59 @@ transition: transform 2s ease, opacity 2s ease;
   </section>
 
 
+  <!-- https://docs.google.com/forms/d/e/1FAIpQLScqrg9Qr65bJF_HswOms2G8Lo_cMdojiwvHPmhOWLiu-mRK8g/viewform?usp=pp_url&entry.1222293857=abhigyan@gmail.com -->
+  <section class="email-capture">
+    <div class="email-container footerlogo">
+    <img src="images/invitation.png" alt="Aurum Visual">
+      <h2 class="email-heading">Aurum Phi is not acquired. <span style="color: #d4af37;">It arrives.</span></h2>
+  
+      <form id="emailForm">
+        <input
+          type="email"
+          id="emailInput"
+          placeholder="Type in your email to enter the realm."
+          required
+        />
+        <button type="submit">Request Consideration</button>
+      </form>
+  
+      <p class="email-success" id="emailSuccess">
+        Thank you. You will hear from us.
+      </p>
+    </div>
+  </section>
+  
+
+  <div class="image-equation">
+    <img src="images/logoonly.png" alt="Aurum Phi">
+  </div>
+
 
 </div>
+
+<script>
+  document.getElementById("emailForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+  
+    const email = document.getElementById("emailInput").value;
+  
+    const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScqrg9Qr65bJF_HswOms2G8Lo_cMdojiwvHPmhOWLiu-mRK8g/formResponse";
+    const entryID = "entry.1222293857"; // replace this
+
+    const data = new FormData();
+    data.append(entryID, email);
+  
+    fetch(formURL, {
+      method: "POST",
+      mode: "no-cors",
+      body: data
+    });
+  
+    document.getElementById("emailForm").reset();
+    document.getElementById("emailSuccess").style.opacity = "1";
+  });
+  </script>
+  
 
 <script>
   const canvas = document.getElementById("particleCanvas");

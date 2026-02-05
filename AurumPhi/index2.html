@@ -113,14 +113,35 @@ body.lock-scroll {
 
 /* Section 1 story section */
 /* ================= STORY SECTION ================= */
+
 .story-section {
-  background: #000;
+  position: relative; /* REQUIRED for overlay */
+  background: url('images/skydustbanner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 120px 8vw;
   color: #d4af37;
   text-align: center;
+  overflow: hidden;
 }
 
-.symbol-section{
+/* Black overlay */
+.story-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6); /* adjust darkness here */
+  z-index: 1;
+}
+
+/* Ensure content stays above overlay */
+.story-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* .symbol-section{
   background:url('images/skydustbanner.png');
   background-size: cover;
   background-position: center;
@@ -128,7 +149,7 @@ body.lock-scroll {
   padding: 120px 8vw;
   color: #d4af37;
   text-align: center;
-}
+} */
 
 .symbol-section {
   position: relative; /* REQUIRED for overlay */
@@ -147,7 +168,7 @@ body.lock-scroll {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* adjust darkness here */
+  background: rgba(0, 0, 0, 0.35); /* adjust darkness here */
   z-index: 1;
 }
 
@@ -458,7 +479,7 @@ body.lock-scroll {
 
 .invite-text{
   font-size: 59px;
-  max-width: 860px;
+  max-width: 80%;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.95);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
@@ -496,6 +517,66 @@ opacity: 0;
 transition: transform 2s ease, opacity 2s ease;
 } */
 
+/* ================= EQUATION TEXT SPLIT ================= */
+.equation-text-section {
+  width: 100%;
+  background: #000;
+  padding: 40px 0 80px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Centered container */
+.equation-container {
+  width: 80%;
+  max-width: 1200px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+
+  padding-top: 40px;
+  border-top: 1px solid rgba(212, 175, 55, 0.45);
+}
+
+/* Left & right blocks */
+.equation-left,
+.equation-right {
+  color: #ffffff;
+}
+
+/* Small line */
+.eq-small {
+  font-size: clamp(14px, 1.4vw, 18px);
+  letter-spacing: 1px;
+  opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+/* Large emphasis text */
+.eq-large {
+  font-size: clamp(25px, 2.5vw, 40px);
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  line-height: 1.2;
+}
+
+/* Right align text on desktop */
+.equation-right {
+  text-align: right;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .equation-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .equation-right {
+    text-align: left;
+  }
+}
 
 </style>
 </head>
@@ -658,16 +739,84 @@ transition: transform 2s ease, opacity 2s ease;
   <div class="image-equation">
     <img src="images/theequation.png" alt="Aurum Visual">
   </div>
+
+  <section class="equation-text-section">
+    <div class="equation-container">
   
-  <section class="golden-ratio-section">
-    <!-- <h2 class="golden-heading">The Golden Ratio</h2> -->
-    <p class="invite-text">
-      Aurum Phi is not acquired. It arrives.
-    </p>
+      <div class="equation-left">
+        <p class="eq-small">Gold and proportion.</p>
+        <p class="eq-large">MATTER AND MEANING.</p>
+      </div>
+  
+      <div class="equation-right">
+        <p class="eq-small">Not mathematics.</p>
+        <p class="eq-large">A CIPHER.</p>
+      </div>
+  
+    </div>
+  </section>
+  
+  <section class="symbol-section story-section">
+    <h2 class="story-heading">Fragments of Origin</h2>
+
+    <div class="story-cards">
+
+      <!-- CARD 1 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/origins3.png" alt="Origins">
+        </div>
+        <div class="card-content">
+          <!-- <h3 style="color: white;">Nature</h3> -->
+          <p>
+            The hand that crafts.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/origins1.png" alt="Craft">
+        </div>
+        <div class="card-content">
+          <!-- <h3 style="color: white;">Cosmos</h3> -->
+          <p>
+            The mind that measures.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/origins3.png" alt="Destiny">
+        </div>
+        <div class="card-content">
+          <!-- <h3 style="color: white;">Precision</h3> -->
+          <p>
+            The seeker who understands.
+          </p>
+        </div>
+      </div>
+
+    </div>
   </section>
 
 
-  <div class="section">Section Three</div>
+
+  <section class="golden-ratio-section">
+    <!-- <h2 class="golden-heading">The Golden Ratio</h2> -->
+    <div class="invite-text">
+      <div> They did not build a product.</div>
+      <div>  They opened a door.</div>
+      <div>  Aurum Phi was born not as an object,</div>
+      <div>  but as an invitation</div>
+    </div>
+  </section>
+
+
+
 </div>
 
 <script>

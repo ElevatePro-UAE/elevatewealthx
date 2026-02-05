@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurum Phi</title>
+
+<style>
+
+/* ================= RESET ================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: black;
+  font-family: sans-serif;
+}
+
+body.lock-scroll {
+  overflow: hidden;
+}
+
+
+/* ================= HERO ================= */
+.hero {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10vh;
+  z-index: 2;
+}
+
+/* ================= BUTTON ================= */
+.luxury-btn {
+  background: #000;
+  color: #d4af37;
+  border: 1.5px solid #d4af37;
+  padding: 14px 42px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 12px;
+}
+
+.luxury-btn:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+/* ================= PARTICLE CANVAS ================= */
+#particleCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* ================= MAIN CONTENT ================= */
+#main-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease;
+}
+
+#main-content.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dummy sections */
+.section {
+  min-height: 100vh;
+  padding: 50px;
+  background: #0a0a0a;
+  /* border-bottom: 1px solid #222; */
+  color: #d4af37;
+  font-size: 42px;
+}
+
+
+/* Section 1 story section */
+/* ================= STORY SECTION ================= */
+.story-section {
+  background: #000;
+  padding: 120px 8vw;
+  color: #d4af37;
+  text-align: center;
+}
+
+.symbol-section{
+  background:url('images/skydustbanner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 120px 8vw;
+  color: #d4af37;
+  text-align: center;
+}
+
+.symbol-section {
+  position: relative; /* REQUIRED for overlay */
+  background: url('images/skydustbanner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 120px 8vw;
+  color: #d4af37;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Black overlay */
+.symbol-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* adjust darkness here */
+  z-index: 1;
+}
+
+/* Ensure content stays above overlay */
+.symbol-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Heading */
+.story-heading {
+  font-size: clamp(32px, 4vw, 52px);
+  margin-bottom: 80px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+/* Card layout */
+.story-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+/* Individual card */
+.story-card {
+  background: #050505;
+  border: 1px solid rgba(212,175,55,0.25);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 10px;
+}
+
+/* Image */
+.story-image {
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+
+  /* ❌ remove aspect-ratio */
+}
+
+
+.story-image img {
+  width: 100%;
+  height: auto;        /* ✅ natural height */
+  object-fit: contain; /* ✅ no crop */
+  display: block;
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.story-card:hover .story-image img {
+  transform: scale(1.03);
+}
+
+
+.story-image:hover img {
+  filter: grayscale(100%);
+}
+
+/* Content */
+.card-content {
+  padding: 28px;
+}
+
+.card-content h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+}
+
+.card-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color:#D4AF37
+}
+
+/* Hover luxury effect */
+.story-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(212,175,55,0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .story-cards {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  z-index: 100;
+  background: transparent;
+  transition: background 0.35s ease, backdrop-filter 0.35s ease, opacity 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Shown after Enter */
+.navbar.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* NOT transparent when scrolled */
+.navbar.scrolled {
+  background: black !important;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.55);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.08);
+}
+
+
+/* Layout */
+.nav-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw;
+  position: relative;
+}
+
+.nav-logo {
+  height: 70px;
+}
+
+/* Hamburger */
+.hamburger {
+  position: absolute;
+  left: 6vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: #d4af37;
+  display: block;
+  margin: 5px 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    height: 64px;
+  }
+
+  .nav-logo {
+    height: 60px;
+  }
+}
+
+/* ================= MOBILE MENU ================= */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu ul {
+  list-style: none;
+  text-align: center;
+}
+
+.mobile-menu li {
+  margin: 22px 0;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: #d4af37;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu a:hover {
+  opacity: 0.7;
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.hamburger span {
+  transition: all 0.35s ease;
+}
+
+/* Wrapper */
+.image-only {
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  padding: 10px 0;           /* optional vertical spacing */
+  background: #000;          /* remove if not needed */
+  /* border-bottom: 1px solid #222; */
+}
+
+/* Image */
+.image-only img {
+  width: 40%;
+  max-width: 480px;          /* controls size on desktop */
+  height: auto;
+  display: block;
+}
+
+/* Wrapper */
+.image-equation {
+  width: 100%;
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  padding: 10px 0;           /* optional vertical spacing */
+  background: #000;          /* remove if not needed */
+  /* border-bottom: 1px solid #222; */
+}
+
+/* Image */
+.image-equation img {
+  width: 80%;
+  max-width: 600px;          /* controls size on desktop */
+  height: auto;
+  display: block;
+}
+
+/* Mobile tweak (optional) */
+@media (max-width: 600px) {
+  .image-equation img {
+    max-width: 90vw;
+  }
+}
+
+/* ================= GOLDEN RATIO TEXT SECTION ================= */
+.golden-ratio-section {
+  
+  width: 100%;
+
+  /* ⛔ remove min-height */
+  padding: clamp(36px, 5vw, 64px) clamp(20px, 8vw, 120px);
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* Heading */
+.golden-heading {
+  font-size: clamp(26px, 3.6vw, 48px);
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  margin-bottom: 14px; /* tighter */
+  letter-spacing: 0.8px;
+  line-height: 1.15;
+
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Paragraph */
+.golden-text {
+  font-size: clamp(15px, 1.5vw, 20px);
+  max-width: 860px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.invite-text{
+  font-size: 59px;
+  max-width: 860px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Reduce gap after Golden Ratio */
+.symbol-section {
+  padding-top: 40px !important;
+}
+
+
+/* ================= SCROLL ANIMATION SYSTEM ================= */
+/* .reveal{
+    transform: translate(0,0) !important;
+    opacity: 1 !important;
+}
+
+@media (max-width: 768px){
+    .golden-ratio-section h2,
+    .golden-ratio-section p{
+        transform: translateY(-220px);
+    }
+} */
+
+/* ------------------------------------------------------------------
+   SCROLL to animate
+------------------------------------------------------------------ */
+/* Initial hidden state */
+
+    /* IMAGE */
+/* .golden-ratio-section h2{
+
+transform: translateY(120px);
+opacity: 0;
+transition: transform 2s ease, opacity 2s ease;
+} */
+
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Logo -->
+    <img src="images/aurumphilogo.png" class="nav-logo" alt="Aurum Phi">
+
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Story</a></li>
+    <li><a href="#">Craft</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</div>
+
+
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <!-- <img src="images/our-story-1.png" id="heroImage"> -->
+  <video
+  id="heroVideo"
+  src="videos/herovideo-2.mp4"
+  muted
+  playsinline
+  preload="auto"
+></video>
+  <div class="hero-content">
+    <button class="luxury-btn" id="enterBtn">Enter the Realm</button>
+  </div>
+</section>
+
+<!-- PARTICLE CANVAS -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- ACTUAL CONTENT -->
+<div id="main-content">
+  
+  <section class="section story-section" style="background-color: black;">
+    <h2 class="story-heading">A Story Written In the Stars</h2>
+  
+    <div class="story-cards">
+
+      <!-- CARD 1 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/ancient-civilization.png" alt="Origins">
+        </div>
+        <div class="card-content">
+          <p>
+            In the heart of ancient civilizations, the wisdom of Phi guarded artisans.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/equation.png" alt="Craft">
+        </div>
+        <div class="card-content">
+          <p>
+            Legends whisper of a sacred equation – Au + Phi = 10<sup>2</sup>.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/craftsmenship.png" alt="Destiny">
+        </div>
+        <div class="card-content">
+          <p>
+            Aurum Phi revives this lost wisdom through art, technology, and craftsmanship.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- the symbol -->
+  <div class="image-only">
+    <img src="images/thesymbol2.png" alt="Aurum Visual">
+  </div>
+
+  <section class="golden-ratio-section">
+    <h2 class="golden-heading">The Golden Ratio</h2>
+    <p class="golden-text">
+      A universal constant that governs aesthetic perfection across every scale of existence.
+    </p>
+  </section>
+
+  <section class="symbol-section story-section">
+    <!-- <h2 class="story-heading">A Story Written In the Stars</h2> -->
+  
+    <div class="story-cards">
+
+      <!-- CARD 1 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/symbol1.png" alt="Origins">
+        </div>
+        <div class="card-content">
+          <h3 style="color: white;">Nature</h3>
+          <p>
+            The logarithmic growth of the nautilus.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/symbol3new.png" alt="Craft">
+        </div>
+        <div class="card-content">
+          <h3 style="color: white;">Cosmos</h3>
+          <p>
+            The expansive dance of spiral galaxies.
+          </p>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="story-card">
+        <div class="story-image">
+          <img src="images/symbol2.png" alt="Destiny">
+        </div>
+        <div class="card-content">
+          <h3 style="color: white;">Precision</h3>
+          <p>
+            The enduring beauty of ancient architecture.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  
+  <div class="image-equation">
+    <img src="images/theequation.png" alt="Aurum Visual">
+  </div>
+  
+  <section class="golden-ratio-section">
+    <!-- <h2 class="golden-heading">The Golden Ratio</h2> -->
+    <p class="invite-text">
+      Aurum Phi is not acquired. It arrives.
+    </p>
+  </section>
+
+
+  <div class="section">Section Three</div>
+</div>
+
+<script>
+  const canvas = document.getElementById("particleCanvas");
+  const ctx = canvas.getContext("2d");
+  const hero = document.getElementById("hero");
+  const mainContent = document.getElementById("main-content");
+  const enterBtn = document.getElementById("enterBtn");
+  
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  let particles = [];
+  
+  function createParticles() {
+    particles = [];
+    const step = 50; // increase = fewer particles
+
+    for (let y = 0; y < canvas.height; y += step) {
+      for (let x = 0; x < canvas.width; x += step) {
+        particles.push({
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 8,
+          vy: (Math.random() - 0.5) * 8,
+          alpha: 1
+        });
+      }
+    }
+  }
+  
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha -= 0.02;
+  
+      ctx.fillStyle = `rgba(255,215,120,${p.alpha})`;
+      ctx.fillRect(p.x, p.y, 4, 4);
+    });
+  
+    particles = particles.filter(p => p.alpha > 0);
+  
+    // if (particles.length > 0) {
+    //   requestAnimationFrame(animate);
+    // } else {
+    //   canvas.style.display = "none";
+    //   mainContent.classList.add("show");
+    //   document.body.style.overflow = "auto";
+    // }
+
+    if (particles.length > 0) {
+      requestAnimationFrame(animate);
+    } else {
+      canvas.style.display = "none";
+      mainContent.classList.add("show");
+
+      // ✅ NAV APPEARS ONLY AFTER MAGIC ENDS
+      navbar.classList.add("show");
+      handleScroll();
+
+      document.body.style.overflow = "auto";
+    }
+
+  }
+  
+  // enterBtn.addEventListener("click", () => {
+  //   canvas.style.display = "block";
+  //   hero.style.visibility = "hidden";   // this WILL work now
+  //   createParticles();
+  //   animate();
+  // });
+
+  const heroVideo = document.getElementById("heroVideo");
+
+  enterBtn.addEventListener("click", async () => {
+    window.scrollTo(0, 0);
+    canvas.style.display = "block";
+
+    // Restart & play video
+    heroVideo.currentTime = 0;
+    heroVideo.play();
+
+    // Wait for video to finish (or max 2s safety)
+    await new Promise(resolve => {
+      const safety = setTimeout(resolve, 2000);
+
+      heroVideo.onended = () => {
+        clearTimeout(safety);
+        resolve();
+      };
+    });
+
+    // Hide hero AFTER video
+    hero.style.visibility = "hidden";
+
+    // Start particle disintegration
+    createParticles();
+    animate();
+  });
+
+  
+
+  const navbar = document.getElementById("navbar");
+
+  function handleScroll() {
+    if (window.scrollY > 30) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  }
+
+  /* Show navbar AFTER Enter */
+  enterBtn.addEventListener("click", () => {
+    setTimeout(() => {
+      navbar.classList.add("show");
+
+      /* Force scroll check AFTER navbar appears */
+      handleScroll();
+
+      /* Enable scrolling */
+      document.body.style.overflow = "auto";
+    }, 2000);
+  });
+
+
+
+  /* Scroll listener */
+  window.addEventListener("scroll", handleScroll);
+
+  const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  mobileMenu.classList.toggle("open");
+
+  if (mobileMenu.classList.contains("open")) {
+    document.body.classList.add("lock-scroll");
+  } else {
+    document.body.classList.remove("lock-scroll");
+  }
+});
+
+/* Close menu on link click */
+document.querySelectorAll(".mobile-menu a").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    mobileMenu.classList.remove("open");
+    document.body.classList.remove("lock-scroll");
+  });
+});
+
+</script>
+
+  <!-- Animate on scroll -->
+   <!-- ANIMATE ON SCROLL -->
+   <script>
+    const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('reveal');
+                observer.unobserve(entry.target); // one-time only
+            }
+        });
+    },{
+        threshold: 0.1   // element must be 25% visible
+    });
+    
+    document.querySelectorAll(
+        '.golden-ratio-section h2'
+    ).forEach(el => observer.observe(el));
+    </script>
+
+  
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brands To Go | Careers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"> -->
     <style>
         /* Shared Design System */
         :root {
@@ -92,14 +92,6 @@
     .brand-logo {
     flex-shrink: 0;
     }
-
-/* 
-
-    /* 
-    ------------------------------------------------------------------
-    FOOTER
-    ------------------------------------------------------------------
-    */
 
 /* ------------------------------------------------------------------
    FOOTER (RESPONSIVE)
@@ -486,7 +478,6 @@ p {
             <!-- <form id="apply-form" onsubmit="event.preventDefault(); submitApplication(this);"> -->
                 <form id="apply-form" onsubmit="event.preventDefault(); submitJobApplication(this);">
 
-
                 <input type="hidden" name="applied_role" id="target-role">
                 <div class="grid grid-2">
                     <div>
@@ -504,12 +495,12 @@ p {
                         <input type="tel" name="phone" required class="form-control">
                     </div>
                     <div>
-                        <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">PREFERRED SITE</label>
-                        <select name="mall_pref" class="form-control">
-                            <option>Reem Mall</option>
-                            <option>Al Wahda Mall</option>
-                        </select>
+                        <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">LINKEDIN PROFILE</label>
+                        <input type="text" name="linkedIn" class="form-control">
                     </div>
+                    <input type="hidden" name="mall_pref" id="target-loc">
+
+                    
                 </div>
                 <label style="font-size:11px; font-weight:800; font-family: var(--font-secondary);">UPLOAD CV (PDF) *</label>
                 <input type="file" id="cv" required accept=".pdf" class="form-control">
@@ -564,6 +555,7 @@ p {
                     <p style="font-family:Gotham Pro Black; margin-top:15px; font-size: 1.1rem;">${desc}</p>
                 `;
                 document.getElementById('target-role').value = title;
+                document.getElementById('target-loc').value = loc;
                 document.getElementById('modal-app').classList.add('open');
                 document.body.style.overflow = 'hidden';
             },
@@ -636,7 +628,7 @@ p {
     });
     </script>
     
-    <script>
+    <!-- <script>
         const WEB_APP_URL =
           "https://script.google.com/macros/s/AKfycbzAwpODbP9ttyr4XTpbVLWifhTimlxTXENaAmzehIehFUFoYcB5D62jNN-Jt8bKT78l/exec";
         
@@ -669,8 +661,10 @@ p {
               name: form.name.value.trim(),
               email: form.email.value.trim(),
               phone: form.phone.value.trim(),
-              mall_pref: form.mall_pref.value,
+              linkedIn: form.linkedIn.value.trim(),
+            //   mall_pref: form.mall_pref.value,
               applied_role: document.getElementById("target-role").value,
+              mall_pref: document.getElementById("target-loc").value,
               cv_filename: file.name,
               cv_base64: base64
             };
@@ -706,7 +700,7 @@ p {
           btn.innerText = "Submit";
         }
         </script>
-        
+         -->
 
       <script>
     async function submitJobApplication(form) {
@@ -737,8 +731,9 @@ p {
                 name: form.name.value,
                 email: form.email.value,
                 phone: form.phone.value,
-                mall_pref: form.mall_pref.value,
+                linkedIn: form.linkedIn.value,
                 applied_role: document.getElementById("target-role").value,
+                mall_pref: document.getElementById("target-loc").value,
                 cv_filename: file.name,
                 cv_base64: reader.result.split(",")[1]
             };

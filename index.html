@@ -1,1098 +1,561 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elevate Wealth X | End-to-End Digital Commerce Growth Partner</title>
-    <meta name="description"
-        content="We build and scale digital commerce engines that grow revenue, improve margins, and accelerate execution.">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <!-- Styles -->
-    <style>
-:root {
-    /* Colors - Deep Premium Dark */
-    --bg-dark: #050505;
-    --bg-darker: #000000;
-    --text-main: #f5f5f7;
-    --text-muted: #a1a1a6;
-
-    /* Gradients */
-    --primary-gradient: linear-gradient(135deg, #00d2ff 0%, #00ff87 100%);
-    --accent-blue: #00d2ff;
-    --accent-green: #00ff87;
-
-    /* Glass Elements */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-highlight: rgba(255, 255, 255, 0.12);
-    --liquid-blur: blur(24px);
-
-    /* Typography */
-    --font-heading: 'Outfit', -apple-system, sans-serif;
-    --font-body: 'Inter', -apple-system, sans-serif;
-
-    /* Geometry */
-    --radius-lg: 32px;
-    --radius-md: 24px;
-    --radius-sm: 12px;
-    --section-pad: 160px 0;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Ambient Backgrounds */
-.ambient-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(140px);
-    opacity: 0.15;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.glow-1 {
-    top: -10%;
-    left: -10%;
-    width: 60vw;
-    height: 60vw;
-    background: var(--accent-blue);
-}
-
-.glow-2 {
-    bottom: -10%;
-    right: -10%;
-    width: 50vw;
-    height: 50vw;
-    background: var(--accent-green);
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4 {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-}
-
-.gradient-text {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.badge {
-    display: inline-block;
-    padding: 8px 16px;
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid rgba(0, 210, 255, 0.2);
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent-blue);
-    margin-bottom: 30px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-/* Layout */
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-
-section {
-    padding: var(--section-pad);
-}
-
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 36px;
-    border-radius: 100px;
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--text-main);
-    color: var(--bg-dark);
-}
-
-.btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.glass-btn {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: var(--liquid-blur);
-    color: var(--text-main);
-}
-
-.glass-btn:hover {
-    background: var(--glass-highlight);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
-}
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-main);
-    padding: 12px 28px;
-}
+<title>Elevate Wealth X | End-to-End Digital Commerce Growth Partner</title>
 
-/* Glass Cards System */
-.glass-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-md);
-    backdrop-filter: var(--liquid-blur);
-    -webkit-backdrop-filter: var(--liquid-blur);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
 
-.glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+/* ================= GLOBAL ================= */
+
+:root{
+--bg-dark:#050505;
+--text-main:#f5f5f7;
+--text-muted:#a1a1a6;
+--primary-gradient:linear-gradient(135deg,#00d2ff,#00ff87);
+--glass-bg:rgba(255,255,255,0.03);
+--glass-border:rgba(255,255,255,0.08);
+--font-heading:'Outfit',sans-serif;
+--font-body:'Inter',sans-serif;
+--radius-md:24px;
+--section-pad:140px 0;
 }
 
-.glass-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* Navigation */
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 30px 0;
-    transition: all 0.5s ease;
+body{
+background:var(--bg-dark);
+color:var(--text-main);
+font-family:var(--font-body);
+overflow-x:hidden;
+line-height:1.6;
 }
 
-nav.scrolled {
-    padding: 15px 0;
-    background: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+.container{
+max-width:1300px;
+margin:auto;
+padding:0 40px;
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+section{
+padding:var(--section-pad);
 }
 
-.logo img {
-    height: 60px;
-    /* Reduced for sleekness */
-    filter: brightness(2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) !important;
-    /* Force visibility on dark bg */
-    mix-blend-mode: normal !important;
-    /* Revert multiply to show on dark */
-    background: transparent !important;
+img{
+max-width:100%;
+display:block;
 }
 
-.nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-}
+/* ================= NAV ================= */
 
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
+nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+padding:25px 0;
+transition:.3s;
 }
 
-.nav-links a:hover {
-    color: var(--text-main);
+nav.scrolled{
+background:rgba(0,0,0,.7);
+backdrop-filter:blur(20px);
 }
 
-/* Hero Section */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 120px;
+.nav-container{
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.hero .container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: center;
-    gap: 60px;
-    width: 100%;
+.logo img{
+height:55px;
 }
 
-.hero h1 {
-    font-size: 5vw;
-    font-weight: 600;
-    margin-bottom: 30px;
+.nav-links{
+display:flex;
+gap:35px;
+list-style:none;
 }
 
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin-bottom: 40px;
+.nav-links a{
+text-decoration:none;
+color:var(--text-muted);
+font-size:.95rem;
 }
 
-.hero-metrics {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 50px;
-    padding: 20px 0;
-    border-top: 1px solid var(--glass-border);
-    border-bottom: 1px solid var(--glass-border);
+.menu-toggle{
+display:none;
+flex-direction:column;
+gap:4px;
+cursor:pointer;
 }
 
-.metric .number {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    color: var(--text-main);
-    font-weight: 500;
+.menu-toggle span{
+width:24px;
+height:2px;
+background:white;
 }
 
-.metric .label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
+/* ================= BUTTONS ================= */
 
-.hero-visual {
-    position: relative;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn{
+padding:14px 32px;
+border-radius:100px;
+text-decoration:none;
+font-family:var(--font-heading);
+display:inline-flex;
+align-items:center;
+justify-content:center;
 }
 
-.hero-glass-card {
-    width: 350px;
-    padding: 40px;
-    border-radius: var(--radius-lg);
-    background: rgba(10, 10, 10, 0.4);
+.btn-primary{
+background:white;
+color:black;
 }
 
-.card-inner-glow {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: var(--accent-blue);
-    filter: blur(80px);
-    opacity: 0.3;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.glass-btn{
+background:var(--glass-bg);
+border:1px solid var(--glass-border);
+color:white;
 }
 
-.mock-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 15px;
-    height: 150px;
-    margin-top: 40px;
-}
+/* ================= HERO ================= */
 
-.mock-chart .bar {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px 4px 0 0;
-    transition: height 1s ease;
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding-top:120px;
 }
 
-.gradient-bar {
-    background: var(--primary-gradient) !important;
+.hero .container{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:60px;
+align-items:center;
 }
 
-/* Bento Grid System */
-.section-title {
-    margin-bottom: 80px;
+.hero h1{
+font-size:5vw;
+margin-bottom:25px;
 }
 
-.section-title h2 {
-    font-size: 4rem;
+.hero p{
+color:var(--text-muted);
+font-size:1.2rem;
+margin-bottom:30px;
+max-width:600px;
 }
 
-.text-center {
-    text-align: center;
+.hero-metrics{
+display:flex;
+gap:40px;
+margin-bottom:40px;
 }
 
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(300px, auto);
-    gap: 24px;
+.metric .number{
+font-size:2rem;
+font-family:var(--font-heading);
 }
 
-.bento-card {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.hero-btns{
+display:flex;
+gap:20px;
 }
 
-.card-tag {
-    font-size: 0.8rem;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    margin-bottom: 20px;
-    display: block;
-}
+/* ================= BENTO ================= */
 
-.bento-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
+.section-title{
+margin-bottom:80px;
 }
 
-.bento-card p {
-    color: var(--text-muted);
+.section-title h2{
+font-size:4rem;
 }
 
-/* Specific Bento Placements */
-.bento-large {
-    grid-column: span 2;
-    grid-row: span 2;
-    padding: 0;
-    /* Removing padding for image integration */
+.bento-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+grid-auto-flow:dense;
 }
 
-.bento-large .card-content {
-    padding: 40px;
+.glass-card{
+background:var(--glass-bg);
+border:1px solid var(--glass-border);
+border-radius:var(--radius-md);
+padding:40px;
 }
 
-.bento-large .card-visual {
-    height: 350px;
-    overflow: hidden;
+.bento-large{
+grid-column:span 2;
+grid-row:span 2;
+padding:0;
 }
 
-.bento-large img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.6;
+.bento-large img{
+height:350px;
+object-fit:cover;
+opacity:.6;
 }
 
-.highlight-card {
-    grid-column: span 2;
-    background: linear-gradient(145deg, rgba(0, 210, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
-    border-color: rgba(0, 210, 255, 0.2);
+.bento-medium{
+grid-column:span 2;
 }
 
-.bento-medium {
-    grid-column: span 2;
+.bento-group{
+grid-column:span 4;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
 }
 
-.bento-group {
-    grid-column: span 4;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+.small-card{
+padding:25px;
 }
 
-.small-card {
-    padding: 30px;
-    justify-content: flex-start;
+.bento-wide{
+grid-column:span 4;
+display:grid;
+grid-template-columns:1fr 1.5fr;
+padding:0;
 }
 
-
-.small-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+.visual-left img{
+height:100%;
+object-fit:cover;
+opacity:.6;
 }
 
-.bento-wide {
-    grid-column: span 4;
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 0;
-    padding: 0;
+.content-right{
+padding:60px;
 }
 
-.visual-left {
-    height: 100%;
-    min-height: 400px;
-    border-right: 1px solid var(--glass-border);
-}
+/* ================= FOOTER ================= */
 
-.visual-left img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
+footer{
+padding:100px 0 40px;
 }
 
-.content-right {
-    padding: 80px 60px;
-    justify-content: center;
+.footer-cta{
+text-align:center;
+padding:80px;
+margin-bottom:80px;
 }
 
-/* Sticky Approach Section */
-.approach-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: start;
+.footer-bottom-grid{
+display:flex;
+justify-content:space-between;
+border-bottom:1px solid var(--glass-border);
+padding-bottom:40px;
+margin-bottom:40px;
 }
 
-.approach-sticky {
-    position: sticky;
-    top: 150px;
+.footer-legal{
+color:var(--text-muted);
+font-size:.85rem;
 }
 
-.approach-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
+/* ================= RESPONSIVE ================= */
 
-.phase-card {
-    padding: 50px;
-}
+@media (max-width:1200px){
 
-.phase-number {
-    font-family: var(--font-heading);
-    font-size: 4rem;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.05);
-    font-weight: 800;
-    margin-bottom: -20px;
+.hero .container{
+grid-template-columns:1fr;
+text-align:center;
 }
 
-.phase-card h3 {
-    font-size: 2rem;
-    margin-bottom: 15px;
+.hero h1{
+font-size:3.8rem;
 }
 
-/* Eco Grid */
-.eco-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+.hero-metrics{
+justify-content:center;
 }
 
-.center-card {
-    text-align: center;
-    padding: 60px 40px;
+.bento-grid{
+grid-template-columns:repeat(2,1fr);
 }
 
-.icon-wrap {
-    font-size: 3rem;
-    margin-bottom: 20px;
+.bento-large,
+.bento-medium,
+.highlight-card{
+grid-column:span 2;
 }
 
-/* Footer */
-footer {
-    padding: 100px 0 40px;
+.bento-group{
+grid-column:span 2;
+grid-template-columns:repeat(2,1fr);
 }
 
-.footer-cta {
-    padding: 80px;
-    text-align: center;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    margin-bottom: 80px;
+.bento-wide{
+grid-column:span 2;
+grid-template-columns:1fr;
 }
 
-.footer-cta h2 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
 }
 
-.footer-cta p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-}
+@media (max-width:768px){
 
-.footer-bottom-grid {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 40px;
-    margin-bottom: 40px;
+.container{
+padding:0 20px;
 }
 
-.footer-brand h3 {
-    font-size: 2rem;
-    margin-bottom: 10px;
+.nav-links{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:black;
+flex-direction:column;
+align-items:center;
+gap:25px;
+padding:40px 0;
+transform:translateY(-150%);
+transition:.3s;
 }
 
-.footer-links p {
-    color: var(--text-muted);
+.nav-links.active{
+transform:translateY(0);
 }
 
-.footer-legal {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+.menu-toggle{
+display:flex;
 }
 
-/* Reveal Animations */
-[data-reveal] {
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+.hero h1{
+font-size:2.5rem;
 }
 
-[data-reveal="bottom"] {
-    transform: translateY(40px);
+.hero-btns{
+flex-direction:column;
 }
 
-[data-reveal="right"] {
-    transform: translateX(60px);
+.hero-btns .btn{
+width:100%;
 }
 
-[data-reveal].revealed {
-    opacity: 1;
-    transform: translate(0);
+.hero-metrics{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
 }
 
-/* Responsive Styling */
-/* Responsive Breakpoints */
-@media (max-width: 1400px) {
-    .container {
-        padding: 0 40px;
-    }
-
-    .hero h1 {
-        font-size: 5.5vw;
-    }
+.bento-grid{
+grid-template-columns:1fr;
 }
-
-@media (max-width: 1200px) {
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .bento-wide,
-    .highlight-card {
-        grid-column: span 2;
-    }
-
-    .bento-wide {
-        grid-template-columns: 1fr;
-    }
-
-    .visual-left {
-        height: 300px;
-        border-right: none;
-        border-bottom: 1px solid var(--glass-border);
-    }
-
-    .hero .container {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        text-align: center;
-        padding-top: 180px;
-    }
-
-    .hero h1 {
-        font-size: 4.5rem;
-        margin: 0 auto 30px;
-    }
-
-    .hero p {
-        margin: 0 auto 40px;
-    }
 
-    .hero-metrics {
-        justify-content: center;
-    }
-
-    .hero-visual {
-        display: none;
-    }
-
-    .approach-wrapper {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .approach-sticky {
-        position: static;
-        margin-bottom: 20px;
-    }
-
-    .eco-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.bento-large,
+.bento-medium,
+.bento-group,
+.bento-wide{
+grid-column:span 1;
 }
-
-@media (max-width: 900px) {
-    .bento-group {
-        grid-template-columns: 1fr;
-    }
-
-    .eco-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .hero h1 {
-        font-size: 4rem;
-    }
-
-    .section-title h2 {
-        font-size: 3rem;
-    }
-
-    .metric .number {
-        font-size: 1.5rem;
-    }
+.bento-group{
+grid-template-columns:1fr;
 }
-
-@media (max-width: 768px) {
-    :root {
-        --section-pad: 100px 0;
-    }
-
-    .nav-links,
-    .nav-cta {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .bento-grid {
-        grid-template-columns: 1fr;
-    }
 
-    .bento-large,
-    .bento-group,
-    .highlight-card,
-    .bento-wide {
-        grid-column: span 1;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
-    }
-
-    .section-title h2 {
-        font-size: 2.2rem;
-    }
-
-    .footer-cta {
-        padding: 40px 20px;
-        margin-bottom: 50px;
-    }
-
-    .footer-cta h2 {
-        font-size: 2rem;
-    }
-
-    .footer-bottom-grid {
-        flex-direction: column;
-        gap: 30px;
-        border-bottom: none;
-        padding-bottom: 20px;
-    }
-
-    .hero-metrics {
-        flex-direction: column;
-        gap: 20px;
-        border: none;
-        padding: 0;
-        margin-bottom: 30px;
-    }
-
-    .metric {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 15px;
-        border-radius: 12px;
-    }
-
-    .glass-card {
-        padding: 30px;
-    }
-
-    .phase-card {
-        padding: 30px;
-    }
-
-    .approach-wrapper {
-        gap: 30px;
-    }
-
-    .phase-number {
-        font-size: 3rem;
-        margin-bottom: 0px;
-    }
 }
+
 </style>
 </head>
 
-<body class="dark-theme">
+<body>
 
-    <!-- Ambient Background Glows -->
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
+<!-- NAV -->
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="assets/logo.png" alt="EWX Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="#about">The Firm</a></li>
-                <li><a href="#services">Capabilities</a></li>
-                <li><a href="#approach">Methodology</a></li>
-                <li><a href="#economics">Conviction</a></li>
-            </ul>
-            <div class="nav-cta">
-                <a href="#contact" class="btn btn-outline">Engage</a>
-            </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </nav>
+<nav id="navbar">
+<div class="container nav-container">
 
-    <!-- Elevated Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content" data-reveal="bottom">
-                <div class="badge">Operating Partners for Digital Scale</div>
-                <h1>Architecting<br><span class="gradient-text">commercial dominance.</span></h1>
-                <p>Elevate Wealth X partners with ambitious brands to engineer, optimize, and scale elite digital
-                    commerce ecosystems. Uncompromising execution. Absolute alignment with your P&L.</p>
+<a class="logo" href="#">
+<img src="assets/logo.png">
+</a>
 
-                <div class="hero-metrics">
-                    <div class="metric">
-                        <span class="number">10x</span>
-                        <span class="label">Velocity vs Agency</span>
-                    </div>
-                    <div class="metric">
-                        <span class="number">Focus</span>
-                        <span class="label">Contribution Margin</span>
-                    </div>
-                </div>
+<ul class="nav-links">
+<li><a href="#">The Firm</a></li>
+<li><a href="#">Capabilities</a></li>
+<li><a href="#">Methodology</a></li>
+<li><a href="#">Conviction</a></li>
+</ul>
 
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">Request Consultation</a>
-                    <a href="#services" class="btn btn-secondary glass-btn">Explore Capabilities</a>
-                </div>
-            </div>
+<div class="menu-toggle" id="mobile-menu">
+<span></span>
+<span></span>
+<span></span>
+</div>
 
-            <!-- Abstract Hero Visual -->
-            <div class="hero-visual" data-reveal="right">
-                <div class="glass-card hero-glass-card">
-                    <div class="card-inner-glow"></div>
-                    <h3>Precision Engine</h3>
-                    <div class="mock-chart">
-                        <div class="bar" style="height: 40%"></div>
-                        <div class="bar" style="height: 60%"></div>
-                        <div class="bar" style="height: 85%"></div>
-                        <div class="bar gradient-bar" style="height: 100%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
+</nav>
 
-    <!-- Services - Bento Grid Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title" data-reveal="bottom">
-                <h2>Eight pillars. <br>One <span class="gradient-text">unified engine.</span></h2>
-            </div>
+<!-- HERO -->
 
-            <div class="bento-grid">
+<section class="hero">
+<div class="container">
 
-                <!-- Large Card: Architecture -->
-                <div class="bento-card bento-large glass-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">01. Foundation</span>
-                        <h3>Enterprise Architecture</h3>
-                        <p>Sub-second architectures engineered for peak conversion. We construct the indestructible
-                            digital foundations required for global scale.</p>
-                    </div>
-                    <div class="card-visual">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
-                            alt="Tech Architecture">
-                    </div>
-                </div>
+<div>
 
-                <!-- Medium Card: Marketplace -->
-                <div class="bento-card bento-medium glass-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">02. Expansion</span>
-                        <h3>Multi-Market Scale</h3>
-                        <p>Marketplace dominance across Amazon, Noon, and regional leaders. Algorithmic pricing and
-                            operational mastery.</p>
-                    </div>
-                </div>
+<h1>Architecting <br><span style="background:linear-gradient(135deg,#00d2ff,#00ff87);-webkit-background-clip:text;color:transparent;">commercial dominance.</span></h1>
 
-                <!-- Medium Card: Performance -->
-                <div class="bento-card glass-card highlight-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">03. Media</span>
-                        <h3>Performance Mastery</h3>
-                        <p>Full-funnel strategies obsessed with CAC efficiency and LTV maximization.</p>
-                    </div>
-                </div>
+<p>Elevate Wealth X partners with ambitious brands to engineer, optimize, and scale elite digital commerce ecosystems.</p>
 
-                <!-- Small Grid Section -->
-                <div class="bento-group" data-reveal="bottom">
-                    <div class="bento-card glass-card small-card">
-                        <h4>04. Growth Intelligence</h4>
-                        <p>Deep-tier category management.</p>
-                    </div>
-                    <div class="bento-card glass-card small-card">
-                        <h4>05. AI Content</h4>
-                        <p>Industrializing product catalogs.</p>
-                    </div>
-                    <div class="bento-card glass-card small-card">
-                        <h4>06. Lifecycle Economics</h4>
-                        <p>Advanced CRM retention loops.</p>
-                    </div>
-                    <div class="bento-card glass-card small-card">
-                        <h4>07. High-Performance Creative</h4>
-                        <p>Conversion-focused motion graphics.</p>
-                    </div>
-                </div>
+<div class="hero-metrics">
 
-                <!-- Wide Card: Governance -->
-                <div class="bento-card bento-wide glass-card" data-reveal="bottom">
-                    <div class="card-visual visual-left">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
-                            alt="Strategy">
-                    </div>
-                    <div class="card-content content-right">
-                        <span class="card-tag">08. The Operator</span>
-                        <h3>Strategic Governance</h3>
-                        <p>Owning the outcome. We manage your digital commerce engine with the strategic rigor and
-                            accountability of a fractional operating partner.</p>
-                    </div>
-                </div>
+<div class="metric">
+<span class="number">10x</span>
+<span class="label">Velocity vs Agency</span>
+</div>
 
-            </div>
-        </div>
-    </section>
+<div class="metric">
+<span class="number">Focus</span>
+<span class="label">Contribution Margin</span>
+</div>
 
-    <!-- Approach Section - Sticky Scroll Concept -->
-    <section id="approach" class="approach">
-        <div class="container">
-            <div class="approach-wrapper">
-                <div class="approach-sticky">
-                    <div class="section-title">
-                        <h2>The Deployment Protocol.</h2>
-                        <p>A phased methodology for rapid scale.</p>
-                    </div>
-                </div>
+</div>
 
-                <div class="approach-cards">
-                    <div class="glass-card phase-card" data-reveal="bottom">
-                        <div class="phase-number">I</div>
-                        <h3>Foundation</h3>
-                        <p>Platform architecture, technical auditing, and baseline catalog production. Establishing the
-                            structural integrity required for rapid scale.</p>
-                    </div>
-                    <div class="glass-card phase-card" data-reveal="bottom">
-                        <div class="phase-number">II</div>
-                        <h3>Acceleration</h3>
-                        <p>Aggressive marketplace expansion, deployment of performance media capital, and high-velocity
-                            content operations to rapidly capture category share.</p>
-                    </div>
-                    <div class="glass-card phase-card" data-reveal="bottom">
-                        <div class="phase-number">III</div>
-                        <h3>Dominance</h3>
-                        <p>Advanced CRM automation, intense P&L optimization, and institutionalizing operational rhythms
-                            for long-term segment leadership.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="hero-btns">
+<a class="btn btn-primary">Request Consultation</a>
+<a class="btn glass-btn">Explore Capabilities</a>
+</div>
 
-    <!-- Economics -->
-    <section id="economics" class="economics">
-        <div class="container">
-            <div class="section-title text-center" data-reveal="bottom">
-                <h2>Built for execution. <br>Anchored in <span class="gradient-text">economics.</span></h2>
-            </div>
-            <div class="eco-grid">
-                <div class="glass-card eco-card center-card" data-reveal="bottom">
-                    <div class="icon-wrap">🌍</div>
-                    <h4>GCC Mastery</h4>
-                    <p>Specialized knowledge of the Middle Eastern digital commerce landscape.</p>
-                </div>
-                <div class="glass-card eco-card center-card" data-reveal="bottom">
-                    <div class="icon-wrap">📈</div>
-                    <h4>P&L-First Governance</h4>
-                    <p>Execution grounded entirely in margin, contribution, and capital efficiency.</p>
-                </div>
-                <div class="glass-card eco-card center-card" data-reveal="bottom">
-                    <div class="icon-wrap">⚡</div>
-                    <h4>AI-Driven Velocity</h4>
-                    <p>Proprietary AI workflows to accelerate catalog production and content quality.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-cta glass-card" data-reveal="bottom">
-                <h2>Ready to build a stronger engine?</h2>
-                <p>Schedule a technical and commercial growth audit with our operating partners.</p>
-                <a href="#" class="btn btn-primary">Request Consultation</a>
-            </div>
+</div>
+</section>
 
-            <div class="footer-bottom-grid">
-                <div class="footer-brand">
-                    <h3>Elevate Wealth X</h3>
-                    <p>Operating Partners for Digital Scale.</p>
-                </div>
-                <div class="footer-links">
-                    <p>Dubai, United Arab Emirates</p>
-                    <p>hello@elevatewealthx.com</p>
-                    <p>+971 585110299</p>
-                </div>
-            </div>
+<!-- SERVICES -->
 
-            <div class="footer-legal">
-                <p>&copy; 2026 Elevate Wealth X. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+<section id="services">
 
-    <!-- Scripts -->
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+<div class="container">
 
-    // Mobile menu toggle
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+<div class="section-title">
+<h2>Eight pillars. <br>One <span style="background:linear-gradient(135deg,#00d2ff,#00ff87);-webkit-background-clip:text;color:transparent;">unified engine.</span></h2>
+</div>
 
-    mobileMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
+<div class="bento-grid">
 
-    // Parallax Scroll Effect
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.parallax');
+<div class="bento-large glass-card">
+<img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800">
+</div>
 
-        parallaxElements.forEach(el => {
-            const speed = el.getAttribute('data-speed') || 0.5;
-            el.style.transform = `translateY(${scrolled * speed}px)`;
-        });
+<div class="bento-medium glass-card">
+<h3>Multi-Market Scale</h3>
+<p>Marketplace dominance across Amazon, Noon, and regional leaders.</p>
+</div>
 
-        // Update CSS variable for scroll progress
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        document.documentElement.style.setProperty('--scroll-percent', `${scrollPercent}%`);
-    });
+<div class="glass-card highlight-card">
+<h3>Performance Mastery</h3>
+<p>Full-funnel strategies obsessed with CAC efficiency.</p>
+</div>
 
-    // Intersection Observer for staggered scroll animations
-    const revealElements = document.querySelectorAll('[data-reveal]');
+<div class="bento-group">
 
-    const revealOnScroll = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Add a small staggered delay for elements appearing together
-                setTimeout(() => {
-                    entry.target.classList.add('revealed');
-                }, index * 100);
-                revealOnScroll.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
+<div class="glass-card small-card">
+<h4>Growth Intelligence</h4>
+</div>
 
-    revealElements.forEach(el => {
-        revealOnScroll.observe(el);
-    });
+<div class="glass-card small-card">
+<h4>AI Content</h4>
+</div>
 
-    // Smooth Scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                // Close mobile menu if open
-                navLinks.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
-        });
-    });
+<div class="glass-card small-card">
+<h4>Lifecycle Economics</h4>
+</div>
+
+<div class="glass-card small-card">
+<h4>Creative</h4>
+</div>
+
+</div>
+
+<div class="bento-wide glass-card">
+
+<div class="visual-left">
+<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800">
+</div>
+
+<div class="content-right">
+<h3>Strategic Governance</h3>
+<p>We manage your digital commerce engine with the rigor of an operating partner.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-cta glass-card">
+<h2>Ready to build a stronger engine?</h2>
+<p>Schedule a growth audit with our operating partners.</p>
+<a class="btn btn-primary">Request Consultation</a>
+</div>
+
+<div class="footer-bottom-grid">
+
+<div>
+<h3>Elevate Wealth X</h3>
+<p>Operating Partners for Digital Scale.</p>
+</div>
+
+<div>
+<p>Dubai, United Arab Emirates</p>
+<p>hello@elevatewealthx.com</p>
+<p>+971 585110299</p>
+</div>
+
+</div>
+
+<div class="footer-legal">
+© 2026 Elevate Wealth X. All rights reserved.
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+const menu=document.getElementById("mobile-menu");
+const nav=document.querySelector(".nav-links");
+
+menu.onclick=()=>{
+nav.classList.toggle("active");
+};
+
+window.addEventListener("scroll",()=>{
+const navbar=document.getElementById("navbar");
+
+if(window.scrollY>50){
+navbar.classList.add("scrolled");
+}else{
+navbar.classList.remove("scrolled");
+}
+
 });
 
 </script>
-</body>
 
+</body>
 </html>

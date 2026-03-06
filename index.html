@@ -43,7 +43,7 @@
     --radius-lg: 32px;
     --radius-md: 24px;
     --radius-sm: 12px;
-    --section-pad: 160px 0;
+    --section-pad: 80px 0;
 }
 
 * {
@@ -239,6 +239,7 @@ nav.scrolled {
     mix-blend-mode: normal !important;
     /* Revert multiply to show on dark */
     background: transparent !important;
+    margin-left: 2vw;
 }
 
 .nav-links {
@@ -356,90 +357,6 @@ nav.scrolled {
 
 .gradient-bar {
     background: var(--primary-gradient) !important;
-}
-
-/* Bento Grid System */
-.section-title {
-    margin-bottom: 80px;
-}
-
-.section-title h2 {
-    font-size: 4rem;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(300px, auto);
-    gap: 24px;
-}
-
-.bento-card {
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.card-tag {
-    font-size: 0.8rem;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 500;
-    margin-bottom: 20px;
-    display: block;
-}
-
-.bento-card h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-.bento-card p {
-    color: var(--text-muted);
-}
-
-/* Specific Bento Placements */
-.bento-large {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.highlight-card {
-    grid-column: span 2;
-    background: linear-gradient(145deg, rgba(0, 210, 255, 0.1) 0%, rgba(0, 0, 0, 0.5) 100%);
-    border-color: rgba(0, 210, 255, 0.2);
-}
-
-.bento-medium {
-    grid-column: span 2;
-}
-
-.bento-group {
-    grid-column: span 4;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-}
-
-.small-card {
-    padding: 30px;
-    justify-content: flex-start;
-}
-
-
-.small-card h4 {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-}
-
-.bento-wide {
-    grid-column: span 4;
 }
 
 /* Sticky Approach Section */
@@ -782,6 +699,56 @@ footer {
         font-size: 1.1rem;
     }
 }
+
+/* SERVICES GRID */
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+margin-top:40px;
+}
+
+.service-card{
+padding:40px;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+min-height:240px;
+}
+
+.service-card h3{
+font-size:1.5rem;
+margin-bottom:10px;
+}
+
+.service-card p{
+color:var(--text-muted);
+font-size:0.95rem;
+line-height:1.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:1200px){
+
+.services-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:768px){
+
+.services-grid{
+grid-template-columns:1fr;
+}
+
+.service-card{
+padding:30px;
+}
+
+}
 </style>
 </head>
 
@@ -795,7 +762,7 @@ footer {
     <nav id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="assets/logo.png" alt="EWX Logo">
+                <img src="elevate-logo.png" alt="EWX Logo">
             </a>
             <ul class="nav-links">
                 <li><a href="#about">The Firm</a></li>
@@ -854,77 +821,68 @@ footer {
         </div>
     </section>
 
-    <!-- Services - Bento Grid Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title" data-reveal="bottom">
-                <h2>Eight pillars. <br>One <span class="gradient-text">unified engine.</span></h2>
-            </div>
+   <!-- Services - Equal Grid Section -->
+<section id="services" class="services">
+    <div class="container">
 
-            <div class="bento-grid">
-
-                <!-- Large Card: Architecture -->
-                <div class="bento-card bento-large glass-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">01. Foundation</span>
-                        <h3>Enterprise Architecture</h3>
-                        <p>Sub-second architectures engineered for peak conversion. We construct the indestructible
-                            digital foundations required for global scale.</p>
-                    </div>
-                </div>
-
-                <!-- Medium Card: Marketplace -->
-                <div class="bento-card bento-medium glass-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">02. Expansion</span>
-                        <h3>Multi-Market Scale</h3>
-                        <p>Marketplace dominance across Amazon, Noon, and regional leaders. Algorithmic pricing and
-                            operational mastery.</p>
-                    </div>
-                </div>
-
-                <!-- Medium Card: Performance -->
-                <div class="bento-card glass-card highlight-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">03. Media</span>
-                        <h3>Performance Mastery</h3>
-                        <p>Full-funnel strategies obsessed with CAC efficiency and LTV maximization.</p>
-                    </div>
-                </div>
-
-                <!-- Small Grid Section -->
-                <div class="bento-group" data-reveal="bottom">
-                    <div class="bento-card glass-card small-card">
-                        <h4>04. Growth Intelligence</h4>
-                        <p>Deep-tier category management.</p>
-                    </div>
-                    <div class="bento-card glass-card small-card">
-                        <h4>05. AI Content</h4>
-                        <p>Industrializing product catalogs.</p>
-                    </div>
-                    <div class="bento-card glass-card small-card">
-                        <h4>06. Lifecycle Economics</h4>
-                        <p>Advanced CRM retention loops.</p>
-                    </div>
-                    <div class="bento-card glass-card small-card">
-                        <h4>07. High-Performance Creative</h4>
-                        <p>Conversion-focused motion graphics.</p>
-                    </div>
-                </div>
-
-                <!-- Wide Card: Governance -->
-                <div class="bento-card bento-wide glass-card" data-reveal="bottom">
-                    <div class="card-content">
-                        <span class="card-tag">08. The Operator</span>
-                        <h3>Strategic Governance</h3>
-                        <p>Owning the outcome. We manage your digital commerce engine with the strategic rigor and
-                            accountability of a fractional operating partner.</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="section-title" data-reveal="bottom">
+            <h1>Eight pillars. <br>One <span class="gradient-text">unified engine.</span></h1>
         </div>
-    </section>
+
+        <div class="services-grid">
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">01. Foundation</span><br>
+                <h3>Enterprise Architecture</h3>
+                <p>Sub-second architectures engineered for peak conversion. We construct the indestructible digital foundations required for global scale.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">02. Expansion</span><br>
+                <h3>Multi-Market Scale</h3>
+                <p>Marketplace dominance across Amazon, Noon, and regional leaders. Algorithmic pricing and operational mastery.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">03. Media</span><br>
+                <h3>Performance Mastery</h3>
+                <p>Full-funnel strategies obsessed with CAC efficiency and LTV maximization.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">04. Growth Intelligence</span><br>
+                <h3>Growth Intelligence</h3>
+                <p>Deep-tier category management and market expansion insights.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">05. AI Content</span><br>
+                <h3>AI Content Systems</h3>
+                <p>Industrializing product catalog production through proprietary AI workflows.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">06. Lifecycle Economics</span><br>
+                <h3>Lifecycle Economics</h3>
+                <p>Advanced CRM automation and retention loops that maximize lifetime value.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">07. Creative</span><br>
+                <h3>High-Performance Creative</h3>
+                <p>Conversion-focused creative systems designed for high velocity testing.</p>
+            </div>
+
+            <div class="service-card glass-card">
+                <span class="card-tag gradient-text">08. Governance</span><br>
+                <h3>Strategic Governance</h3>
+                <p>Owning outcomes with the accountability and discipline of an operating partner.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
 
     <!-- Approach Section - Sticky Scroll Concept -->
     <section id="approach" class="approach">
@@ -932,7 +890,7 @@ footer {
             <div class="approach-wrapper">
                 <div class="approach-sticky">
                     <div class="section-title">
-                        <h2>The Deployment Protocol.</h2>
+                        <h1>The <span class="gradient-text">Deployment</span> Protocol.</h1>
                         <p>A phased methodology for rapid scale.</p>
                     </div>
                 </div>
@@ -966,7 +924,7 @@ footer {
         <div class="container">
             <div class="section-title text-center" data-reveal="bottom">
                 <h2>Built for execution. <br>Anchored in <span class="gradient-text">economics.</span></h2>
-            </div>
+            </div><br>
             <div class="eco-grid">
                 <div class="glass-card eco-card center-card" data-reveal="bottom">
                     <div class="icon-wrap">🌍</div>

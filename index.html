@@ -1,937 +1,544 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elevate Wealth X | End-to-End Digital Commerce Growth Partner</title>
-    <meta name="description"
-        content="We build and scale digital commerce engines that grow revenue, improve margins, and accelerate execution.">
+    <meta name="description" content="We build and scale digital commerce engines that grow revenue, improve margins, and accelerate execution.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Premium Smooth Scroll & Animation Libraries -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Styles -->
     <style>
-:root {
-    /* Colors - Deep Premium Dark */
-    --bg-dark: #050505;
-    --bg-darker: #000000;
-    --text-main: #f5f5f7;
-    --text-muted: #a1a1a6;
-
-    /* Gradients */
-    --primary-gradient: linear-gradient(135deg, #00d2ff 0%, #00ff87 100%);
-    --accent-blue: #00d2ff;
-    --accent-green: #00ff87;
-
-    /* Glass Elements */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-highlight: rgba(255, 255, 255, 0.12);
-    --liquid-blur: blur(24px);
-
-    /* Typography */
-    --font-heading: 'Outfit', -apple-system, sans-serif;
-    --font-body: 'Inter', -apple-system, sans-serif;
-
-    /* Geometry */
-    --radius-lg: 32px;
-    --radius-md: 24px;
-    --radius-sm: 12px;
-    --section-pad: 80px 0;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Ambient Backgrounds */
-.ambient-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(140px);
-    opacity: 0.15;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.glow-1 {
-    top: -10%;
-    left: -10%;
-    width: 60vw;
-    height: 60vw;
-    background: var(--accent-blue);
-}
-
-.glow-2 {
-    bottom: -10%;
-    right: -10%;
-    width: 50vw;
-    height: 50vw;
-    background: var(--accent-green);
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4 {
-    font-family: var(--font-heading);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-}
-
-.gradient-text {
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.badge {
-    display: inline-block;
-    padding: 8px 16px;
-    background: rgba(0, 210, 255, 0.1);
-    border: 1px solid rgba(0, 210, 255, 0.2);
-    border-radius: 100px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--accent-blue);
-    margin-bottom: 30px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-/* Layout */
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-
-section {
-    padding: var(--section-pad);
-}
-
-/* Buttons */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 36px;
-    border-radius: 100px;
-    font-family: var(--font-heading);
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background: var(--text-main);
-    color: var(--bg-dark);
-}
-
-.btn-primary:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-}
-
-.glass-btn {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: var(--liquid-blur);
-    color: var(--text-main);
-}
-
-.glass-btn:hover {
-    background: var(--glass-highlight);
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-4px);
-}
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-main);
-    padding: 12px 28px;
-}
-
-/* Glass Cards System */
-.glass-card {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-md);
-    backdrop-filter: var(--liquid-blur);
-    -webkit-backdrop-filter: var(--liquid-blur);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-}
-
-.glass-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-}
-
-/* Navigation */
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    padding: 30px 0;
-    transition: all 0.5s ease;
-}
-
-nav.scrolled {
-    padding: 15px 0;
-    background: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 60px;
-    /* Reduced for sleekness */
-    filter: brightness(2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)) !important;
-    /* Force visibility on dark bg */
-    mix-blend-mode: normal !important;
-    /* Revert multiply to show on dark */
-    background: transparent !important;
-    margin-left: 2vw;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-}
-
-.nav-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--text-main);
-}
-
-/* Hero Section */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 120px;
-}
-
-.hero .container {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: center;
-    gap: 60px;
-    width: 100%;
-}
-
-.hero h1 {
-    font-size: 5vw;
-    font-weight: 600;
-    margin-bottom: 30px;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin-bottom: 40px;
-}
-
-.hero-metrics {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 50px;
-    padding: 20px 0;
-    border-top: 1px solid var(--glass-border);
-    border-bottom: 1px solid var(--glass-border);
-}
-
-.metric .number {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    color: var(--text-main);
-    font-weight: 500;
-}
-
-.metric .label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.hero-visual {
-    position: relative;
-    height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-glass-card {
-    width: 350px;
-    padding: 40px;
-    border-radius: var(--radius-lg);
-    background: rgba(10, 10, 10, 0.4);
-}
-
-.card-inner-glow {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: var(--accent-blue);
-    filter: blur(80px);
-    opacity: 0.3;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.mock-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 15px;
-    height: 150px;
-    margin-top: 40px;
-}
-
-.mock-chart .bar {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 4px 4px 0 0;
-    transition: height 1s ease;
-}
-
-.gradient-bar {
-    background: var(--primary-gradient) !important;
-}
-
-/* Sticky Approach Section */
-.approach-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    align-items: start;
-}
-
-.approach-sticky {
-    position: sticky;
-    top: 150px;
-}
-
-.approach-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.phase-card {
-    padding: 50px;
-}
-
-.phase-number {
-    font-family: var(--font-heading);
-    font-size: 4rem;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.05);
-    font-weight: 800;
-    margin-bottom: -20px;
-}
-
-.phase-card h3 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-/* Eco Grid */
-.eco-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
-
-.center-card {
-    text-align: center;
-    padding: 60px 40px;
-}
-
-.icon-wrap {
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-/* Footer */
-footer {
-    padding: 100px 0 40px;
-}
-
-.footer-cta {
-    padding: 80px;
-    text-align: center;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-    margin-bottom: 80px;
-}
-
-.footer-cta h2 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-}
-
-.footer-cta p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-}
-
-.footer-bottom-grid {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-brand h3 {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.footer-links p {
-    color: var(--text-muted);
-}
-
-.footer-legal {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-}
-
-/* Reveal Animations */
-[data-reveal] {
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-[data-reveal="bottom"] {
-    transform: translateY(40px);
-}
-
-[data-reveal="right"] {
-    transform: translateX(60px);
-}
-
-[data-reveal].revealed {
-    opacity: 1;
-    transform: translate(0);
-}
-
-/* Responsive Styling */
-/* Responsive Breakpoints */
-@media (max-width: 1400px) {
-    .container {
-        padding: 0 40px;
-    }
-
-    .hero h1 {
-        font-size: 5.5vw;
-    }
-}
-
-@media (max-width: 1200px) {
-    .bento-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .bento-group,
-    .bento-wide {
-        grid-column: span 2;
-    }
-
-    .hero .container {
-        grid-template-columns: 1fr;
-    }
-
-    .hero {
-        text-align: center;
-        padding-top: 180px;
-    }
-
-    .hero h1 {
-        font-size: 4.5rem;
-        margin: 0 auto 30px;
-    }
-
-    .hero p {
-        margin: 0 auto 40px;
-    }
-
-    .hero-metrics {
-        justify-content: center;
-    }
-
-    .hero-visual {
-        display: none;
-    }
-
-    .approach-wrapper {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-
-    .approach-sticky {
-        position: static;
-        margin-bottom: 20px;
-    }
-
-    .eco-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
-    .bento-group {
-        grid-template-columns: 1fr;
-    }
-
-    .eco-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-        font-size: 4rem;
-    }
-
-    .section-title h2 {
-        font-size: 3rem;
-    }
-
-    .metric .number {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    :root {
-        --section-pad: 100px 0;
-    }
-
-    .nav-links,
-    .nav-cta {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .bento-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .bento-large,
-    .bento-medium,
-    .bento-group,
-    .highlight-card,
-    .bento-wide {
-        grid-column: span 1;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
-    }
-
-    .section-title h2 {
-        font-size: 2.2rem;
-    }
-
-    .footer-cta {
-        padding: 40px 20px;
-        margin-bottom: 50px;
-    }
-
-    .footer-cta h2 {
-        font-size: 2rem;
-    }
-
-    .footer-bottom-grid {
-        flex-direction: column;
-        gap: 30px;
-        border-bottom: none;
-        padding-bottom: 20px;
-    }
-
-    .hero-metrics {
-        flex-direction: column;
-        gap: 20px;
-        border: none;
-        padding: 0;
-        margin-bottom: 30px;
-    }
-
-    .metric {
-        background: rgba(255, 255, 255, 0.05);
-        padding: 15px;
-        border-radius: 12px;
-    }
-
-    .glass-card {
-        padding: 30px;
-    }
-
-    .phase-card {
-        padding: 30px;
-    }
-
-    .approach-wrapper {
-        gap: 30px;
-    }
-
-    .phase-number {
-        font-size: 3rem;
-        margin-bottom: 0px;
-    }
-}
-
-@media (max-width: 480px) {
-    :root {
-        --section-pad: 80px 0;
-    }
-
-    .container {
-        padding: 0 20px;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.1rem;
-    }
-
-    .section-title h2 {
-        font-size: 1.8rem;
-    }
-
-    .hero-btns {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .btn {
-        width: 100%;
-        padding: 14px 24px;
-    }
-
-    .glass-card,
-    .phase-card,
-    .bento-card {
-        padding: 20px;
-    }
-
-    .bento-card h3 {
-        font-size: 1.5rem;
-    }
-
-    .footer-cta {
-        padding: 30px 15px;
-    }
-
-    .footer-cta h2 {
-        font-size: 1.8rem;
-    }
-
-    .footer-cta p {
-        font-size: 1.1rem;
-    }
-}
-
-/* SERVICES GRID */
-
-/* .services-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:24px;
-margin-top:40px;
-}
-
-.service-card{
-padding:40px;
-display:flex;
-flex-direction:column;
-justify-content:flex-start;
-min-height:240px;
-} */
-
-/* SERVICES IMAGE CARDS */
-
-.services-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:32px;
-margin-top:60px;
-}
-
-/* main card */
-
-.service-card{
-position:relative;
-aspect-ratio:1/1;
-border-radius:28px;
-overflow:hidden;
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-/* dark overlay */
-
-.service-card::before{
-content:"";
-position:absolute;
-inset:0;
-background:linear-gradient(
-180deg,
-rgba(0,0,0,0.25) 0%,
-rgba(0,0,0,0.75) 100%
-);
-}
-
-/* CENTER GLASS CARD */
-
-.service-content{
-position:relative;
-
-width:70%;
-aspect-ratio:1/1;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-padding:34px;
-
-border-radius:22px;
-
-background:rgba(20,20,20,0.55);
-backdrop-filter:blur(16px);
-
-border:1px solid rgba(255,255,255,0.18);
-
-box-shadow:0 25px 60px rgba(0,0,0,0.6);
-}
-
-/* title */
-
-.service-content span{
-font-size:1.1rem;
-font-weight:600;
-color:#00eaff;
-display:block;
-margin-bottom:16px;
-letter-spacing: 0.3px;
-}
-
-/* text */
-
-.service-content p{
-color:#e2e2e2;
-font-size:1.05rem;
-line-height:1.7;
-}
-
-/* hover */
-
-.service-card{
-transition:transform .4s ease, box-shadow .4s ease;
-}
-
-.service-card:hover{
-transform:translateY(-8px);
-box-shadow:0 40px 80px rgba(0,0,0,0.6);
-}
-
-/* responsive */
-
-@media(max-width:900px){
-
-.services-grid{
-grid-template-columns:1fr;
-}
-
-.service-content{
-width:85%;
-}
-
-}
-
-@media(max-width:900px){
-
-.service-content{
-width:85%;
-aspect-ratio:auto;
-}
-
-}
-/* This gives a subtle blue glow when hovering — looks very high-end. */
-.service-card:hover::after{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at center, rgba(0,210,255,0.12), transparent 70%);
-}
-/* PACKAGES SECTION */
-
-.packages-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:30px;
-margin-top:60px;
-}
-
-.package-card{
-padding:50px;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-min-height:520px;
-}
-
-.package-card h3{
-font-size:2rem;
-margin-bottom:10px;
-}
-
-.package-subtitle{
-color:var(--accent-blue);
-font-weight:500;
-margin-bottom:15px;
-}
-
-.package-desc{
-color:var(--text-muted);
-margin-bottom:25px;
-}
-
-.package-features p{
-font-weight:500;
-margin-bottom:10px;
-}
-
-.package-features ul{
-list-style:none;
-padding-left:0;
-margin-bottom:30px;
-}
-
-.package-features li{
-color:var(--text-muted);
-margin-bottom:8px;
-position:relative;
-padding-left:18px;
-}
-
-.package-features li::before{
-content:"•";
-position:absolute;
-left:0;
-color:var(--accent-blue);
-}
-
-/* Highlight Enterprise */
-
-.highlight-package{
-border:1px solid rgba(0,210,255,0.3);
-background:linear-gradient(
-145deg,
-rgba(0,210,255,0.08),
-rgba(255,255,255,0.02)
-);
-}
-
-/* Responsive */
-
-@media (max-width:1100px){
-
-.packages-grid{
-grid-template-columns:1fr;
-}
-
-.package-card{
-min-height:auto;
-}
-
-}
-</style>
+        :root {
+            /* Colors - Deep Premium Dark */
+            --bg-dark: #050505;
+            --bg-darker: #000000;
+            --text-main: #f5f5f7;
+            --text-muted: #a1a1a6;
+
+            /* Gradients */
+            --primary-gradient: linear-gradient(135deg, #00d2ff 0%, #00ff87 100%);
+            --accent-blue: #00d2ff;
+            --accent-green: #00ff87;
+
+            /* Glass Elements */
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --glass-highlight: rgba(255, 255, 255, 0.1);
+            --liquid-blur: blur(30px);
+
+            /* Typography */
+            --font-heading: 'Outfit', -apple-system, sans-serif;
+            --font-body: 'Inter', -apple-system, sans-serif;
+
+            /* Geometry */
+            --radius-lg: 32px;
+            --radius-md: 24px;
+            --radius-sm: 12px;
+            --section-pad: 120px 0;
+        }
+
+        /* Lenis Smooth Scroll Setup */
+        html.lenis {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Ambient Backgrounds */
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(160px);
+            opacity: 0.12;
+            z-index: -1;
+            pointer-events: none;
+            will-change: transform;
+        }
+
+        .glow-1 {
+            top: -10%;
+            left: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--accent-blue);
+        }
+
+        .glow-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--accent-green);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        h2 { font-size: 4rem; }
+        
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 18px;
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.15);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+        }
+
+        section {
+            padding: var(--section-pad);
+            position: relative;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 36px;
+            border-radius: 100px;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            box-shadow: 0 0 0 rgba(255,255,255,0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.15);
+            background: #ffffff;
+        }
+
+        .glass-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--liquid-blur);
+            -webkit-backdrop-filter: var(--liquid-blur);
+            color: var(--text-main);
+        }
+
+        .glass-btn:hover {
+            background: var(--glass-highlight);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+        }
+
+        /* Glass Cards System */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            backdrop-filter: var(--liquid-blur);
+            -webkit-backdrop-filter: var(--liquid-blur);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 30px 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            filter: brightness(2) drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        /* ====== REDESIGNED HERO SECTION ====== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 120px;
+            position: relative;
+        }
+
+        /* Subtle technical grid background */
+        .hero-bg-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center center;
+            opacity: 0.5;
+            mask-image: radial-gradient(circle at center, black 20%, transparent 70%);
+            -webkit-mask-image: radial-gradient(circle at center, black 20%, transparent 70%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 6.5vw;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 50px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* Floating Parallax Widgets in Hero */
+        .hero-widget {
+            position: absolute;
+            padding: 24px;
+            border-radius: var(--radius-md);
+            background: rgba(15, 15, 15, 0.6);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: var(--liquid-blur);
+            -webkit-backdrop-filter: var(--liquid-blur);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            will-change: transform;
+        }
+
+        .widget-1 {
+            top: 20%;
+            left: 5%;
+            width: 220px;
+        }
+
+        .widget-2 {
+            bottom: 15%;
+            right: 5%;
+            width: 260px;
+        }
+
+        .widget-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 210, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .widget-title { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+        .widget-value { font-family: var(--font-heading); font-size: 2rem; font-weight: 600; color: var(--text-main); line-height: 1; }
+        
+        /* Metric Chart Line */
+        .widget-chart { display: flex; align-items: flex-end; gap: 4px; height: 40px; margin-top: 10px; }
+        .widget-chart span { flex: 1; background: var(--glass-border); border-radius: 2px; }
+        .widget-chart span:nth-child(1) { height: 30%; }
+        .widget-chart span:nth-child(2) { height: 50%; }
+        .widget-chart span:nth-child(3) { height: 40%; }
+        .widget-chart span:nth-child(4) { height: 70%; }
+        .widget-chart span:nth-child(5) { height: 100%; background: var(--primary-gradient); }
+
+        /* ====== SERVICES GRID (1:1 Layout Restored) ====== */
+        .services-header { text-align: center; margin-bottom: 80px; }
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 32px; 
+            margin-top: 60px; 
+        }
+
+        .service-card {
+            position: relative;
+            aspect-ratio: 1/1; /* Restored 1:1 */
+            border-radius: 28px; /* Restored original radius */
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #111;
+            transition: transform .4s ease, box-shadow .4s ease;
+        }
+
+        /* Dark overlay */
+        .service-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%);
+            z-index: 1;
+        }
+
+        /* Subtle premium glow on hover */
+        .service-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(0,210,255,0.12), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 2;
+        }
+
+        /* Hover states */
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+        .service-card:hover::after { opacity: 1; }
+        .service-card:hover .service-content { border-color: rgba(255,255,255,0.3); }
+
+        /* Center Glass Card (1:1 Restored) */
+        .service-content {
+            position: relative;
+            z-index: 3;
+            width: 70%;
+            aspect-ratio: 1/1; /* Restored 1:1 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 34px;
+            border-radius: 22px;
+            background: rgba(20, 20, 20, 0.55);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.18);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            transition: border-color 0.4s ease;
+        }
+
+        .card-tag { font-size: 1.1rem; font-weight: 600; display: block; margin-bottom: 16px; letter-spacing: 0.3px; }
+        .service-content p { color: #e2e2e2; font-size: 1.05rem; line-height: 1.7; }
+
+        /* Approach Section - Sticky Scroll */
+        .approach-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: start; }
+        .approach-sticky { position: sticky; top: 150px; }
+        .approach-cards { display: flex; flex-direction: column; gap: 40px; }
+        
+        .phase-card { padding: 60px; }
+        .phase-number { font-family: var(--font-heading); font-size: 6rem; line-height: 0.8; color: rgba(255, 255, 255, 0.03); font-weight: 800; margin-bottom: 10px; }
+        .phase-card h3 { font-size: 2.2rem; margin-bottom: 15px; }
+
+        /* Packages */
+        .packages-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+        .package-card { padding: 50px 40px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .package-card h3 { font-size: 2rem; margin-bottom: 10px; }
+        .package-subtitle { color: var(--accent-blue); font-weight: 500; margin-bottom: 15px; }
+        .package-desc { color: var(--text-muted); margin-bottom: 30px; line-height: 1.5; }
+        .package-features { margin-bottom: 40px; flex-grow: 1; }
+        .package-features p { font-weight: 600; margin-bottom: 15px; color: #fff; }
+        .package-features ul { list-style: none; }
+        .package-features li { color: var(--text-muted); margin-bottom: 12px; position: relative; padding-left: 24px; }
+        .package-features li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-green); font-weight: bold; }
+        
+        .highlight-package {
+            border: 1px solid rgba(0,210,255,0.3);
+            background: linear-gradient(145deg, rgba(0,210,255,0.08), rgba(255,255,255,0.02));
+            transform: scale(1.02);
+        }
+
+        /* Eco Grid */
+        .eco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+        .center-card { text-align: center; padding: 60px 40px; }
+        .icon-wrap { font-size: 3rem; margin-bottom: 25px; display: inline-block; padding: 20px; background: var(--glass-bg); border-radius: 50%; border: 1px solid var(--glass-border); }
+
+        /* Footer */
+        footer { padding: 100px 0 40px; position: relative; overflow: hidden; }
+        .footer-cta { padding: 100px 40px; text-align: center; background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%); margin-bottom: 80px; }
+        .footer-cta h2 { font-size: 3.5rem; margin-bottom: 20px; }
+        .footer-cta p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; }
+        .footer-bottom-grid { display: flex; justify-content: space-between; border-bottom: 1px solid var(--glass-border); padding-bottom: 40px; margin-bottom: 40px; }
+        .footer-brand h3 { font-size: 2rem; margin-bottom: 10px; }
+        .footer-links p { color: var(--text-muted); margin-bottom: 5px;}
+        .footer-legal { color: var(--text-muted); font-size: 0.85rem; display: flex; justify-content: space-between;}
+
+        /* Animations */
+        [data-reveal] { opacity: 0; transform: translateY(50px); }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 8vw; }
+            .hero-widget { display: none; }
+            .approach-wrapper { grid-template-columns: 1fr; gap: 50px; }
+            .approach-sticky { position: static; }
+        }
+
+        @media (max-width: 900px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .service-content { width: 85%; aspect-ratio: auto; padding: 40px 30px; } /* Restored mobile fallback */
+            
+            .packages-grid, .eco-grid { grid-template-columns: 1fr; }
+            .highlight-package { transform: scale(1); }
+            .hero h1 { font-size: 3.5rem; }
+            .nav-links, .nav-cta { display: none; }
+            .footer-bottom-grid { flex-direction: column; gap: 30px; }
+        }
+
+        @media (max-width: 480px) {
+            :root { --section-pad: 80px 0; }
+            .container { padding: 0 20px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero-btns { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
 </head>
 
-<body class="dark-theme">
+<body>
 
-    <!-- Ambient Background Glows -->
-    <div class="ambient-glow glow-1"></div>
-    <div class="ambient-glow glow-2"></div>
+    <!-- Ambient Parallax Background Glows -->
+    <div class="ambient-glow glow-1" data-speed="-0.3"></div>
+    <div class="ambient-glow glow-2" data-speed="0.3"></div>
 
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="nav-container">
+        <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="images/elevatelogo.png" alt="EWX Logo">
+                <img src="images/elevatelogo.png" alt="Elevate Wealth X" onerror="this.outerHTML='<h2 style=\'font-size:1.5rem; color:#fff; font-weight:600; letter-spacing:-1px;\'>EWX.</h2>'">
             </a>
             <ul class="nav-links">
                 <li><a href="#about">The Firm</a></li>
@@ -940,290 +547,209 @@ min-height:auto;
                 <li><a href="#economics">Conviction</a></li>
             </ul>
             <div class="nav-cta">
-                <a href="#contact" class="btn btn-outline">Engage</a>
-            </div>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span><span></span><span></span>
+                <a href="#contact" class="btn glass-btn" style="padding: 10px 24px;">Engage</a>
             </div>
         </div>
     </nav>
 
-    <!-- Elevated Hero Section -->
+    <!-- Elevated Cinematic Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-bg-grid" data-speed="0.1"></div>
+        
+        <!-- Floating Parallax Widgets -->
+        <div class="hero-widget widget-1" data-speed="0.4">
+            <div class="widget-icon">⚡</div>
+            <span class="widget-title">Velocity</span>
+            <span class="widget-value">10x</span>
+            <span style="color:var(--text-muted); font-size:0.8rem;">vs Traditional Agency</span>
+        </div>
+
+        <div class="hero-widget widget-2" data-speed="-0.25">
+            <span class="widget-title">Contribution Margin</span>
+            <span class="widget-value">+42%</span>
+            <div class="widget-chart">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+
         <div class="container">
-            <div class="hero-content" data-reveal="bottom">
-                <div class="badge">Operating Partners for Digital Scale</div>
-                <h1>Architecting<br><span class="gradient-text">commercial dominance.</span></h1>
-                <p>Elevate Wealth X partners with ambitious brands to engineer, optimize, and scale elite digital
-                    commerce ecosystems. Uncompromising execution. Absolute alignment with your P&L.</p>
-
-                <div class="hero-metrics">
-                    <div class="metric">
-                        <span class="number">10x</span>
-                        <span class="label">Velocity vs Agency</span>
-                    </div>
-                    <div class="metric">
-                        <span class="number">Focus</span>
-                        <span class="label">Contribution Margin</span>
-                    </div>
-                </div>
-
-                <div class="hero-btns">
+            <div class="hero-content">
+                <div class="badge" data-reveal>Operating Partners for Digital Scale</div>
+                <h1 data-reveal>Architecting<br><span class="gradient-text">commercial dominance.</span></h1>
+                <p data-reveal>Elevate Wealth X partners with ambitious brands to engineer, optimize, and scale elite digital commerce ecosystems. Uncompromising execution. Absolute alignment with your P&L.</p>
+                
+                <div class="hero-btns" data-reveal>
                     <a href="#contact" class="btn btn-primary">Request Consultation</a>
-                    <a href="#services" class="btn btn-secondary glass-btn">Explore Capabilities</a>
+                    <a href="#services" class="btn glass-btn">Explore Capabilities</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Abstract Hero Visual -->
-            <div class="hero-visual" data-reveal="right">
-                <div class="glass-card hero-glass-card">
-                    <div class="card-inner-glow"></div>
-                    <h3>Precision Engine</h3>
-                    <div class="mock-chart">
-                        <div class="bar" style="height: 40%"></div>
-                        <div class="bar" style="height: 60%"></div>
-                        <div class="bar" style="height: 85%"></div>
-                        <div class="bar gradient-bar" style="height: 100%"></div>
+    <!-- Capabilities Grid (Restored 1:1 Square Design) -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="services-header" data-reveal>
+                <h2>Eight pillars.<br>One <span class="gradient-text">unified engine.</span></h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Removed data-speed to prevent overlapping, kept data-reveal for fade-in -->
+                <div class="service-card" style="background-image:url('images/services1.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">01. Unified Commerce</span>
+                        <p>Connected commerce ecosystems across digital, marketplace, and retail touchpoints, built for seamless customer journeys and stronger operational control.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" style="background-image:url('images/services2.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">02. Platform & Integrations</span>
+                        <p>Scalable commerce infrastructure and system integrations designed to deliver performance, visibility, and long-term control across the ecosystem.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" style="background-image:url('images/services3.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">03. Growth Marketing</span>
+                        <p>SEO / AEO, CRM, and digital marketing strategies crafted to drive efficient acquisition, stronger retention, and sustainable growth.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" style="background-image:url('images/services4.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">04. Marketplaces</span>
+                        <p>Operational and commercial marketplace management across key platforms, designed to improve visibility, execution quality, and scalable channel growth.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" style="background-image:url('images/services5.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">05. Social Media</span>
+                        <p>Strategic social media management built to strengthen brand presence, deepen audience engagement, and maintain consistency across channels.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" style="background-image:url('images/services6.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">06. Creative & Branding</span>
+                        <p>Content, identity, and brand-building systems designed to elevate presence, sharpen differentiation, and drive conversion across touchpoints.</p>
+                    </div>
+                </div>
+
+                <div class="service-card" style="background-image:url('images/services7.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">07. Advanced Growth Analytics</span>
+                        <p>Data-led reporting, insight, and performance intelligence designed to enable sharper decisions, clearer visibility, and stronger growth planning.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card" style="background-image:url('images/services8.png')" data-reveal>
+                    <div class="service-content">
+                        <span class="card-tag gradient-text">08. Agentic Workflow Automation</span>
+                        <p>AI-powered workflow automations designed to improve speed, consistency, efficiency, and scale across content, operations, and reporting.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- Services - Equal Grid Section -->
-   <section id="services" class="services">
-    <div class="container">
-    
-    <div class="section-title" data-reveal="bottom">
-    <h1>Eight pillars. <br>One <span class="gradient-text">unified engine.</span></h1>
-    </div>
-    
-    <div class="services-grid">
-    
-    <div class="service-card" style="background-image:url('images/services1.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">01. Unified Commerce</span><br>
-    <p>
-    Connected commerce ecosystems across digital, marketplace, and retail touchpoints, built for seamless customer journeys and stronger operational control.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services2.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">02. ⁠Platform & Integrations</span><br>
-    <p>
-    Scalable commerce infrastructure and system integrations designed to deliver performance, visibility, and long-term control across the ecosystem.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services3.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">03. ⁠Growth Marketing</span><br>
-    <p>
-    SEO / AEO, CRM, and digital marketing strategies crafted to drive efficient acquisition, stronger retention, and sustainable growth.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services4.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">04. Marketplaces</span><br>
-    <p>
-    Operational and commercial marketplace management across key platforms, designed to improve visibility, execution quality, and scalable channel growth.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services5.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">05. ⁠Social Media</span><br>
-    <p>
-    Strategic social media management built to strengthen brand presence, deepen audience engagement, and maintain consistency across channels.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services6.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">06. Creative & Branding</span><br>
-    <p>
-    Content, identity, and brand-building systems designed to elevate presence, sharpen differentiation, and drive conversion across touchpoints.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services7.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">07. Advanced Growth Analytics</span><br>
-    <p>
-    Data-led reporting, insight, and performance intelligence designed to enable sharper decisions, clearer visibility, and stronger growth planning.
-    </p>
-    </div>
-    </div>
-    
-    <div class="service-card" style="background-image:url('images/services8.png')">
-    <div class="service-content">
-    <span class="card-tag gradient-text">08. Agentic Workflow Automation</span><br>
-    <p>
-    AI-powered workflow automations designed to improve speed, consistency, efficiency, and scale across content, operations, and reporting.
-    </p>
-    </div>
-    </div>
-    
-    </div>
-    
-    </div>
-    </section>
-
-<!-- Packages Section -->
-<section id="packages" class="packages">
-    <div class="container">
-    
-    <div class="section-title text-center" data-reveal="bottom">
-    <h1>Choose the <span class="gradient-text">right plan for you</span></h1><br>
-    <p>Engagement models built for your stage of growth.</p>
-    </div>
-    
-    <div class="packages-grid">
-    
-    <!-- Starter -->
-    
-    <div class="package-card glass-card">
-    
-    <h3>Starter</h3>
-    
-    <p class="package-subtitle">
-    For brands building the right foundation
-    </p>
-    
-    <p class="package-desc">
-    A focused setup for businesses that need a stronger digital base and disciplined growth support.
-    </p>
-    
-    <div class="package-features">
-    
-    <p>Includes:</p>
-    
-    <ul>
-    <li>E-commerce foundation setup</li>
-    <li>Core platform and operational support</li>
-    <li>Performance marketing</li>
-    <li>SEO / AEO</li>
-    <li>1 marketplace integration</li>
-    <li>Basic CRM automation</li>
-    </ul>
-    
-    </div>
-    
-    <a class="btn glass-btn">Start with Starter</a>
-    
-    </div>
-    
-    
-    <!-- Pro -->
-    
-    <div class="package-card glass-card">
-    
-    <h3>Pro</h3>
-    
-    <p class="package-subtitle">
-    For brands ready to scale faster
-    </p>
-    
-    <p class="package-desc">
-    A broader growth model for brands expanding across channels and looking for stronger execution depth.
-    </p>
-    
-    <div class="package-features">
-    
-    <p>Includes:</p>
-    
-    <ul>
-    <li>Everything in Starter</li>
-    <li>Social media management</li>
-    <li>2 marketplace integrations</li>
-    <li>CRM with support workflows</li>
-    <li>Creative content support</li>
-    <li>Advanced reporting and analytics</li>
-    </ul>
-    
-    </div>
-    
-    <a class="btn glass-btn">Explore Pro</a>
-    
-    </div>
-    
-    
-    <!-- Enterprise -->
-    
-    <div class="package-card glass-card highlight-package">
-    
-    <h3>Enterprise</h3>
-    
-    <p class="package-subtitle">
-    For brands built for scale
-    </p>
-    
-    <p class="package-desc">
-    A full operating model for brands seeking regional growth, tighter control, and long-term digital leadership.
-    </p>
-    
-    <div class="package-features">
-    
-    <p>Includes:</p>
-    
-    <ul>
-    <li>Everything in Pro</li>
-    <li>Up to 4 marketplace integrations</li>
-    <li>Advanced automation and AI support</li>
-    <li>Competitive pricing intelligence</li>
-    <li>Strategic growth reviews</li>
-    <li>Regional expansion planning</li>
-    </ul>
-    
-    </div>
-    
-    <a class="btn btn-primary">Talk Enterprise</a>
-    
-    </div>
-    
-    </div>
-    
-    </div>
-    </section>
-
-    <!-- Approach Section - Sticky Scroll Concept -->
+    <!-- Methodology / Approach -->
     <section id="approach" class="approach">
         <div class="container">
             <div class="approach-wrapper">
                 <div class="approach-sticky">
-                    <div class="section-title">
-                        <h1>The <span class="gradient-text">Deployment</span> Protocol.</h1>
-                        <p>A phased methodology for rapid scale.</p>
-                    </div>
+                    <h2 data-reveal>The <span class="gradient-text">Deployment</span><br>Protocol.</h2>
+                    <p style="color:var(--text-muted); font-size:1.2rem; margin-top:20px;" data-reveal>A phased methodology for rapid scale, deployed with military precision.</p>
                 </div>
 
                 <div class="approach-cards">
-                    <div class="glass-card phase-card" data-reveal="bottom">
+                    <div class="glass-card phase-card" data-reveal>
                         <div class="phase-number">I</div>
                         <h3>Foundation</h3>
-                        <p>Platform architecture, technical auditing, and baseline catalog production. Establishing the
-                            structural integrity required for rapid scale.</p>
+                        <p>Platform architecture, technical auditing, and baseline catalog production. Establishing the structural integrity required for rapid scale.</p>
                     </div>
-                    <div class="glass-card phase-card" data-reveal="bottom">
+                    <div class="glass-card phase-card" data-reveal>
                         <div class="phase-number">II</div>
                         <h3>Acceleration</h3>
-                        <p>Aggressive marketplace expansion, deployment of performance media capital, and high-velocity
-                            content operations to rapidly capture category share.</p>
+                        <p>Aggressive marketplace expansion, deployment of performance media capital, and high-velocity content operations to rapidly capture category share.</p>
                     </div>
-                    <div class="glass-card phase-card" data-reveal="bottom">
+                    <div class="glass-card phase-card" data-reveal>
                         <div class="phase-number">III</div>
                         <h3>Dominance</h3>
-                        <p>Advanced CRM automation, intense P&L optimization, and institutionalizing operational rhythms
-                            for long-term segment leadership.</p>
+                        <p>Advanced CRM automation, intense P&L optimization, and institutionalizing operational rhythms for long-term segment leadership.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="packages">
+        <div class="container">
+            <div class="services-header" data-reveal>
+                <h2>Choose the <span class="gradient-text">right plan</span></h2>
+                <p style="color:var(--text-muted); font-size:1.2rem; margin-top:20px;">Engagement models built for your stage of growth.</p>
+            </div>
+
+            <div class="packages-grid">
+                <div class="package-card glass-card" data-reveal>
+                    <div>
+                        <h3>Starter</h3>
+                        <p class="package-subtitle">For brands building the right foundation</p>
+                        <p class="package-desc">A focused setup for businesses that need a stronger digital base and disciplined growth support.</p>
+                        <div class="package-features">
+                            <p>Includes:</p>
+                            <ul>
+                                <li>E-commerce foundation setup</li>
+                                <li>Core platform & operational support</li>
+                                <li>Performance marketing & SEO/AEO</li>
+                                <li>1 marketplace integration</li>
+                                <li>Basic CRM automation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn glass-btn">Start with Starter</a>
+                </div>
+
+                <div class="package-card glass-card" data-reveal>
+                    <div>
+                        <h3>Pro</h3>
+                        <p class="package-subtitle">For brands ready to scale faster</p>
+                        <p class="package-desc">A broader growth model for brands expanding across channels and looking for stronger execution depth.</p>
+                        <div class="package-features">
+                            <p>Includes:</p>
+                            <ul>
+                                <li>Everything in Starter</li>
+                                <li>Social media management</li>
+                                <li>2 marketplace integrations</li>
+                                <li>CRM with support workflows</li>
+                                <li>Creative content support</li>
+                                <li>Advanced reporting and analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn glass-btn">Explore Pro</a>
+                </div>
+
+                <div class="package-card glass-card highlight-package" data-reveal>
+                    <div>
+                        <h3>Enterprise</h3>
+                        <p class="package-subtitle">For brands built for scale</p>
+                        <p class="package-desc">A full operating model for brands seeking regional growth, tighter control, and long-term digital leadership.</p>
+                        <div class="package-features">
+                            <p>Includes:</p>
+                            <ul>
+                                <li>Everything in Pro</li>
+                                <li>Up to 4 marketplace integrations</li>
+                                <li>Advanced automation and AI support</li>
+                                <li>Competitive pricing intelligence</li>
+                                <li>Strategic growth reviews</li>
+                                <li>Regional expansion planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">Talk Enterprise</a>
                 </div>
             </div>
         </div>
@@ -1232,24 +758,24 @@ min-height:auto;
     <!-- Economics -->
     <section id="economics" class="economics">
         <div class="container">
-            <div class="section-title text-center" data-reveal="bottom">
-                <h2>Built for execution. <br>Anchored in <span class="gradient-text">economics.</span></h2>
-            </div><br>
+            <div class="services-header" data-reveal>
+                <h2>Built for execution.<br>Anchored in <span class="gradient-text">economics.</span></h2>
+            </div>
             <div class="eco-grid">
-                <div class="glass-card eco-card center-card" data-reveal="bottom">
+                <div class="glass-card center-card" data-reveal>
                     <div class="icon-wrap">🌍</div>
                     <h4>GCC Mastery</h4>
-                    <p>Specialized knowledge of the Middle Eastern digital commerce landscape.</p>
+                    <p style="color:var(--text-muted); margin-top:15px;">Specialized knowledge of the Middle Eastern digital commerce landscape.</p>
                 </div>
-                <div class="glass-card eco-card center-card" data-reveal="bottom">
+                <div class="glass-card center-card" data-reveal>
                     <div class="icon-wrap">📈</div>
                     <h4>P&L-First Governance</h4>
-                    <p>Execution grounded entirely in margin, contribution, and capital efficiency.</p>
+                    <p style="color:var(--text-muted); margin-top:15px;">Execution grounded entirely in margin, contribution, and capital efficiency.</p>
                 </div>
-                <div class="glass-card eco-card center-card" data-reveal="bottom">
+                <div class="glass-card center-card" data-reveal>
                     <div class="icon-wrap">⚡</div>
                     <h4>AI-Driven Velocity</h4>
-                    <p>Proprietary AI workflows to accelerate catalog production and content quality.</p>
+                    <p style="color:var(--text-muted); margin-top:15px;">Proprietary AI workflows to accelerate catalog production and content quality.</p>
                 </div>
             </div>
         </div>
@@ -1258,16 +784,16 @@ min-height:auto;
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <div class="footer-cta glass-card" data-reveal="bottom">
+            <div class="footer-cta glass-card" data-reveal>
                 <h2>Ready to build a stronger engine?</h2>
                 <p>Schedule a technical and commercial growth audit with our operating partners.</p>
-                <a href="#" class="btn btn-primary">Request Consultation</a>
+                <a href="mailto:hello@elevatewealthx.com" class="btn btn-primary">Request Consultation</a>
             </div>
 
             <div class="footer-bottom-grid">
                 <div class="footer-brand">
                     <h3>Elevate Wealth X</h3>
-                    <p>Operating Partners for Digital Scale.</p>
+                    <p style="color:var(--text-muted);">Operating Partners for Digital Scale.</p>
                 </div>
                 <div class="footer-links">
                     <p>Dubai, United Arab Emirates</p>
@@ -1277,89 +803,93 @@ min-height:auto;
             </div>
 
             <div class="footer-legal">
-                <p>&copy; 2026 Elevate Wealth X. All rights reserved.</p>
+                <p>&copy; 2024 Elevate Wealth X. All rights reserved.</p>
+                <p>Designed for Dominance.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Premium Interactions Scripts -->
     <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        // 1. Initialize Lenis Smooth Scroll (The gold standard for premium sites)
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
         }
-    });
+        requestAnimationFrame(raf);
 
-    // Mobile menu toggle
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+        // 2. Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
 
-    mobileMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
+        // Sync Lenis with GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time)=>{ lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0);
 
-    // Parallax Scroll Effect
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.parallax');
-
-        parallaxElements.forEach(el => {
-            const speed = el.getAttribute('data-speed') || 0.5;
-            el.style.transform = `translateY(${scrolled * speed}px)`;
+        // 3. True Hardware-Accelerated Parallax Elements (Only applies to elements with data-speed)
+        document.querySelectorAll('[data-speed]').forEach(elem => {
+            const speed = parseFloat(elem.getAttribute('data-speed'));
+            
+            gsap.to(elem, {
+                y: () => (ScrollTrigger.maxScroll(window) * speed),
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "body",
+                    start: "top top",
+                    end: "bottom bottom",
+                    scrub: 0.5, // Smooth scrubbing
+                    invalidateOnRefresh: true
+                }
+            });
         });
 
-        // Update CSS variable for scroll progress
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        document.documentElement.style.setProperty('--scroll-percent', `${scrollPercent}%`);
-    });
+        // 4. Staggered Fade-Up Reveals
+        const revealElements = document.querySelectorAll('[data-reveal]');
+        revealElements.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
 
-    // Intersection Observer for staggered scroll animations
-    const revealElements = document.querySelectorAll('[data-reveal]');
-
-    const revealOnScroll = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Add a small staggered delay for elements appearing together
-                setTimeout(() => {
-                    entry.target.classList.add('revealed');
-                }, index * 100);
-                revealOnScroll.unobserve(entry.target);
+        // 5. Navbar Scrolled State
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
         });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
-    });
 
-    revealElements.forEach(el => {
-        revealOnScroll.observe(el);
-    });
-
-    // Smooth Scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                // Close mobile menu if open
-                navLinks.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            }
+        // 6. Smooth Scroll for Anchor Links (using Lenis)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    lenis.scrollTo(target, { offset: -80 });
+                }
+            });
         });
-    });
-});
-
-</script>
+    </script>
 </body>
-
 </html>

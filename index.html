@@ -392,8 +392,8 @@
 
         .service-card {
             position: relative;
-            aspect-ratio: 1/1; /* Restored 1:1 */
-            border-radius: 28px; /* Restored original radius */
+            aspect-ratio: 1/1; /* Enforces absolute square */
+            border-radius: 28px;
             overflow: hidden;
             background-size: cover;
             background-position: center;
@@ -432,12 +432,12 @@
         .service-card:hover::after { opacity: 1; }
         .service-card:hover .service-content { border-color: rgba(255,255,255,0.3); }
 
-        /* Center Glass Card (1:1 Restored) */
+        /* Center Glass Card (1:1) */
         .service-content {
             position: relative;
             z-index: 3;
             width: 70%;
-            aspect-ratio: 1/1; /* Restored 1:1 */
+            aspect-ratio: 1/1; /* Enforces absolute square inside */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -449,10 +449,11 @@
             border: 1px solid rgba(255,255,255,0.18);
             box-shadow: 0 25px 60px rgba(0,0,0,0.6);
             transition: border-color 0.4s ease;
+            overflow: hidden; /* Prevent any accidental outer spillage */
         }
 
         .card-tag { font-size: 1.1rem; font-weight: 600; display: block; margin-bottom: 16px; letter-spacing: 0.3px; }
-        .service-content p { color: #e2e2e2; font-size: 1.05rem; line-height: 1.7; }
+        .service-content p { color: #e2e2e2; font-size: 1.05rem; line-height: 1.7; margin: 0; }
 
         /* Approach Section - Sticky Scroll */
         .approach-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: start; }
@@ -499,7 +500,8 @@
         /* Animations */
         [data-reveal] { opacity: 0; transform: translateY(50px); }
 
-        /* Responsive Breakpoints */
+        /* ====== RESPONSIVE BREAKPOINTS ====== */
+        
         @media (max-width: 1200px) {
             .hero h1 { font-size: 8vw; }
             .hero-widget { display: none; }
@@ -507,9 +509,24 @@
             .approach-sticky { position: static; }
         }
 
+        /* Tablet & Large Phones */
         @media (max-width: 900px) {
             .services-grid { grid-template-columns: 1fr; }
-            .service-content { width: 85%; aspect-ratio: auto; padding: 40px 30px; } /* Restored mobile fallback */
+            
+            /* Retain strict 1:1 on mobile, scale down box size and text to fit */
+            .service-content { 
+                width: 85%; 
+                aspect-ratio: 1/1; /* Keeps inner box perfect square */
+                padding: 24px; 
+            }
+            .card-tag { 
+                font-size: 0.95rem; 
+                margin-bottom: 8px; 
+            }
+            .service-content p { 
+                font-size: 0.9rem; 
+                line-height: 1.5; 
+            }
             
             .packages-grid, .eco-grid { grid-template-columns: 1fr; }
             .highlight-package { transform: scale(1); }
@@ -518,12 +535,28 @@
             .footer-bottom-grid { flex-direction: column; gap: 30px; }
         }
 
+        /* Small Phones (iPhone SE, standard Androids) */
         @media (max-width: 480px) {
             :root { --section-pad: 80px 0; }
             .container { padding: 0 20px; }
             .hero h1 { font-size: 2.8rem; }
             .hero-btns { flex-direction: column; }
             .btn { width: 100%; }
+
+            /* Aggressive scaling to ensure text NEVER crops inside the 1:1 square */
+            .service-content { 
+                width: 90%; 
+                padding: 18px; 
+                border-radius: 18px; 
+            }
+            .card-tag { 
+                font-size: 0.85rem; 
+                margin-bottom: 6px; 
+            }
+            .service-content p { 
+                font-size: 0.8rem; 
+                line-height: 1.4; 
+            }
         }
     </style>
 </head>
@@ -586,7 +619,7 @@
         </div>
     </section>
 
-    <!-- Capabilities Grid (Restored 1:1 Square Design) -->
+    <!-- Capabilities Grid -->
     <section id="services" class="services">
         <div class="container">
             <div class="services-header" data-reveal>
@@ -595,56 +628,56 @@
             
             <div class="services-grid">
                 <!-- Removed data-speed to prevent overlapping, kept data-reveal for fade-in -->
-                <div class="service-card" style="background-image:url('images/services1.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services1elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">01. Unified Commerce</span>
                         <p>Connected commerce ecosystems across digital, marketplace, and retail touchpoints, built for seamless customer journeys and stronger operational control.</p>
                     </div>
                 </div>
                 
-                <div class="service-card" style="background-image:url('images/services2.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services2elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">02. Platform & Integrations</span>
                         <p>Scalable commerce infrastructure and system integrations designed to deliver performance, visibility, and long-term control across the ecosystem.</p>
                     </div>
                 </div>
                 
-                <div class="service-card" style="background-image:url('images/services3.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services3elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">03. Growth Marketing</span>
                         <p>SEO / AEO, CRM, and digital marketing strategies crafted to drive efficient acquisition, stronger retention, and sustainable growth.</p>
                     </div>
                 </div>
                 
-                <div class="service-card" style="background-image:url('images/services4.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services4elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">04. Marketplaces</span>
                         <p>Operational and commercial marketplace management across key platforms, designed to improve visibility, execution quality, and scalable channel growth.</p>
                     </div>
                 </div>
 
-                <div class="service-card" style="background-image:url('images/services5.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services5elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">05. Social Media</span>
                         <p>Strategic social media management built to strengthen brand presence, deepen audience engagement, and maintain consistency across channels.</p>
                     </div>
                 </div>
                 
-                <div class="service-card" style="background-image:url('images/services6.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services6elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">06. Creative & Branding</span>
                         <p>Content, identity, and brand-building systems designed to elevate presence, sharpen differentiation, and drive conversion across touchpoints.</p>
                     </div>
                 </div>
 
-                <div class="service-card" style="background-image:url('images/services7.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services7elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">07. Advanced Growth Analytics</span>
                         <p>Data-led reporting, insight, and performance intelligence designed to enable sharper decisions, clearer visibility, and stronger growth planning.</p>
                     </div>
                 </div>
                 
-                <div class="service-card" style="background-image:url('images/services8.png')" data-reveal>
+                <div class="service-card" style="background-image:url('images/services8elevatenew.png')" data-reveal>
                     <div class="service-content">
                         <span class="card-tag gradient-text">08. Agentic Workflow Automation</span>
                         <p>AI-powered workflow automations designed to improve speed, consistency, efficiency, and scale across content, operations, and reporting.</p>

@@ -702,7 +702,7 @@ footer {
 
 /* SERVICES GRID */
 
-.services-grid{
+/* .services-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
 gap:24px;
@@ -715,41 +715,127 @@ display:flex;
 flex-direction:column;
 justify-content:flex-start;
 min-height:240px;
-}
+} */
 
-.service-card h3{
-font-size:1.5rem;
-margin-bottom:10px;
-}
-
-.service-card p{
-color:var(--text-muted);
-font-size:0.95rem;
-line-height:1.6;
-}
-
-/* RESPONSIVE */
-
-@media (max-width:1200px){
+/* SERVICES IMAGE CARDS */
 
 .services-grid{
+display:grid;
 grid-template-columns:repeat(2,1fr);
+gap:32px;
+margin-top:60px;
 }
 
+/* main card */
+
+.service-card{
+position:relative;
+aspect-ratio:1/1;
+border-radius:28px;
+overflow:hidden;
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-@media (max-width:768px){
+/* dark overlay */
+
+.service-card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+180deg,
+rgba(0,0,0,0.25) 0%,
+rgba(0,0,0,0.75) 100%
+);
+}
+
+/* CENTER GLASS CARD */
+
+.service-content{
+position:relative;
+
+width:70%;
+aspect-ratio:1/1;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+padding:34px;
+
+border-radius:22px;
+
+background:rgba(20,20,20,0.55);
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(255,255,255,0.18);
+
+box-shadow:0 25px 60px rgba(0,0,0,0.6);
+}
+
+/* title */
+
+.service-content span{
+font-size:1.1rem;
+font-weight:600;
+color:#00eaff;
+display:block;
+margin-bottom:16px;
+letter-spacing: 0.3px;
+}
+
+/* text */
+
+.service-content p{
+color:#e2e2e2;
+font-size:1.05rem;
+line-height:1.7;
+}
+
+/* hover */
+
+.service-card{
+transition:transform .4s ease, box-shadow .4s ease;
+}
+
+.service-card:hover{
+transform:translateY(-8px);
+box-shadow:0 40px 80px rgba(0,0,0,0.6);
+}
+
+/* responsive */
+
+@media(max-width:900px){
 
 .services-grid{
 grid-template-columns:1fr;
 }
 
-.service-card{
-padding:30px;
+.service-content{
+width:85%;
 }
 
 }
 
+@media(max-width:900px){
+
+.service-content{
+width:85%;
+aspect-ratio:auto;
+}
+
+}
+/* This gives a subtle blue glow when hovering — looks very high-end. */
+.service-card:hover::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center, rgba(0,210,255,0.12), transparent 70%);
+}
 /* PACKAGES SECTION */
 
 .packages-grid{
@@ -905,69 +991,91 @@ min-height:auto;
     </section>
 
    <!-- Services - Equal Grid Section -->
-<section id="services" class="services">
+   <section id="services" class="services">
     <div class="container">
-
-        <div class="section-title" data-reveal="bottom">
-            <h1>Eight pillars. <br>One <span class="gradient-text">unified engine.</span></h1>
-        </div>
-
-        <div class="services-grid">
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">01. Unified Commerce</span><br>
-                <!-- <h3>Enterprise Architecture</h3> -->
-                <p>Connected commerce ecosystems across digital, marketplace, and retail touchpoints, built for seamless customer journeys and stronger operational control.
-                </p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">02. ⁠Platform & Integrations</span><br>
-                <!-- <h3>Multi-Market Scale</h3> -->
-                <p>Scalable commerce infrastructure and system integrations designed to deliver performance, visibility, and long-term control across the ecosystem.</p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">03. ⁠Growth Marketing</span><br>
-                <!-- <h3>Performance Mastery</h3> -->
-                <p>SEO / AEO, CRM, and digital marketing strategies crafted to drive efficient acquisition, stronger retention, and sustainable growth.               </p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">04. Marketplaces</span><br>
-                <!-- <h3>Growth Intelligence</h3> -->
-                <p>Operational and commercial marketplace management across key platforms, designed to improve visibility, execution quality, and scalable channel growth.                </p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">05. ⁠Social Media</span><br>
-                <!-- <h3>AI Content Systems</h3> -->
-                <p>Strategic social media management built to strengthen brand presence, deepen audience engagement, and maintain consistency across channels.</p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">06. Creative & Branding</span><br>
-                <!-- <h3>Lifecycle Economics</h3> -->
-                <p>Content, identity, and brand-building systems designed to elevate presence, sharpen differentiation, and drive conversion across touchpoints.</p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">07. Advanced Growth Analytics</span><br>
-                <!-- <h3>High-Performance Creative</h3> -->
-                <p>Data-led reporting, insight, and performance intelligence designed to enable sharper decisions, clearer visibility, and stronger growth planning.</p>
-            </div>
-
-            <div class="service-card glass-card">
-                <span class="card-tag gradient-text">08. Agentic Workflow Automation</span><br>
-                <!-- <h3>Strategic Governance</h3> -->
-                <p>AI-powered workflow automations designed to improve speed, consistency, efficiency, and scale across content, operations, and reporting.</p>
-            </div>
-
-        </div>
-
+    
+    <div class="section-title" data-reveal="bottom">
+    <h1>Eight pillars. <br>One <span class="gradient-text">unified engine.</span></h1>
     </div>
-</section>
-
+    
+    <div class="services-grid">
+    
+    <div class="service-card" style="background-image:url('images/services1.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">01. Unified Commerce</span><br>
+    <p>
+    Connected commerce ecosystems across digital, marketplace, and retail touchpoints, built for seamless customer journeys and stronger operational control.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services2.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">02. ⁠Platform & Integrations</span><br>
+    <p>
+    Scalable commerce infrastructure and system integrations designed to deliver performance, visibility, and long-term control across the ecosystem.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services3.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">03. ⁠Growth Marketing</span><br>
+    <p>
+    SEO / AEO, CRM, and digital marketing strategies crafted to drive efficient acquisition, stronger retention, and sustainable growth.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services4.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">04. Marketplaces</span><br>
+    <p>
+    Operational and commercial marketplace management across key platforms, designed to improve visibility, execution quality, and scalable channel growth.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services5.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">05. ⁠Social Media</span><br>
+    <p>
+    Strategic social media management built to strengthen brand presence, deepen audience engagement, and maintain consistency across channels.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services6.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">06. Creative & Branding</span><br>
+    <p>
+    Content, identity, and brand-building systems designed to elevate presence, sharpen differentiation, and drive conversion across touchpoints.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services7.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">07. Advanced Growth Analytics</span><br>
+    <p>
+    Data-led reporting, insight, and performance intelligence designed to enable sharper decisions, clearer visibility, and stronger growth planning.
+    </p>
+    </div>
+    </div>
+    
+    <div class="service-card" style="background-image:url('images/services8.png')">
+    <div class="service-content">
+    <span class="card-tag gradient-text">08. Agentic Workflow Automation</span><br>
+    <p>
+    AI-powered workflow automations designed to improve speed, consistency, efficiency, and scale across content, operations, and reporting.
+    </p>
+    </div>
+    </div>
+    
+    </div>
+    
+    </div>
+    </section>
 
 <!-- Packages Section -->
 <section id="packages" class="packages">

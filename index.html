@@ -512,12 +512,12 @@
         /* Tablet & Large Phones */
         @media (max-width: 900px) {
 
+            /* SERVICES */
+
             .services-grid{
             grid-template-columns:1fr;
             gap:26px;
             }
-
-            /* slightly smaller glass card to create breathing space */
 
             .service-content{
             width:82%;
@@ -526,24 +526,46 @@
             border-radius:18px;
             }
 
-            /* increase title size */
-
             .card-tag{
             font-size:1.08rem;
             margin-bottom:12px;
             }
-
-            /* increase paragraph size */
 
             .service-content p{
             font-size:0.98rem;
             line-height:1.6;
             }
 
-            /* make section heading nicer on phones */
-
             .services-header h2{
             font-size:2.6rem;
+            }
+
+
+            /* PACKAGES SECTION FIX */
+
+            .packages-grid{
+            grid-template-columns:1fr;
+            gap:24px;
+            }
+
+            .package-card{
+            padding:40px 30px;
+            }
+
+            .package-card h3{
+            font-size:1.8rem;
+            }
+
+
+            /* ECONOMICS SECTION FIX */
+
+            .eco-grid{
+            grid-template-columns:1fr;
+            gap:24px;
+            }
+
+            .center-card{
+            padding:40px 28px;
             }
 
             }
@@ -613,6 +635,14 @@
 
             .services-header h2{
             font-size:2.2rem;
+            }
+
+            .packages-grid{
+            grid-template-columns:1fr;
+            }
+
+            .eco-grid{
+            grid-template-columns:1fr;
             }
 
             }

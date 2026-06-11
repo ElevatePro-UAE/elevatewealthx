@@ -88,7 +88,7 @@ body{
 }
 
 .form-section{
-    margin-top:-120px;
+    margin-top:-20px;
     position:relative;
     z-index:10;
     padding:0 24px 80px;
@@ -347,7 +347,7 @@ textarea{
     <div class="hero-overlay"></div>
 
     <div class="hero-content">
-        <br><br>
+        <br><br><br>
         <h1>
             the buttr reset table
         </h1>
@@ -355,27 +355,35 @@ textarea{
         <p>
             join us for a special launch gathering of nourishing food, gentle movement, inspiring conversations, and mindful nutrition.
         </p>
+
+        <br>
+        <div class="badge">
+            21 june • limited seats • sohum wellness sanctuary, dubai
+        </div>
+
+        
     </div>
 
+      
 </section>
 
 
-<section style="
+<!-- <section style="
 max-width:900px;
 margin:80px auto 160px;
 padding:0 30px;
 text-align:center;
 ">
 
-<!-- <h2 style="
+<h2 style="
 font-size:42px;
 margin-bottom:25px;
 text-transform:lowercase;
 ">
 good health starts with simple habits
-</h2> -->
+</h2>
 
-<!-- <p style="
+<p style="
 max-width:700px;
 margin:auto;
 color:#555;
@@ -386,17 +394,13 @@ text-transform:lowercase;
 join us for an intimate gathering where we explore nutrition,
 movement and the role of nuts, healthy fats and mindful routines
 in everyday wellness.
-</p> -->
+</p>
 
-</section>
+</section> -->
 
 <section class="form-section">
 
 <div class="form-card">
-
-    <div class="badge">
-        21 june • limited seats
-    </div>
 
     <!-- <h2 class="form-title">
         reserve your place at the table
@@ -634,12 +638,16 @@ placeholder="please share any allergies, sensitivities or dietary restrictions"
     document.getElementById("hidden_iframe").onload = function(){
     
         if(!formSubmitted) return;
-    
-        document.querySelector(".badge").style.display = "none";
-        document.querySelector(".form-title").style.display = "none";
-        document.querySelector(".form-subtitle").style.display = "none";
+
+        document.querySelector(".badge")?.style.setProperty("display","none");
+
+        document.querySelector(".form-title")?.style.setProperty("display","none");
+
+        document.querySelector(".form-subtitle")?.style.setProperty("display","none");
+
         document.getElementById("rsvpForm").style.display = "none";
-        document.querySelector(".footer-note").style.display = "none";
+
+        document.querySelector(".footer-note")?.style.setProperty("display","none");
 
         document.getElementById("success-card").style.display = "block";
 
